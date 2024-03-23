@@ -18,7 +18,7 @@
                         <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password" name="password" type="password" placeholder="Masukkan kata sandi akun"><label for="password">Ulangi Password:</label>
                         <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password" name="password" type="password" placeholder="Masukkan ulang kata sandi di atas">
 
-                        <p>Sudah mempunyai akun? <a class="text-blue-500 underline" href="/register">Masuk akun</a></p>
+                        <p>Sudah mempunyai akun? <a class="text-blue-500 underline" href="/login">Masuk akun</a></p>
                         <div class="flex justify-end">
                            <button class="bg-[#1b3c73] rounded-md my-4 py-2 px-3 text-white" type="submit">DAFTAR</button>
                         </div>
