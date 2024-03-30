@@ -1,12 +1,7 @@
 <footer>
         <div class="bg-[#504B47] px-12 py-6 text-white">
             <div class="sm:grid sm:grid-cols-4 sm:gap-x-4">
-                <a href="/" class="max-w-[320px] max-h-16">
-                    <div class="flex justify-between items-center">
-                        <img src="/images/logo.png" alt="Logo Tan Aquatic">
-                        <h1 class="font-semibold text-4xl block">Tan Aquatic</h1>
-                    </div>
-                </a>
+                @include('partials.logo')
                 <div class="text-xl sm:ml-4">
                     <a class="block" href="/">Beranda</a>
                     <a class="block" href="/blog">Blog</a>
