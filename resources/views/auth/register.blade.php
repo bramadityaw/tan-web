@@ -8,15 +8,17 @@
             </div>
             <div class="rounded-lg xl:rounded-none xl:rounded-r-lg bg-white p-6 w-full xl:w-1/2">
                 <h1 class="text-xl text-center">Buat Akun</h1>
-                <form action="" method="post">
+                <form action="/register" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="flex-col p-2">
                         <label for="name">Nama Lengkap:</label>
-                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="name" name="name" type="text" placeholder="Masukkan nama lengkap Anda">
+                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="name" name="name" type="text" placeholder="Masukkan nama lengkap Anda" value="{{ old('name') }}" required>
                         <label for="email">Email:</label>
-                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="email" name="email" type="email" placeholder="Masukkan e-mail Anda">
+                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="email" name="email" type="email" placeholder="Masukkan e-mail Anda" value="{{ old('email') }}" required>
                         <label for="password">Password:</label>
-                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password" name="password" type="password" placeholder="Masukkan kata sandi akun"><label for="password">Ulangi Password:</label>
-                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password" name="password" type="password" placeholder="Masukkan ulang kata sandi di atas">
+                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password" name="password" type="password" placeholder="Masukkan kata sandi akun" required>
+                        <label for="password">Ulangi Password:</label>
+                        <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password_confirmation" name="password_confirmation" type="password" placeholder="Masukkan ulang kata sandi di atas" required>
 
                         <p>Sudah mempunyai akun? <a class="text-blue-500 underline" href="/login">Masuk akun</a></p>
                         <div class="flex justify-end">
