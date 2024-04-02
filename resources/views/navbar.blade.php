@@ -2,8 +2,8 @@
     <nav class=" flex px-8 py-5 text-white items-center justify-between">
         @include('partials.logo')
         <div class="rounded-md bg-white text-[#909090] w-full sm:w-[60%] lg:w-[35%]">
-            <form action="search" class="flex justify-between">
-                <input class="text-base w-full border-0 pl-4 py-3" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
+            <form action="" class="flex justify-between">
+                <input class="text-base w-full border-0 rounded-l-md pl-4 py-3" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
                 <button class="px-4" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
@@ -15,7 +15,11 @@
             <a href="/blog">Blog</a>
         </div>
         <div class="">
-            <a href="/login">Masuk</a>
+            @auth
+                <img src="{{ Auth::user()->profile_pic }}" alt="Foto Profil {{ Auth::user()->nama }}" class="h-8 w-8 object-cover rounded-full">
+            @else
+                <a href="/login">Masuk</a>
+            @endauth
         </div>
     </nav>
 </header>
