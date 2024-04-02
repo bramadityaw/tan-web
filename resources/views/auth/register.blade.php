@@ -17,7 +17,7 @@
                         <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="email" name="email" type="email" placeholder="Masukkan e-mail Anda" value="{{ old('email') }}" required>
                         <label for="password">Password:</label>
                         <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password" name="password" type="password" placeholder="Masukkan kata sandi akun" required>
-                        <label for="password">Ulangi Password:</label>
+                        <label for="password_confirmation">Ulangi Password:</label>
                         <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="password_confirmation" name="password_confirmation" type="password" placeholder="Masukkan ulang kata sandi di atas" required>
 
                         <p>Sudah mempunyai akun? <a class="text-blue-500 underline" href="/login">Masuk akun</a></p>
