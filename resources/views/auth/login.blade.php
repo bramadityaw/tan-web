@@ -18,7 +18,8 @@
              </div>
              <div class="rounded-lg xl:rounded-none xl:rounded-r-lg bg-white p-6 w-full xl:w-1/2">
                  <h1 class="text-xl text-center">Masuk Akun</h1>
-                 <form action="" method="post">
+                 <form action="/login" method="post">
+                     @csrf
                      <div class="flex-col">
                          <label for="email">Email:</label>
                             <input class="block w-full my-2 p-2 border-2 border-gray-200 rounded-md" id="email" name="email" type="email" placeholder="Masukkan e-mail Anda">
