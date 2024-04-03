@@ -1,6 +1,6 @@
-@include('head')
-@include('navbar')
-<main class="bg-[#1b3c73] h-[90dvh] pt-16">
+@extends('layouts.user')
+@section('main')
+<section class="bg-[#1b3c73] h-[90dvh] pt-16">
     <div class="w-4/5 md:w-1/2 lg:w-1/3 mx-auto p-4 bg-white rounded-md">
         <div class="m-4">
             <img class="aspect-auto w-3/5 lg:w-1/2 mx-auto my-2" src="images/404-goldfish.png">
@@ -19,5 +19,5 @@
             </div>
         </div>
     </div>
-</main>
-@include('footer')
+</section>
+@endsection

@@ -1,6 +1,5 @@
-@include('head')
-@include('navbar')
-<main>
+@extends('layouts.user')
+@section('main')
     <div class="bg-[#1b3c73] py-[20%] md:py-[5%]">
         <div class="w-4/5 md:w-3/5 mx-auto flex">
              <div class="swiper hidden xl:block rounded-l-lg w-1/2">
@@ -34,6 +33,8 @@
              </div>
         </div>
     </div>
-</main>
-@include('partials.swiperjs')
-@include('footer')
+@endsection
+@section('scripts')
+    @parent
+    @include('partials.scripts.swiperjs')
+@endsection
