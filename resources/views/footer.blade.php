@@ -1,7 +1,7 @@
 <footer>
         <div class="bg-[#504B47] px-12 py-6 text-white">
             <div class="sm:grid sm:grid-cols-4 sm:gap-x-4">
-                @include('partials.logo')
+                @include('partials.icons.logo')
                 <div class="text-xl sm:ml-4">
                     <a class="block" href="/">Beranda</a>
                     <a class="block" href="/blog">Blog</a>
@@ -55,6 +55,6 @@
             <span class="block">Made by GottaGame</span>
         </div>
     </footer>
-    @include('partials.global-scripts')
+    @include('partials.scripts.globaljs')
 </body>
 </html>

@@ -112,6 +112,6 @@
            </div>
        </section>
     </main>
-    @include("partials.swiperjs")
+    @include("partials.scripts.swiperjs")
 @include("footer")
 
