@@ -21,6 +21,17 @@
                 <a href="/login">Masuk</a>
             @endauth
         </div>
-    </nav>
+        </nav>
+        @auth
+        <div class="absolute right-0 bg-white rounded-md text-black border-2 border-gray-300">
+            <p> {{ Auth::user()->name }} </p>
+            <span>{{ Auth::user()->email }}</span>
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit">Log Out<i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+            </form>
+        </div>
+        @endauth
+
 </header>
 
