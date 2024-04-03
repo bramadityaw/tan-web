@@ -2,8 +2,7 @@
 @include('navbar')
 <main>
 
-@section('main')
-@show
+@yield('main')
 
 @include('footer')
 @section('scripts')
