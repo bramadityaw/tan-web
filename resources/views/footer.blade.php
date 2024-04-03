@@ -55,5 +55,6 @@
             <span class="block">Made by GottaGame</span>
         </div>
     </footer>
+    @include('partials.global-scripts')
 </body>
 </html>
