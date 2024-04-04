@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('verif_status', ['pending', 'verified', 'failed']);
             $table->string('verif_bukti'); //url ke gambar screenshoot bukti transaksi
             $table->unsignedInteger('total_bayar');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

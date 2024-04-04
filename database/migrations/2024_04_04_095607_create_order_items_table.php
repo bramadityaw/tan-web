@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('price');
             $table->unsignedInteger('quantity');
-            $table->foreign('produk_id')->references('id')->on('produks');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreignId('order_id')->constrained();
+            $table->foreignId('produk_id')->constrained();
             $table->timestamps();
         });
     }
