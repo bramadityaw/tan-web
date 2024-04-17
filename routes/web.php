@@ -35,6 +35,9 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::middleware('admin')->group(function() {
+
+    Route::permanentRedirect('/', '/admin/dashboard');
+
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     });
