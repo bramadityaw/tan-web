@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->intended('toko');
+        return redirect()->intended('login');
     }
 
 }
