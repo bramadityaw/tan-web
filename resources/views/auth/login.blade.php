@@ -2,7 +2,7 @@
 @section('main')
     <div class="bg-[#1b3c73] py-[20%] md:py-[5%]">
         <div class="w-4/5 md:w-3/5 mx-auto flex">
-             <div class="swiper hidden sm:block rounded-l-lg w-1/2">
+             <div class="swiper hidden lg:block rounded-l-lg w-1/2">
                   <div class="swiper-wrapper">
                       <div class="swiper-slide">
                           <img class="h-full object-cover" src="/images/koki_redcap.jpg" alt="">
@@ -38,7 +38,7 @@
     display: none;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
     .swiper {
         display: block;
     }
