@@ -34,6 +34,8 @@ Route::post('/logout', function (Request $request) {
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(RedirectIfAdmin::class);
+Route::middleware('admin')->group(function() {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    });
+});
