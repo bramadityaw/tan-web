@@ -1,11 +1,11 @@
 @include('head')
-<div class="flex">
-@include('admin.sidenav')
-<main>
+    <div class="flex">
+    @include('admin.sidenav')
+        <main>
 
-@yield('main')
+        @yield('main')
 
-</main>
-</div>
+        </main>
+    </div>
 </body>
 </html>
