@@ -38,7 +38,7 @@
     <section class="lg:flex justify-between mx-auto my-10 w-[80%]">
         <!--Slider-->
         <div class="swiper mx-0">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" style="height: auto;">
                 <!-- Slides -->
                 @foreach ($products as $product)
                     <div class="swiper-slide">
