@@ -24,6 +24,10 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+            if (Auth::user()->admin_status === 'Y'){
+                return redirect()->intended('admin/dashboard');
+            }
+
             return redirect()->intended('toko');
         }
 
