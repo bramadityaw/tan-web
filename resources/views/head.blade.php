@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+
+@use('Illuminate\Support\Facades\Auth')
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tan Aquatic | Ikan Hias, Perlengkapan Akuarium, Aquascape</title>
+    <title>{{ Auth::check() && Auth::user()->admin_status === 'Y' ? 'Pengelolaan Tan Aquatic' : 'Tan Aquatic | Ikan Hias, Perlengkapan Akuarium, Aquascape' }}</title>
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
