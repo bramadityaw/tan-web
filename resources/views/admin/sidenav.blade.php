@@ -2,10 +2,10 @@
     <nav>
     <ul>
         <li>
-            <a href="/admin/dashboard">Beranda</a>
+            <a href="{{ admin() }}">Beranda</a>
         </li>
         <li>
-            <a href="/admin/dashboard/transaksi">Transaksi</a>
+            <a href="{{ admin('transaksi') }}">Transaksi</a>
         </li>
     </ul>
     </nav>
