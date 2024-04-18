@@ -39,6 +39,18 @@ Route::middleware('admin')->group(function() {
     Route::permanentRedirect('/', '/admin/dashboard');
 
     Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
+        return view('admin.dashboard.index');
+    });
+    Route::get('/admin/dashboard/transactions', function () {
+        return view('admin.dashboard.transactions');
+    });
+    Route::get('/admin/dashboard/products', function () {
+        return view('admin.dashboard.products');
+    });
+    Route::get('/admin/dashboard/blog', function () {
+        return view('admin.dashboard.blog');
+    });
+    Route::get('/admin/dashboard/users', function () {
+        return view('admin.dashboard.users');
     });
 });
