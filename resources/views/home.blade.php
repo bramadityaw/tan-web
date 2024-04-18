@@ -62,7 +62,7 @@
                 <path d="M27.4773 45.2144L38.4064 33.7479L27.4773 22.2814" stroke="white" stroke-width="4.7027" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
-            <div class="absolute bottom-0 right-0">
+            <div class="absolute bottom-0 right-0 z-10">
                 <a class="block bg-[#1B3C73] rounded-md font-semibold text-white text-center text-md px-4 py-3 mb-10 mr-20" href="/toko">
                     Beli Sekarang
                 </a>
