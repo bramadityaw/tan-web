@@ -71,20 +71,22 @@
     </section>
 
     <section class="py-11 px-[15%] bg-[#1b3c73] text-white">
-        <h1 class="text-center h-[50px] text-3xl font-semibold border-b-[1px] border-b-white">Profil Tan Aquatic</h1>
+        <h1 class="mb-4 text-center text-3xl font-semibold">Profil Tan Aquatic</h1>
+        <div class="border border-white"></div>
         <div class="sm:flex justify-around">
             <div class="m-9">
                 <img class="aspect-square w-[128px] m-auto" src="/images/tan.png" alt="Foto pemilik Tan Aquatic, M. Ferdiansyah Tandianus">
                 <p class="text-center">M. Ferdiansyah Tandianus <br/> (Pemilik)</p>
             </div>
             <div class="sm:w-[60%] mt-9">
-                <p>Tan Aquatic adalah toko ikan hias air tawar yang dimiliki oleh Ferdiansyah Tandianus, seorang pemuda asli Tanjung Enim. Selain ikan hias air tawar, Tan Aquatic juga menjual perlengkapan aquarium dan aquascape.</p>
+                <p>Tan Aquatic adalah toko ikan hias air tawar yang dimiliki oleh Muhammad Ferdiansyah Tandianus, seorang pemuda asli Tanjung Enim. Selain ikan hias air tawar, Tan Aquatic juga menjual perlengkapan aquarium dan aquascape.</p>
                 <p>Berawal dari kecintaannya terhadap hewan peliharaan, usaha ini berkembang dari hobi menjadi sebuah usaha rumahan yang cukup dikenal di Tanjung, diberi nama sesuai dengan suku kata pertama dari nama belakangnya.</p>
             </div>
         </div>
     </section>
     <section class="pb-11 px-[15%] bg-[#1b3c73] text-white">
-       <h1 class="text-center h-[50px] text-3xl font-semibold border-b-[1px] border-b-white">Kunjungi Tan Aquatic</h1>
+        <h1 class="mb-4 text-center text-3xl font-semibold">Kunjungi Tan Aquatic</h1>
+        <div class="border border-white"></div>
        <div class="sm:flex justify-around">
           <div class="sm:w-[60%] mt-9">
               <div class="flex mb-4">
