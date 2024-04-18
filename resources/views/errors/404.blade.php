@@ -1,9 +1,10 @@
-@extends('layouts.user')
+@extends('layouts.' . ((Auth::check() && Auth::user()->admin_status === 'Y') ? 'admin' : 'user'))
+
 @section('main')
 <section class="bg-[#1b3c73] h-[90dvh] pt-16">
     <div class="w-4/5 md:w-1/2 lg:w-1/3 mx-auto p-4 bg-white rounded-md">
         <div class="m-4">
-            <img class="aspect-auto w-3/5 lg:w-1/2 mx-auto my-2" src="images/404-goldfish.png">
+            <img class="aspect-auto w-3/5 lg:w-1/2 mx-auto my-2" src="/images/404-goldfish.png">
             <h1 class="text-black text-2xl text-center my-4">Halaman tidak tersedia</h1>
             <div class="text-center lg:flex lg:justify-center">
                 <a class="block rounded-md bg-[#1b3c73] mb-4 lg:mb-0 lg:mr-4 lg:w-2/5 p-2 text-lg text-white" href="/toko">Kembali belanja</a>
