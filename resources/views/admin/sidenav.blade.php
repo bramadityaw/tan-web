@@ -1,5 +1,5 @@
-<aside class="hidden md:block w-1/5 py-4 bg-gray-800 text-white">
-    <div class="w-4/5 h-[80lvh] mx-auto">
+<aside class="hidden md:block w-1/5 h-[100dvh] bg-gray-800 text-white">
+    <div class="w-4/5 mx-auto mt-4">
     @include('partials.icons.logo')
         <nav>
             <ul>
