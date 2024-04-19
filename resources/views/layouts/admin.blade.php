@@ -9,7 +9,7 @@ function admin($url = '') {
     @include('admin.sidenav')
         <div class="w-full">
             @include('admin.topnav')
-                <main class="px-6 min-h-[299px]">
+                <main class="px-6" style="min-height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px) + 0.6rem);">
 
                 @yield('main')
 
