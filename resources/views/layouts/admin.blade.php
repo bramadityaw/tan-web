@@ -9,11 +9,12 @@ function admin($url = '') {
     @include('admin.sidenav')
         <div class="w-full">
             @include('admin.topnav')
-                <main class="px-6">
+                <main class="px-6 min-h-[299px]">
 
                 @yield('main')
 
                 </main>
+            @include('admin.footer')
         </div>
     </div>
 @section('scripts')
