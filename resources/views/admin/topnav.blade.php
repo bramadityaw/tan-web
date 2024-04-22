@@ -14,7 +14,7 @@
         </div>
         </nav>
         @auth
-        <div class="absolute right-8 bg-white rounded-md text-black px-4 py-2 border-2 border-gray-300 hidden">
+        <div class="absolute right-8 bg-white rounded-md text-black px-4 py-2 border-2 border-gray-300 z-30 hidden">
             <div class="flex">
                 <div class="">
                     <p> {{ Auth::user()->name }} </p>

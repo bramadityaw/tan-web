@@ -23,14 +23,27 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6">Akuarium</td>
-            <td class="py-4 px-6">Rp. 3.000.000</td>
-            <td class="py-4 px-6">2</td>
-            <td class="py-4 px-6">2024-04-19</td>
-        </tr>
+        @foreach($purchases as $purchase)
+            @if ($purchases)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="py-4 px-6">{{ $purchase->nama_barang }}</td>
+                    <td class="py-4 px-6">Rp. {{ number_format($purchase->harga_beli, 2, ',' , '.') }}</td>
+                    <td class="py-4 px-6">{{ $purchase->qty }}</td>
+                    <td class="py-4 px-6">{{ $purchase->created_at }}</td>
+                </tr>
+            @else
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="text-gray-400" colspan="4"   >
+                    <section>
+                    <h1>Test</h1>
+                    </section>
+                    </td>
+                </tr>
+            @endif
+        @endforeach
         </tbody>
     </table>
+    {{ $purchases->links() }}
 </section>
 <section>
     <h2 class="text-lg font-medium">Penjualan</h2>
