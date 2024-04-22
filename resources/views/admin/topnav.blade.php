@@ -22,6 +22,9 @@
                 </div>
             </div>
             @include('partials.divider-h')
+            <section>
+                <a href="/"><h1 class="block">Lihat Website</h1></a>
+            </section>
             <form action="/logout" method="post">
                 @csrf
                 <button class="flex items-center justify-between w-full" type="submit">
