@@ -26,13 +26,16 @@
         </nav>
         @auth
         <div class="absolute right-8 bg-white rounded-md text-black px-4 py-2 border-2 border-gray-300 hidden">
-            <div class="flex">
-                <div class="">
-                    <p> {{ Auth::user()->name }} </p>
-                    <span class="text-sm text-gray-500">{{ Auth::user()->email }}</span>
-                </div>
-            </div>
+            <section>
+                <h1> {{ Auth::user()->name }} </h1>
+                <span class="text-sm text-gray-500">{{ Auth::user()->email }}</span>
+            </section>
             @include('partials.divider-h')
+            @if(Auth::user()->is_admin)
+            <section>
+                <a href="/admin"><h1 class="block">Kelola Website</h1></a>
+            </section>
+            @endif
             <form action="/logout" method="post">
                 @csrf
                 <button class="flex items-center justify-between w-full" type="submit">
