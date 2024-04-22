@@ -1,6 +1,6 @@
 @php
     function isAdmin() {
-        return Auth::check() && Auth::user()->admin_status === 'Y';
+        return Auth::check() && Auth::user()->is_admin;
     }
 @endphp
 
