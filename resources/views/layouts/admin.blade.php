@@ -5,11 +5,11 @@ function admin($url = '') {
 @endphp
 
 @include('head')
-    <div class="flex">
+    <div class="flex h-screen overflow-hidden">
     @include('admin.sidenav')
-        <div class="w-full">
+        <div class="w-full relative flex flex-1 flex-col">
             @include('admin.topnav')
-                <main class="px-6" style="min-height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px) + 0.6rem);">
+                <main class="px-6 relative overflow-y-auto">
 
                 @yield('main')
 
