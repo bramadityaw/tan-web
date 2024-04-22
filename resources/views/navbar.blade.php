@@ -5,7 +5,7 @@
             <form action="" class="flex m-0">
                 <input class="text-base w-full border-0 rounded-l-md pl-2 py-1" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
                 <button class="px-4" type="submit">
-                    <i class="fa fa-search"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
         </div>
