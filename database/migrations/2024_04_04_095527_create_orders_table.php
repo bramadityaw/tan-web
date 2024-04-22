@@ -16,7 +16,7 @@ return new class extends Migration
             $table->dateTime('order_date');
             $table->unsignedInteger('harga_total');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('transaction_id')->constrained();
+            $table->foreignId('sales_id')->constrained();
             $table->timestamps();
         });
     }
