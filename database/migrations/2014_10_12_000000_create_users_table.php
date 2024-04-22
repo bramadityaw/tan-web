@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('admin_status', ['Y', 'N']);
+            $table->boolean('is_admin');
+            $table->string('profile_pic')->default('/images/blank-pp.jpg');
             $table->rememberToken();
             $table->timestamps();
         });
