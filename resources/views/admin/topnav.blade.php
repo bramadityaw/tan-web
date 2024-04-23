@@ -1,8 +1,14 @@
 <header>
     <nav class="flex justify-between px-6 py-4">
-        <button onclick="toggleSideNav()" type="button">
+        <button class="hidden md:inline-block opacity-70 hover:opacity-100 duration-300" onclick="toggleSideNav()" type="button">
             <i class="text-lg fa-solid fa-bars"></i>
         </button>
+        <div class="flex items-center md:hidden">
+            <button class="text-4xl font-bold opacity-70 hover:opacity-100 duration-300"
+                onclick="toggleMobileMenu()">
+                <i class="text-lg fa-solid fa-bars"></i>
+            </button>
+        </div>
         <div class="">
             @auth
             <div class="cursor-pointer" id="profile">
@@ -37,6 +43,34 @@
     </nav>
 </header>
 
+<div id="mobileMenu" class="fixed z-50 hidden bg-gray-800 py-8">
+    <div onclick="toggleMobileMenu()" class="backdrop fixed inset-0 bg-gray-800 z-40 opacity-25"></div>
+    <div class="w-4/5 text-white mx-auto relative top-0 z-50">
+        <div class="flex items-start">
+            <nav class="w-full">
+                <ul>
+                    <li class="mb-2">
+                        <a href="{{ admin() }}">Beranda</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ admin('transactions') }}">Kelola Transaksi</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ admin('products') }}">Kelola Produk</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ admin('blog') }}">Kelola Blog</a>
+                    </li>
+                     <li class="mb-2">
+                        <a href="{{ admin('users') }}">Kelola Akun</a>
+                    </li>
+               </ul>
+            </nav>
+            <button type="button" onclick="toggleMobileMenu()"><i class="text-xl text-white fa-solid fa-times"></i></button>
+        </div>
+    </div>
+</div>
+
 @push('scripts')
 <script>
 const sidenav = document.querySelector('aside');
@@ -50,6 +84,13 @@ function toggleSideNav () {
         sidenav.style.width = '20%';
     }
     sidenavOpen = !sidenavOpen;
+}
+
+const mobileMenu = document.querySelector('#mobileMenu');
+
+function toggleMobileMenu() {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('w-full');
 }
 </script>
 @endpush
