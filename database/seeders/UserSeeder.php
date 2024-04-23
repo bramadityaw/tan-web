@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'email' => 'ftandianus1@gmail.com',
             'password' => Hash::make('ikanhias'),
             'is_admin' => true,
+            'profile_pic' => '/images/tan.png'
         ]);
     }
 }
