@@ -1,8 +1,8 @@
 <header>
     <nav class="flex justify-between px-6 py-4">
-        <div>
-            @include('partials.icons.bars')
-        </div>
+        <button onclick="toggleSideNav()" type="button">
+            <i class="text-lg fa-solid fa-bars"></i>
+        </button>
         <div class="">
             @auth
             <div class="cursor-pointer" id="profile">
@@ -36,3 +36,20 @@
         @endauth
     </nav>
 </header>
+
+@push('scripts')
+<script>
+const sidenav = document.querySelector('aside');
+
+let sidenavOpen = true;
+
+function toggleSideNav () {
+    if (sidenavOpen) {
+        sidenav.style.width = '0';
+    } else {
+        sidenav.style.width = '20%';
+    }
+    sidenavOpen = !sidenavOpen;
+}
+</script>
+@endpush
