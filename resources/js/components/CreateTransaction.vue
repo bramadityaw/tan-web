@@ -1,5 +1,6 @@
 <template>
   <form action="/admin/dashboard/transactions" method="post">
+      <input type="hidden" name="_token" :value="token">
     <div class=
     "grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
       <div class="text-gray-600">
@@ -80,5 +81,7 @@
 
   const selected = ref('pembelian');
   const qty = ref(0);
+
+  const token = document.querySelector("input[name=\"_token\"]").value;
 
 </script>
