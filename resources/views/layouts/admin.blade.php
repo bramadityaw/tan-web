@@ -17,7 +17,9 @@ function admin($url = '') {
             @include('admin.footer')
         </div>
     </div>
+
 @stack('scripts')
+@prepend('scripts')
 
     <script>
         const profilePic = document.querySelector('nav #profile');
@@ -35,6 +37,7 @@ function admin($url = '') {
 
         profilePic?.addEventListener("click", toggleProfileOpts);
     </script>
+@endprepend
 
 </body>
 </html>
