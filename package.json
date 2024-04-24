@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "blade-format": "blade-formatter --write resources/views/**/*.blade.php"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
