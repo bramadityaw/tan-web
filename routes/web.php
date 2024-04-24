@@ -44,6 +44,8 @@ Route::middleware('admin')->group(function() {
     Route::get('/admin/dashboard/transactions', [TransactionsController::class, 'index']);
     Route::get('/admin/dashboard/transactions/create', [TransactionsController::class, 'create']);
 
+    Route::post('/admin/dashboard/transactions', [TransactionsController::class, 'store']);
+
     Route::get('/admin/dashboard/products', function () {
         return view('admin.dashboard.products');
     });
