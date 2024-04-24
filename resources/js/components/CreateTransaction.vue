@@ -35,7 +35,7 @@
                 <div class="flex items-center">
                   <span class=
                   "flex h-10 items-center rounded-l border border-r-0 border-gray-100 px-3">
-                  Rp.</span> <input type="number" name="harga"
+                  Rp.</span> <input type="number" name="harga_beli"
                   id="harga" class=
                   "h-10 border mt-1 rounded-r px-4 w-full bg-gray-50"
                   value="" placeholder="">
