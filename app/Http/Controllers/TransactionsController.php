@@ -27,7 +27,8 @@ class TransactionsController extends Controller
         $rule = [
             'jenis_transaksi' => [Rule::enum(JenisTransaksi::class)],
             'nama_barang' => 'required|string|max:255',
-            'harga' => 'digits_between:0,999',
+            'harga_beli' => 'digits:13',
+            'qty' => 'digits_between:0,99',
             'created_at' => 'date',
         ];
 
@@ -54,7 +55,7 @@ class TransactionsController extends Controller
 
         DB::table($table_name)->insert($validated);
 
-        return redirect()->intended('admin/dashboard/transaksi');
+        return redirect()->intended('admin/dashboard/transactions');
     }
 
     /**
