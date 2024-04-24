@@ -24,8 +24,6 @@ class TransactionsController extends Controller
 
     public function store(Request $request) : RedirectResponse
     {
-        $transaction_type = $request['jenis_transaksi'];
-
         $rule = [
             'jenis_transaksi' => [Rule::enum(JenisTransaksi::class)],
             'nama_barang' => 'required|string|max:255',
@@ -35,7 +33,25 @@ class TransactionsController extends Controller
 
         $validated = $request->validate($rule);
 
-        $table_name = $transaction_type;
+        $transaction_type = $validated['jenis_transaksi'];
+
+        $table_name = '';
+        switch ($transaction_type) {
+            case 'pembelian':
+                $table_name = 'purchases';
+                break;
+
+            case 'penjualan':
+                $table_name = 'sales';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        unset($validated["jenis_transaksi"]);
+
         DB::table($table_name)->insert($validated);
 
         return redirect()->intended('admin/dashboard/transaksi');
