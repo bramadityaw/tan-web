@@ -43,9 +43,15 @@
               <div class="ml-4 w-2/5">
                 <label for="qty">Jumlah Terbeli</label>
                 <div class="flex">
+                  <button type="button" @click="qty++" class="border border-l-0 rounded-r px-3">
+                     <i class="fa-solid fa-plus"></i>
+                  </button>
                   <input type="number" name="qty" id="qty" class=
-                  "h-10 border mt-1 px-4 w-full bg-gray-50" min=
+                  "h-10 border mt-1 px-4 w-full bg-gray-50" :value="qty" min=
                   "0">
+                  <button type="button" @click="qty > 0 ? qty-- : 0" class="border border-l-0 rounded-r px-3">
+                    <i class="fa-solid fa-minus"></i>
+                 </button>
                 </div>
               </div>
             </div>
