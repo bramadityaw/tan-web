@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+
+@push('head-scripts')
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+@endpush
+
 @section('main')
 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
     <form action="/admin/dashboard/transactions" method="post">

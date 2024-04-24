@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+
+@push('head-scripts')
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+@endpush
+
 @section('main')
 {{--    @php $message = 'Halaman ini nantinya akan menjadi tempat pengelolaan dan pembukuan transaksi'; @endphp
     @include('undercons') --}}
