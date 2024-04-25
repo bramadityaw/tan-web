@@ -1,12 +1,5 @@
 @extends('layouts.admin')
-
-@push('head-scripts')
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-@endpush
-
 @section('main')
-{{--    @php $message = 'Halaman ini nantinya akan menjadi tempat pengelolaan dan pembukuan transaksi'; @endphp
-    @include('undercons') --}}
 <div class="flex justify-between my-4">
     <h1 class="text-2xl font-semibold">Pembukuan dan Pengelolaan Transaksi</h1>
     <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="transactions/create">
@@ -34,7 +27,7 @@
                     <td class="py-4 px-6">{{ $purchase->nama_barang }}</td>
                     <td class="py-4 px-6">Rp. {{ number_format($purchase->harga_beli, 2, ',' , '.') }}</td>
                     <td class="py-4 px-6">{{ $purchase->qty }}</td>
-                    <td class="py-4 px-6">{{ $purchase->created_at }}</td>
+                    <td class="py-4 px-6">{{ (explode(' ', $purchase->created_at)[0]) }}</td>
                 </tr>
             @else
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -63,6 +56,7 @@
         </tr>
         </thead>
         <tbody>
+
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td class="py-4 px-6">Adam Hawa</td>
             <td class="py-4 px-6">
@@ -73,31 +67,6 @@
             <td class="py-4 px-6">
                 <img class="aspect-square w-4 float-left" src="/images/green-check.png" alt="Verified">
                 Berhasil
-            </td>
-            <td class="py-4 px-6">2024-04-16</td>
-        </tr>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6">Adam Hawa</td>
-            <td class="py-4 px-6">
-                <a class="rounded-full border border-gray-400 px-3 py-1"
-                   href="/user?{user_id}/transaction?{user_id}">Lihat</a>
-            </td>
-            <td class="py-4 px-6">Rp. 200.000</td>
-            <td class="py-4 px-6">
-                <a class="rounded-full border border-gray-400 px-3 py-1"
-                   href="/user?{user_id}/transaction?{user_id}">Cek Bukti</a>
-            </td>
-            <td class="py-4 px-6">2024-04-16</td>
-        </tr>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6">Adam Hawa</td>
-            <td class="py-4 px-6">
-                <a class="rounded-full border border-gray-400 px-3 py-1"
-                   href="/user?{user_id}/transaction?{user_id}">Lihat</a>
-            </td>
-            <td class="py-4 px-6">Rp. 200.000</td>
-            <td class="py-4 px-6">
-                @include('partials.icons.cancel') Gagal
             </td>
             <td class="py-4 px-6">2024-04-16</td>
         </tr>
