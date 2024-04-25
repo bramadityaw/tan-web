@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->string('nama_barang');
-            $table->bigInteger('qty');
-            $table->decimal('harga_beli');
+            $table->integer('qty');
+            $table->bigInteger('harga_beli');
             $table->timestamps();
         });
     }
