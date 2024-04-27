@@ -1,4 +1,17 @@
 @extends('layouts.admin')
+
+@php
+$purchase_sum = 0;
+
+foreach ($purchases as $purchase) {
+    $purchase_sum += $purchase->harga_beli * $purchase->qty;
+}
+
+function rupiah(int $amount) : string {
+    return 'Rp.' . number_format($amount,2, ',' , '.');
+}
+@endphp
+
 @section('main')
 <div class="flex justify-between my-4">
     <h1 class="text-2xl font-semibold">Pembukuan dan Pengelolaan Transaksi</h1>
@@ -26,11 +39,15 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="py-4 px-6">{{ (explode(' ', $purchase->created_at)[0]) }}</td>
                 <td class="py-4 px-6">{{ $purchase->nama_barang }}</td>
-                <td class="py-4 px-6">Rp. {{ number_format($purchase->harga_beli, 2, ',' , '.') }}</td>
+                <td class="py-4 px-6">{{ rupiah($purchase->harga_beli) }}</td>
                 <td class="py-4 px-6">{{ $purchase->qty }}</td>
-                <td class="py-4 px-6">Rp. {{ number_format($purchase->harga_beli * $purchase->qty, 2, ',' , '.') }}</td>
+                <td class="py-4 px-6">{{ rupiah($purchase->harga_beli * $purchase->qty) }}</td>
             </tr>
         @endforeach
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td colspan="4" class="py-4 px-12">Total Pembelian</td>
+                <td class="py-4 px-6">{{ rupiah($purchase_sum) }}</td>
+            </tr>
         </tbody>
     </table>
     {{ $purchases->links() }}
