@@ -14,20 +14,22 @@
     <table class="w-full text-sm text-left my-4">
         <thead class="text-xs uppercase bg-gray-50">
         <tr>
-            <th scope="col" class="py-3 px-6">Nama Barang</th>
-            <th scope="col" class="py-3 px-6">Harga</th>
-            <th scope="col" class="py-3 px-6">Qty</th>
             <th scope="col" class="py-3 px-6">Tanggal Transaksi</th>
+            <th scope="col" class="py-3 px-6">Nama Barang</th>
+            <th scope="col" class="py-3 px-6">Harga Satuan</th>
+            <th scope="col" class="py-3 px-6">Qty</th>
+            <th scope="col" class="py-3 px-6">Total Belanja</th>
         </tr>
         </thead>
         <tbody>
         @foreach($purchases as $purchase)
             @if ($purchases)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="py-4 px-6">{{ (explode(' ', $purchase->created_at)[0]) }}</td>
                     <td class="py-4 px-6">{{ $purchase->nama_barang }}</td>
                     <td class="py-4 px-6">Rp. {{ number_format($purchase->harga_beli, 2, ',' , '.') }}</td>
                     <td class="py-4 px-6">{{ $purchase->qty }}</td>
-                    <td class="py-4 px-6">{{ (explode(' ', $purchase->created_at)[0]) }}</td>
+                    <td class="py-4 px-6">Rp. {{ number_format($purchase->harga_beli * $purchase->qty, 2, ',' , '.') }}</td>
                 </tr>
             @else
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
