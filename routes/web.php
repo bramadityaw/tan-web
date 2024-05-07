@@ -43,10 +43,10 @@ Route::middleware('admin')->group(function() {
         return view('admin.dashboard.index');
     });
 
-    Route::get('/admin/dashboard/purchases', [PurchaseController::class, 'index']);
-    Route::get('/admin/dashboard/purchases/create', [PurchaseController::class, 'create']);
+    Route::get('/admin/dashboard/purchase', [PurchaseController::class, 'index']);
+    Route::get('/admin/dashboard/purchase/create', [PurchaseController::class, 'create']);
 
-    Route::post('/purchases', [PurchaseController::class, 'store']);
+    Route::post('/purchase', [PurchaseController::class, 'store']);
 
     Route::get('/admin/dashboard/sales', [SalesController::class, 'index']);
     Route::get('/admin/dashboard/sales/create', [SalesController::class, 'create']);
