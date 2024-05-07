@@ -13,14 +13,11 @@ function rupiah(int $amount) : string {
 @endphp
 
 @section('main')
-
 <section>
     <div class="flex justify-between my-4">
         <h1 class="text-2xl font-semibold">Pembelian</h1>
-        <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="transactions/create">
-            <svg class="aspect-square w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                <path d="M6 12H18M12 6V18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="/admin/dashboard/purchase/create">
+            <i class="fa-solid fa-plus block text-md mr-4"></i>
             <span class="inline-block mr-2">Catat</span>
         </a>
     </div>
