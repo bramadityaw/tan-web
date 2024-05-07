@@ -7,16 +7,16 @@
                     <a href="{{ admin() }}">Beranda</a>
                 </li>
                 <li class="mb-2">
-                    <a href="{{ admin('transactions') }}">Kelola Transaksi</a>
+                    <a href="{{ admin('purchases') }}">Pembelian</a>
                 </li>
                 <li class="mb-2">
-                    <a href="{{ admin('products') }}">Kelola Produk</a>
+                    <a href="{{ admin('sales') }}">Penjualan</a>
                 </li>
                 <li class="mb-2">
-                    <a href="{{ admin('blog') }}">Kelola Blog</a>
+                    <a href="{{ admin('products') }}">Produk</a>
                 </li>
-                 <li class="mb-2">
-                    <a href="{{ admin('users') }}">Kelola Akun</a>
+                <li class="mb-2">
+                    <a href="{{ admin('blog') }}">Blog</a>
                 </li>
            </ul>
         </nav>

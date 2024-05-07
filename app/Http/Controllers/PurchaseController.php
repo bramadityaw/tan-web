@@ -4,23 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : View
     {
-        //
+        return view('admin.dashboard.purchase.index', [
+            "purchases" => DB::table('purchases')->paginate(5)
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() : View
     {
-        //
+        return view('admin.dashboard.purchase.create');
     }
 
     /**
@@ -28,7 +32,16 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rule = [
+           'nama_barang' => ['required', 'string','max:255'],
+           'harga_beli' => ['required', 'numeric'],
+           'qty' => ['required', 'integer'],
+           'created_at' => ['date'],
+        ];
+        $validated = $request->validate($rule);
+        Purchase::create($validated);
+
+        return redirect()->intended('admin/dashboard/transactions');
     }
 
     /**
