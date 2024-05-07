@@ -7,7 +7,7 @@
                     <a href="{{ admin() }}">Beranda</a>
                 </li>
                 <li class="mb-2">
-                    <a href="{{ admin('purchases') }}">Pembelian</a>
+                    <a href="{{ admin('purchase') }}">Pembelian</a>
                 </li>
                 <li class="mb-2">
                     <a href="{{ admin('sales') }}">Penjualan</a>
