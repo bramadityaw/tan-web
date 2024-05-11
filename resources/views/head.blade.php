@@ -9,6 +9,9 @@
     <title>{{ Auth::check() && Auth::user()->is_admin ? 'Pengelolaan Tan Aquatic' : 'Tan Aquatic | Ikan Hias, Perlengkapan Akuarium, Aquascape' }}</title>
     <meta name="keywords" content="tan aquatic jual beli ikan hias tanjung enim palembang sumatra">
     <meta name="description" content="Tan Aquatic adalah toko ikan hias air tawar yang dimiliki oleh Muhammad Ferdiansyah Tandianus, seorang pemuda asli Tanjung Enim. Selain ikan hias air tawar, Tan Aquatic juga menjual perlengkapan aquarium dan aquascape.">
+@if(str_contains($_SERVER["REQUEST_URI"], 'admin'))
+    <meta name="robots" content="noindex">
+@endif
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
