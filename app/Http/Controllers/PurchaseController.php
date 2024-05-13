@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Purchase;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -30,7 +31,7 @@ class PurchaseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         $rule = [
            'nama_barang' => ['required', 'string','max:255'],
@@ -41,7 +42,7 @@ class PurchaseController extends Controller
         $validated = $request->validate($rule);
         Purchase::create($validated);
 
-        return redirect()->intended('admin/dashboard/transactions');
+        return redirect()->intended('/admin/dashboard/purchase');
     }
 
     /**
