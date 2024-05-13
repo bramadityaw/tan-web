@@ -1,3 +1,9 @@
+@php
+function rupiah(int $amount) : string {
+    return 'Rp.' . number_format($amount,2, ',' , '.');
+}
+@endphp
+
 @extends('layouts.admin')
 @section('main')
 <section>
@@ -19,18 +25,59 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($products as $products)
+        @foreach($products as $product)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="py-4 px-6">{{ (explode(' ', $purchase->created_at)[0]) }}</td>
-                <td class="py-4 px-6">{{ $purchase->nama_barang }}</td>
-                <td class="py-4 px-6">{{ rupiah($purchase->harga_beli) }}</td>
-                <td class="py-4 px-6">{{ $purchase->qty }}</td>
-                <td class="py-4 px-6">{{ rupiah($purchase->harga_beli * $purchase->qty) }}</td>
+                <td class="py-4 px-6">{{ $product->nama }}</td>
+                <td class="py-4 px-6">
+                    <img src="{{ asset('storage/'. $product->thumbnail_url) }}" alt="{{ $product->nama }}" class="max-w-[192px] aspect-auto">
+                </td>
+                <td class="py-4 px-6">{{ rupiah($product->harga) }}</td>
+                <td class="py-4 px-6">{{ $product->stok }}</td>
+                <td class="py-4 px-6 text-white">
+                    <a href="/admin/dashboard/product/{{ $product->id }}/ubah" class="inline-block w-fit rounded-md px-2 py-1 bg-yellow-500 ">Ubah</a>
+                    <button data-product-id="{{ $product->id }}" onclick="window.product = this; deleteProduct(window.product)" class="rounded-md px-2 py-1 bg-red-500">Hapus</button>
+                </td>
             </tr>
         @endforeach
         </tbody>
     </table>
     {{ $products->links() }}
 </section>
-
+<dialog id="deleteDialog">
+    <p>Hapus produk?</p>
+    <form method="dialog">
+        <button type="submit">Batal</button>
+    </form>
+    <button type="button">Hapus</button>
+</dialog>
 @endsection
+
+@push('scripts')
+<script>
+const token = document.querySelector('input[name="_token"]').value;
+const deleteDialog = document.querySelector("#deleteDialog");
+const deleteButton = deleteDialog.querySelector('button[type="button"]');
+
+function deleteProduct(produk) {
+    deleteDialog.showModal();
+    const produkId = produk.dataset.productId;
+    const uri = `/product/${produkId}`;
+
+    deleteButton.addEventListener("click", e => {
+        fetch(uri, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token,
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                _token: token,
+            }),
+        });
+        deleteDialog.close();
+        location.reload();
+    });
+}
+</script>
+@endpush
