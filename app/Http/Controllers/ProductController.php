@@ -45,7 +45,9 @@ class ProductController extends Controller
 
         //dd($validated);
 
-        $imageFileName = time() . '_' . $request->file('gambar')->getClientOriginalName();
+        $imageFileName = time() . '_'
+                        . str_replace(' ', '_', strtolower($request['nama_produk']))
+                        . '.' . $request->file('gambar')->getClientOriginalExtension();
         $imageFilePath = $request->file('gambar')->storeAs('images', $imageFileName, 'public');
 
         Product::create([
@@ -62,7 +64,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Produk $produk)
+    public function show(Product $produk)
     {
         //
     }
@@ -70,7 +72,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produk $produk)
+    public function edit(Product $produk)
     {
         //
     }
@@ -78,7 +80,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produk $produk)
+    public function update(Request $request, Product $produk)
     {
         //
     }
@@ -86,8 +88,8 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produk $produk)
+    public function destroy(int $id) : void
     {
-        //
+        Product::destroy($id);
     }
 }
