@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('main')
-<div class="flex justify-between">
+<div class="flex justify-between mb-4">
     <a class="flex items-center w-fit text-center text-sm md:text-md px-2 py-1" href="/admin/dashboard/purchase/">
         <i class="fa-solid fa-arrow-left border border-black rounded-full p-1 mr-4 "></i>
         <p>Kembali</p>
@@ -8,7 +8,7 @@
 </div>
 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-12 mx-auto w-fit min-h-[368px]">
     <h1 class="text-2xl font-semibold mb-4">Buat Pembelian</h1>
-    <form action="/admin/dashboard/transactions" method="post">
+    <form action="/purchase" method="post">
     @csrf
     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-2">
       <div class="lg:col-span-2">
@@ -66,6 +66,16 @@
       </div>
     </div>
   </form>
+
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </div>
 @endsection
 
