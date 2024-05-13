@@ -52,7 +52,7 @@ function rupiah(int $amount) : string {
                     <h1 class="text-xl text-center text-gray-400 font-semibold py-12">Belum ada apa-apa di sini...</h1>
                     <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md mx-auto px-2 py-1" href="/admin/dashboard/purchase/create">
                         <i class="fa-solid fa-plus block text-md mr-4"></i>
-                        <span class="inline-block mr-2">Tambah</span>
+                        <span class="inline-block mr-2">Catat</span>
                     </a>
                 </td>
             </tr>
