@@ -51,8 +51,12 @@
             </div>
           </div>
           <div class="md:col-span-5">
+            <label for="deskripsi">Deskripsi Produk</label>
+            <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="deskripsi" id="deskripsi" cols="30" rows="6"></textarea>
+          </div>
+          <div class="md:col-span-5">
             <label for="gambar">Gambar Produk</label>
-            <input class="flex items-center rounded-l border w-full border-gray-100" type="file" name="gambar" id="gambar">
+            <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="gambar" id="gambar">
           </div>
           <div class="md:col-span-5 mt-4">
             <button type="submit" class=
