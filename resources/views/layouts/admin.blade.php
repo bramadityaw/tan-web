@@ -1,6 +1,6 @@
 @php
 function admin($url = '') {
-    return '/admin/dashboard/' . $url;
+    return '/admin/dashboard' . $url;
 }
 @endphp
 
