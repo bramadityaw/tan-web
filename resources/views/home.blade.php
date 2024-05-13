@@ -12,10 +12,6 @@
             z-index: 0;
         }
 
-        .swiper-slide h1 {
-            font-size: 3em;
-        }
-
         .swiper-slide img {
             aspect-ratio: 1280/720;
         }
@@ -23,19 +19,9 @@
         .swiper-button-next::after, .swiper-button-prev::after {
             content: "";
         }
-
-        .swiper-button-next svg, .swiper-button-prev svg {
-            aspect-ratio: 1;
-        }
-
-
-        .swiper-button-next, .swiper-button-prev {
-            height: 8%;
-            width: 8%;
-        }
     </style>
 @section('main')
-    <section class="lg:flex justify-between mx-auto my-10 w-[80%]">
+    <section class="lg:flex justify-between mx-auto my-6 w-full md:w-[80%]">
         <!--Slider-->
         <div class="swiper mx-0">
             <div class="swiper-wrapper" style="height: auto;">
@@ -43,48 +29,55 @@
                 @foreach ($products as $product)
                     <div class="swiper-slide">
                         <img src="{{ $product["src"] }}" alt="">
-                        <div class="absolute bottom-0 w-full px-16 pb-8 text-white bg-gradient-to-t from-black">
-                            <h1>{{ $product["name"] }}</h1>
+                        <div class="absolute bottom-0 w-full px-10 pb-6 md:px-16 md:pb-8 bg-gradient-to-t from-black">
+                            <h1 class="text-white text-2xl md:text-5xl">{{ $product["name"] }}</h1>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            <div class="swiper-button-prev">
-                <svg width="63" height="67" viewBox="0 0 63 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="swiper-button-prev aspect-square">
+                <svg class="block aspect-square w-[8%]" style="width: 8%;" viewBox="0 0 63 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M31.75 3.19019C15.8738 3.19019 3 16.7521 3 33.4842C3 50.213 15.8738 63.7782 31.75 63.7782C47.6262 63.7782 60.5 50.213 60.5 33.4842C60.5 16.7521 47.6262 3.19019 31.75 3.19019Z" stroke="white" stroke-width="4.66216" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M36.2329 22.116L25.398 33.4836L36.2329 44.8512" stroke="white" stroke-width="4.66216" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
-            <div class="swiper-button-next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="67" viewBox="0 0 64 67" fill="none">
+            <div class="swiper-button-next aspect-square">
+                <svg xmlns="http://www.w3.org/2000/svg" class="block aspect-square" style="width: 8%;" viewBox="0 0 64 67" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32 64.3049C48.0143 64.3049 61 50.6251 61 33.7475C61 16.8732 48.0143 3.19012 32 3.19012C15.9857 3.19012 3 16.8732 3 33.7475C3 50.6251 15.9857 64.3049 32 64.3049Z" stroke="white" stroke-width="4.7027" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M27.4773 45.2144L38.4064 33.7479L27.4773 22.2814" stroke="white" stroke-width="4.7027" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
-            <div class="absolute bottom-0 right-0">
-                <a class="block bg-[#1B3C73] rounded-md font-semibold text-white text-center text-md px-4 py-3 mb-10 mr-20" href="/toko">
+            <div class="hidden lg:block absolute md:bottom-10 md:right-20 z-10">
+                <a class="block bg-[#1B3C73] rounded-md font-semibold text-white text-center text-sm md:text-md px-4 py-3" href="/toko">
                     Beli Sekarang
                 </a>
             </div>
-        </div>
-    </section>
+            <div class="lg:hidden mt-4 mx-auto w-3/5">
+                <a class="block bg-[#1B3C73] rounded-md font-semibold text-white text-center text-sm md:text-md px-4 py-3" href="/toko">
+                    Beli Sekarang
+                </a>
+           </div>
+    </div>
+</section>
 
     <section class="py-11 px-[15%] bg-[#1b3c73] text-white">
-        <h1 class="text-center h-[50px] text-3xl font-semibold border-b-[1px] border-b-white">Profil Tan Aquatic</h1>
+        <h1 class="mb-4 text-center text-3xl font-semibold">Profil Tan Aquatic</h1>
+        <div class="border border-white"></div>
         <div class="sm:flex justify-around">
             <div class="m-9">
                 <img class="aspect-square w-[128px] m-auto" src="/images/tan.png" alt="Foto pemilik Tan Aquatic, M. Ferdiansyah Tandianus">
                 <p class="text-center">M. Ferdiansyah Tandianus <br/> (Pemilik)</p>
             </div>
             <div class="sm:w-[60%] mt-9">
-                <p>Tan Aquatic adalah toko ikan hias air tawar yang dimiliki oleh Ferdiansyah Tandianus, seorang pemuda asli Tanjung Enim. Selain ikan hias air tawar, Tan Aquatic juga menjual perlengkapan aquarium dan aquascape.</p>
+                <p>Tan Aquatic adalah toko ikan hias air tawar yang dimiliki oleh Muhammad Ferdiansyah Tandianus, seorang pemuda asli Tanjung Enim. Selain ikan hias air tawar, Tan Aquatic juga menjual perlengkapan aquarium dan aquascape.</p>
                 <p>Berawal dari kecintaannya terhadap hewan peliharaan, usaha ini berkembang dari hobi menjadi sebuah usaha rumahan yang cukup dikenal di Tanjung, diberi nama sesuai dengan suku kata pertama dari nama belakangnya.</p>
             </div>
         </div>
     </section>
     <section class="pb-11 px-[15%] bg-[#1b3c73] text-white">
-       <h1 class="text-center h-[50px] text-3xl font-semibold border-b-[1px] border-b-white">Kunjungi Tan Aquatic</h1>
+        <h1 class="mb-4 text-center text-3xl font-semibold">Kunjungi Tan Aquatic</h1>
+        <div class="border border-white"></div>
        <div class="sm:flex justify-around">
           <div class="sm:w-[60%] mt-9">
               <div class="flex mb-4">
@@ -103,8 +96,8 @@
                 </div>
 
            </div>
-           <div class="m-9 mr-0">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.2374267719338!2d103.80543709999999!3d-3.758419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e39f185bd2f6ab3%3A0xa5299171edf97a05!2sTan%20Aquatic!5e0!3m2!1sen!2sid!4v1710311797638!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           <div class="mx-auto mt-9 sm:m-9 sm:mr-0">
+               <iframe class="block w-full rounded-l-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.2374267719338!2d103.80543709999999!3d-3.758419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e39f185bd2f6ab3%3A0xa5299171edf97a05!2sTan%20Aquatic!5e0!3m2!1sen!2sid!4v1710311797638!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
            </div>
 
     </div>

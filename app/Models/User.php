@@ -46,7 +46,7 @@ class User extends Authenticatable
     ];
 
     protected $attributes = [
-        'admin_status' => 'N',
+        'is_admin' => false,
         'profile_pic' => '/images/blank-pp.jpg',
     ];
 }

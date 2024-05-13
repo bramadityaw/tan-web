@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('profile_pic')->default('/images/blank-pp.jpg');
+        Schema::create('purchases', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_barang');
+            $table->integer('qty');
+            $table->bigInteger('harga_beli');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('purchases');
     }
 };

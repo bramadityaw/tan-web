@@ -3,11 +3,14 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "blade-format": "blade-formatter --write resources/views/**/*.blade.php"
     },
     "devDependencies": {
+        "@vitejs/plugin-vue": "^5.0.4",
         "autoprefixer": "^10.4.18",
         "axios": "^1.6.4",
+        "blade-formatter": "^1.41.1",
         "laravel-vite-plugin": "^1.0.0",
         "postcss": "^8.4.36",
         "tailwindcss": "^3.4.1",

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produks', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string("nama");
-            $table->string("thumbnail_url");
-            $table->unsignedInteger("harga");
-            $table->unsignedInteger("stok");
+            $table->dateTime('verified_at');
+            $table->enum('verif_status', ['pending', 'verified', 'failed']);
+            $table->string('verif_bukti'); //url ke gambar screenshoot bukti transaksi
+            $table->unsignedInteger('total_bayar');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('produks');
+        Schema::dropIfExists('sales');
     }
 };
