@@ -15,10 +15,11 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nama_barang',
-        'harga_beli',
-        'qty',
-        'created_at',
+        'nama',
+        'deskripsi',
+        'harga',
+        'stok',
+        'thumbnail_url',
     ];
 
     /**
