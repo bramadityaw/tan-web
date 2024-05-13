@@ -17,7 +17,7 @@ function rupiah(int $amount) : string {
     <table class="w-full text-sm text-left my-4">
         <thead class="text-xs uppercase bg-gray-50">
         <tr>
-            <th scope="col" class="py-3 px-6">Nama Barang</th>
+            <th scope="col" class="py-3 px-6">Nama Produk</th>
             <th scope="col" class="py-3 px-6">Gambar</th>
             <th scope="col" class="py-3 px-6">Stok</th>
             <th scope="col" class="py-3 px-6">Harga</th>
@@ -34,9 +34,15 @@ function rupiah(int $amount) : string {
                 </td>
                 <td class="py-4 px-6">{{ rupiah($product->harga) }}</td>
                 <td class="py-4 px-6">{{ $product->stok }}</td>
-                <td class="py-4 px-6 text-white">
-                    <a href="/admin/dashboard/product/{{ $product->id }}/ubah" class="inline-block w-fit rounded-md px-2 py-1 bg-yellow-500 ">Ubah</a>
-                    <button data-product-id="{{ $product->id }}" onclick="window.product = this; deleteProduct(window.product)" class="rounded-md px-2 py-1 bg-red-500">Hapus</button>
+                <td class="py-4 px-6 text-white text-center">
+                    <a href="/admin/dashboard/product/{{ $product->id }}/ubah" class="inline-block w-fit rounded-md px-3 py-2 bg-green-500">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>Ubah</span>
+                    </a>
+                    <button data-product-id="{{ $product->id }}" onclick="window.product = this; deleteProduct(window.product)" class="rounded-md px-3 py-2 bg-red-500">
+                        <i class="fa-solid fa-trash"></i>
+                        <span>Hapus</span>
+                    </button>
                 </td>
             </tr>
         @endforeach
