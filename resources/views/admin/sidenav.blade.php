@@ -1,4 +1,8 @@
 @php
+function pathContains(string $path) : bool {
+    return str_contains($_SERVER["REQUEST_URI"], $path);
+}
+
 function isSamePath(string $path) : bool {
     return $_SERVER["REQUEST_URI"] === $path;
 }
@@ -12,16 +16,16 @@ function isSamePath(string $path) : bool {
                 <li class="mb-2 {{ isSamePath(admin()) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
                     <a class="block" href="{{ admin() }}">Beranda</a>
                 </li>
-                <li class="mb-2 {{ isSamePath(admin('/purchase')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
+                <li class="mb-2 {{ pathContains(admin('/purchase')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
                     <a class="block" href="{{ admin('/purchase') }}">Pembelian</a>
                 </li>
-                <li class="mb-2 {{ isSamePath(admin('/sales')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
+                <li class="mb-2 {{ pathContains(admin('/sales')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
                     <a class="block" href="{{ admin('/sales') }}">Penjualan</a>
                 </li>
-                <li class="mb-2 {{ isSamePath(admin('/products')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
+                <li class="mb-2 {{ pathContains(admin('/products')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
                     <a class="block" href="{{ admin('/products') }}">Produk</a>
                 </li>
-                <li class="mb-2 {{ isSamePath(admin('/blog')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
+                <li class="mb-2 {{ pathContains(admin('/blog')) ? 'bg-white text-black pl-3 py-1 rounded-md' : '' }}">
                     <a class="block" href="{{ admin('/blog') }}">Blog</a>
                 </li>
            </ul>
