@@ -25,6 +25,7 @@ function rupiah(int $amount) : string {
         </tr>
         </thead>
         <tbody>
+        @if($products->isNotEmpty())
         @foreach($products as $product)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="py-4 px-6">{{ $product->nama }}</td>
@@ -39,6 +40,17 @@ function rupiah(int $amount) : string {
                 </td>
             </tr>
         @endforeach
+        @else
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4" colspan="5">
+                    <h1 class="text-xl text-center text-gray-400 font-semibold py-12">Belum ada apa-apa di sini...</h1>
+                    <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md mx-auto px-2 py-1" href="/admin/dashboard/products/create">
+                        <i class="fa-solid fa-plus block text-md mr-4"></i>
+                        <span class="inline-block mr-2">Tambah</span>
+                    </a>
+                </td>
+            </tr>
+        @endif
         </tbody>
     </table>
     {{ $products->links() }}
