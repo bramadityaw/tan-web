@@ -45,30 +45,30 @@
 
 <div id="mobileMenu" class="fixed z-50 hidden bg-gray-800 py-8">
     <div onclick="toggleMobileMenu()" class="backdrop fixed inset-0 bg-gray-800 z-40 opacity-25"></div>
-    <div class="w-4/5 text-white mx-auto mt-4 relative top-0 z-50">
-<div class="flex">
-    <nav>
-            <ul>
-                <li class="mb-2">
-                    <a href="{{ admin() }}">Beranda</a>
-                </li>
-                <li class="mb-2">
-                    <a href="{{ admin('transactions') }}">Kelola Transaksi</a>
-                </li>
-                <li class="mb-2">
-                    <a href="{{ admin('products') }}">Kelola Produk</a>
-                </li>
-                <li class="mb-2">
-                    <a href="{{ admin('blog') }}">Kelola Blog</a>
-                </li>
-                 <li class="mb-2">
-                    <a href="{{ admin('users') }}">Kelola Akun</a>
-                </li>
-           </ul>
-        </nav>
-    <button type="button" onclick="toggleMobileMenu()"><i class="text-lg text-white fa-solid fa-times"></i></button>
+    <div class="w-4/5 text-white text-lg mx-auto mt-4 relative top-0 z-50">
+        <div class="flex items-start">
+            <button type="button" class="mr-4" onclick="toggleMobileMenu()"><i class="text-lg text-white fa-solid fa-times"></i></button>
+            <nav>
+                 <ul>
+                    <li class="mb-2">
+                        <a class="block" href="{{ admin() }}">Beranda</a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="block" href="{{ admin('purchase') }}">Pembelian</a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="block" href="{{ admin('sales') }}">Penjualan</a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="block" href="{{ admin('products') }}">Produk</a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="block" href="{{ admin('blog') }}">Blog</a>
+                    </li>
+               </ul>
+           </nav>
+        </div>
     </div>
-</div>
 </div>
 
 @push('scripts')
@@ -94,21 +94,3 @@ function toggleMobileMenu() {
 }
 </script>
 @endpush
-@prepend('scripts')
-    <script>
-        const profilePic = document.querySelector('nav #profile');
-        const profileOpts = document.querySelector('nav + div');
-
-
-        function toggleProfileOpts() {
-            if (profileOpts.classList.contains("hidden")){
-                profileOpts.classList.remove("hidden");
-            }
-            else {
-                profileOpts.classList.add("hidden")
-            }
-        }
-
-        profilePic?.addEventListener("click", toggleProfileOpts);
-    </script>
-@endprepend('scripts')
