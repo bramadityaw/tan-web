@@ -45,8 +45,6 @@ class ProductController extends Controller
 
         $request->validate($rule);
 
-        //dd($validated);
-
         $imageFileName = time() . '_'
                         . str_replace(' ', '_', strtolower($request['nama_produk']))
                         . '.' . $request->file('gambar')->getClientOriginalExtension();
@@ -74,17 +72,51 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $produk)
+    public function edit(int $id) : View
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('admin.dashboard.products.edit', [
+            'product' => $product,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $produk)
+    public function update(Request $request, int $id) : RedirectResponse
     {
-        //
+        $product = Product::findOrFail($id);
+        $rule = [
+           'nama_produk' => ['required', 'string','max:255'],
+           'deskripsi' => ['string', 'min:50'],
+           'harga' => ['required', 'numeric'],
+           'stok' => ['required', 'integer'],
+           'gambar' => ['required', 'file', 'image', 'extensions:jpg,jpeg,png'],
+        ];
+
+        $request->validate($rule);
+
+        $imageFileName = time() . '_'
+                        . str_replace(' ', '_', strtolower($request['nama_produk']))
+                        . '.' . $request->file('gambar')->getClientOriginalExtension();
+        $imageFilePath = $request->file('gambar')->storeAs('images', $imageFileName, 'public');
+
+        $current_image = '/public/' . $product->thumbnail_url;
+        if (Storage::exists($current_image))
+        {
+            Storage::delete($current_image);
+        }
+
+        $product->nama = $request->nama_produk;
+        $product->deskripsi = $request->deskripsi;
+        $product->harga = $request->harga;
+        $product->stok = $request->stok;
+        $product->thumbnail_url = $imageFilePath;
+
+        $product->save();
+
+        return redirect()->intended('/admin/dashboard/products');
     }
 
     /**
