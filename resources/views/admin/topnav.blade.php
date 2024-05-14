@@ -54,16 +54,16 @@
                         <a class="block" href="{{ admin() }}">Beranda</a>
                     </li>
                     <li class="mb-2">
-                        <a class="block" href="{{ admin('purchase') }}">Pembelian</a>
+                        <a class="block" href="{{ admin('/purchase') }}">Pembelian</a>
                     </li>
                     <li class="mb-2">
-                        <a class="block" href="{{ admin('sales') }}">Penjualan</a>
+                        <a class="block" href="{{ admin('/sales') }}">Penjualan</a>
                     </li>
                     <li class="mb-2">
-                        <a class="block" href="{{ admin('products') }}">Produk</a>
+                        <a class="block" href="{{ admin('/products') }}">Produk</a>
                     </li>
                     <li class="mb-2">
-                        <a class="block" href="{{ admin('blog') }}">Blog</a>
+                        <a class="block" href="{{ admin('/blog') }}">Blog</a>
                     </li>
                </ul>
            </nav>
