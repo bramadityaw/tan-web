@@ -1,9 +1,9 @@
 <header class="bg-[#1b3c73] sticky top-0 z-10">
     <nav class=" flex px-6 py-4 text-white items-center justify-between">
         @include('partials.icons.logo')
-        <div class="rounded-md bg-white text-[#909090] mx-6 w-full sm:w-[60%] lg:w-[35%]">
-            <form action="" class="flex m-0">
-                <input class="text-base w-full border-0 rounded-l-md pl-2 py-1" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
+        <div class="rounded-md bg-white text-black mx-6 w-full sm:w-[60%] lg:w-[35%]">
+            <form action="/toko/search" class="flex m-0">
+                <input class="text-base w-full border-0 rounded-l-md pl-2 py-1" name="query" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
                 <button class="px-4" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
