@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -90,6 +92,13 @@ class ProductController extends Controller
      */
     public function destroy(int $id) : void
     {
-        Product::destroy($id);
+        $product = Product::findOrFail($id);
+
+        $storage_path = '/public/' . $product->thumbnail_url;
+        if (Storage::exists($storage_path))
+        {
+            Storage::delete($storage_path);
+            Product::destroy($id);
+        }
     }
 }

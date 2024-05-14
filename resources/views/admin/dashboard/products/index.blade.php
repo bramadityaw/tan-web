@@ -61,12 +61,20 @@ function rupiah(int $amount) : string {
     </table>
     {{ $products->links() }}
 </section>
-<dialog id="deleteDialog">
-    <p>Hapus produk?</p>
-    <form method="dialog">
-        <button type="submit">Batal</button>
-    </form>
-    <button type="button">Hapus</button>
+<dialog id="deleteDialog" class="border border-[#1B3C73] rounded-md p-4 w-4/5 md:w-1/6">
+    <div class="text-center">
+        <button class="float-end" type="button" onclick="deleteDialog.close()">
+            <i class="fa-solid fa-times text-lg"></i>
+        </button>
+        <p>Hapus produk?</p>
+        <img class="aspect-auto w-2/3 mx-auto my-4" src="{{ asset('/images/question.png') }}" alt="Tanda Tanya">
+        <div class="flex flex-row justify-around text-white">
+            <form method="dialog">
+                <button type="submit" class="rounded-md px-3 py-2 bg-blue-500">Batal</button>
+            </form>
+            <button type="button" class="rounded-md px-3 py-2 bg-red-500">Hapus</button>
+        </div>
+    </div>
 </dialog>
 @endsection
 
@@ -74,24 +82,24 @@ function rupiah(int $amount) : string {
 <script>
 const token = document.querySelector('input[name="_token"]').value;
 const deleteDialog = document.querySelector("#deleteDialog");
-const deleteButton = deleteDialog.querySelector('button[type="button"]');
+const deleteButton = deleteDialog.querySelector('form[method="dialog"] + button[type="button"]');
 
 function deleteProduct(produk) {
     deleteDialog.showModal();
     const produkId = produk.dataset.productId;
     const uri = `/product/${produkId}`;
 
+    const form = new FormData;
+    form.append('_token', token);
+
     deleteButton.addEventListener("click", e => {
         fetch(uri, {
             method: "DELETE",
             headers: {
-                'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': token,
-                'Accept': 'application/json',
+                'Accept': 'multipart/form-data',
             },
-            body: JSON.stringify({
-                _token: token,
-            }),
+            body: form,
         });
         deleteDialog.close();
         location.reload();
