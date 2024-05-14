@@ -35,7 +35,7 @@ function rupiah(int $amount) : string {
                 <td class="py-4 px-6">{{ rupiah($product->harga) }}</td>
                 <td class="py-4 px-6">{{ $product->stok }}</td>
                 <td class="py-4 px-6 text-white text-center">
-                    <a href="/admin/dashboard/product/{{ $product->id }}/ubah" class="inline-block w-fit rounded-md px-3 py-2 bg-green-500">
+                    <a href="/product/{{ $product->id }}/ubah" class="inline-block w-fit rounded-md px-3 py-2 bg-green-500">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>Ubah</span>
                     </a>
