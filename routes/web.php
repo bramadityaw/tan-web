@@ -66,6 +66,9 @@ Route::middleware('admin')->group(function() {
 
     Route::post('/products', [ProductController::class, 'store']);
 
+    Route::get('/product/{id}/ubah', [ProductController::class, 'edit']);
+    Route::put('/product/{id}', [ProductController::class, 'update']);
+
     Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
     Route::get('/admin/dashboard/blog', function () {
