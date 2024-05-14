@@ -39,7 +39,13 @@ function rupiah(int $amount) : string {
                 <td class="py-4 px-6">{{ $purchase->nama_barang }}</td>
                 <td class="py-4 px-6">{{ rupiah($purchase->harga_beli) }}</td>
                 <td class="py-4 px-6">{{ $purchase->qty }}</td>
-                <td class="py-4 px-6">{{ rupiah($purchase->harga_beli * $purchase->qty) }}</td>
+                <td class="py-4 px-6">
+                    <span>{{ rupiah($purchase->harga_beli * $purchase->qty) }}</span>
+                    <button data-purchase-id="{{ $purchase->id }}" onclick="window.purchase = this; deletePurchase(window.purchase)" class="float-end" type="button">
+                        <i class="fa-solid fa-trash text-gray-600"></i>
+                        <span class="text-sm">Hapus</span>
+                    </button>
+                </td>
             </tr>
         @endforeach
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -61,4 +67,50 @@ function rupiah(int $amount) : string {
     </table>
     {{ $purchases->links() }}
 </section>
+<dialog id="deleteDialog" class="border border-[#1B3C73] rounded-md p-4 w-4/5 md:w-1/6">
+    <div class="text-center">
+        <button class="float-end" type="button" onclick="deleteDialog.close()">
+            <i class="fa-solid fa-times text-lg"></i>
+        </button>
+        <p>Hapus pembelian dari pembukuan?</p>
+        <img class="aspect-auto w-2/3 mx-auto my-4" src="{{ asset('/images/question.png') }}" alt="Tanda Tanya">
+        <div class="flex flex-row justify-around text-white">
+            <form method="dialog">
+                <button type="submit" class="rounded-md px-3 py-2 bg-blue-500">Batal</button>
+            </form>
+            <button type="button" class="rounded-md px-3 py-2 bg-red-500">Hapus</button>
+        </div>
+    </div>
+</dialog>
 @endsection
+
+@push('scripts')
+<script>
+const token = document.querySelector('input[name="_token"]').value;
+const deleteDialog = document.querySelector("#deleteDialog");
+const deleteButton = deleteDialog.querySelector('form[method="dialog"] + button[type="button"]');
+
+function deletePurchase(purchase) {
+    deleteDialog.showModal();
+    const purchaseId = purchase.dataset.purchaseId;
+    const uri = `/purchase/${purchaseId}`;
+
+    const form = new FormData;
+    form.append('_token', token);
+
+    deleteButton.addEventListener("click", e => {
+        fetch(uri, {
+            method: "DELETE",
+            headers: {
+                'X-CSRF-TOKEN': token,
+                'Accept': 'multipart/form-data',
+            },
+            body: form,
+    })
+        .catch(e => console.error(e));
+        deleteDialog.close();
+        location.reload();
+    });
+}
+</script>
+@endpush

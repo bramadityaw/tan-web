@@ -54,6 +54,8 @@ Route::middleware('admin')->group(function() {
 
     Route::post('/purchase', [PurchaseController::class, 'store']);
 
+    Route::delete('/purchase/{id}', [PurchaseController::class, 'destroy']);
+
     Route::get('/admin/dashboard/sales', [SalesController::class, 'index']);
     Route::get('/admin/dashboard/sales/create', [SalesController::class, 'create']);
 

@@ -72,8 +72,8 @@ class PurchaseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Purchase $purchase)
+    public function destroy(int $id) : void
     {
-        //
+        Purchase::destroy($id);
     }
 }
