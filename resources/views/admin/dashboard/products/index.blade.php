@@ -19,8 +19,8 @@ function rupiah(int $amount) : string {
         <tr>
             <th scope="col" class="py-3 px-6">Nama Produk</th>
             <th scope="col" class="py-3 px-6">Gambar</th>
-            <th scope="col" class="py-3 px-6">Stok</th>
             <th scope="col" class="py-3 px-6">Harga</th>
+            <th scope="col" class="py-3 px-6">Stok</th>
             <th scope="col" class="py-3 px-6">Aksi</th>
         </tr>
         </thead>
