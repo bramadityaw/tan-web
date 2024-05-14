@@ -92,27 +92,32 @@ class ProductController extends Controller
            'deskripsi' => ['string', 'min:50'],
            'harga' => ['required', 'numeric'],
            'stok' => ['required', 'integer'],
-           'gambar' => ['required', 'file', 'image', 'extensions:jpg,jpeg,png'],
+           'gambar' => ['nullable', 'file', 'image', 'extensions:jpg,jpeg,png'],
         ];
 
         $request->validate($rule);
-
-        $imageFileName = time() . '_'
-                        . str_replace(' ', '_', strtolower($request['nama_produk']))
-                        . '.' . $request->file('gambar')->getClientOriginalExtension();
-        $imageFilePath = $request->file('gambar')->storeAs('images', $imageFileName, 'public');
-
-        $current_image = '/public/' . $product->thumbnail_url;
-        if (Storage::exists($current_image))
-        {
-            Storage::delete($current_image);
-        }
 
         $product->nama = $request->nama_produk;
         $product->deskripsi = $request->deskripsi;
         $product->harga = $request->harga;
         $product->stok = $request->stok;
-        $product->thumbnail_url = $imageFilePath;
+
+        if ($request->file('gambar')) {
+            $imageFileName = time() . '_'
+                        . str_replace(' ', '_', strtolower($request['nama_produk']))
+                        . '.' . $request->file('gambar')->getClientOriginalExtension();
+            $imageFilePath = $request->file('gambar')->storeAs('images', $imageFileName, 'public');
+
+            $current_image = '/public/' . $product->thumbnail_url;
+            if (Storage::exists($current_image))
+            {
+                Storage::delete($current_image);
+            }
+
+            $product->thumbnail_url = $imageFilePath;
+        } else {
+            $product->thumbnail_url = $product->thumbnail_url;
+        }
 
         $product->save();
 
