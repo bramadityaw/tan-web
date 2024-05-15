@@ -61,8 +61,17 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, Cart $cart) : void
     {
+        $validated = $request->validate([
+            'qty' => ['integer', 'min:1'],
+        ]);
+
+        $cart_item = Cart::find($cart->id);
+
+        $cart_item->quantity = $validated("qty");
+
+        $cart_item->save();
     }
 
     /**
