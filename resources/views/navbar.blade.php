@@ -14,6 +14,7 @@
             <a href="/toko">Toko</a>
             <a href="/blog">Blog</a>
         </div>
+        @include('toko.cart')
         <div class="">
             @auth
             <div class="cursor-pointer" id="profile">
