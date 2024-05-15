@@ -33,13 +33,7 @@ function rupiah(int $amount) : string {
     {{ $products->links() }}
 </div>
 
-<div class="absolute bottom-0 right-8 rounded-full p-4 text-2xl text-gray-500 hover:text-gray-800 bg-white hover:bg-gray-300">
-    <div class="mt-1 mr-1">
-<a target="_blank" href="/cart/{id}">
-        <i class="fa-solid fa-cart-shopping"></i>
-</a>
-    </div>
-</div>
+@include('toko.cart')
 @endsection
 
 
