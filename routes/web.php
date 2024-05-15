@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -42,6 +43,9 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/toko', [TokoController::class, 'index']);
 Route::get('/toko/search', [TokoController::class, 'search']);
 Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
+
+Route::get('/cart', [CartController::class, 'index']);
+Route::post('/cart/{product}', [CartController::class, 'store']);
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);
