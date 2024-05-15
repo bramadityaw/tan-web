@@ -18,6 +18,9 @@ class RedirectIfAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (!Gate::allows('admin')){
+            if (!Auth::check()){
+                return redirect()->to('/login');
+            }
             abort(403);
         };
 
