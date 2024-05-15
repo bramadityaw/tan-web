@@ -67,9 +67,9 @@ class CartController extends Controller
             'qty' => ['integer', 'min:1'],
         ]);
 
-        $cart_item = Cart::find($cart->id);
+        $cart_item = Cart::findOrFail($cart->id);
 
-        $cart_item->quantity = $validated("qty");
+        $cart_item->quantity = $validated["qty"];
 
         $cart_item->save();
     }

@@ -79,10 +79,6 @@ function rupiah(int $amount) : string {
 @section('scripts')
 @parent
 <script>
-
-</script>
-
-<script>
 const token = document.querySelector('input[name="_token"]').value;
 const finalTotal = document.querySelector('#total');
 
@@ -100,14 +96,20 @@ function updateTotal(op, cartId) {
 
     const form = new FormData;
     form.append('_token', token);
+    form.append('_method', 'PUT');
     form.append('qty', qty.value);
 
     fetch(`/cart/${cartId}`, {
-        method: "PUT",
+        method: "POST",
         headers: {
             'X-CSRF-TOKEN': token,
+            'Accept': 'multipart/form-data',
         },
         body: form,
+    })
+    .then(async res => {
+        result = await res.json();
+        console.log(result);
     });
 }
 
