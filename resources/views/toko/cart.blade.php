@@ -8,11 +8,14 @@ function rupiah(int $amount) : string {
 
 @section('main')
 <section class="bg-[#1B3C73] py-8">
-    <div class="w-5/6 md:w-full max-w-[520px] mx-auto">
+    <div class="w-5/6 md:w-full max-w-[600px] mx-auto">
         <div class="rounded-md bg-white">
             <div class="px-6 pt-5 pb-1">
             @foreach ($contents as $content)
                 <div class="flex mb-4">
+                    <button data-cart-id="{{ $content->cart }}" onclick="window.cartItem = this; deleteItem(window.cartItem)" class="border border-gray-600 text-gray-800 rounded-md px-3 py-2 mr-4">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                     <a class="block w-full" href="/toko/produk/{{ $content->product->id }}">
                         <img class="w-full max-w-[192px] aspect-auto" src="/storage/{{ $content->product->thumbnail_url }}" alt="{{ $content->product->nama }}">
                     </a>
@@ -55,10 +58,30 @@ function rupiah(int $amount) : string {
             </div>
         </div>
 </section>
+<dialog id="deleteDialog" class="border border-[#1B3C73] rounded-md p-4 w-4/5 md:w-1/6">
+    <div class="text-center">
+        <button class="float-end" type="button" onclick="deleteDialog.close()">
+            <i class="fa-solid fa-times text-lg"></i>
+        </button>
+        <p>Hapus produk?</p>
+        <img class="aspect-auto w-2/3 mx-auto my-4" src="{{ asset('/images/question.png') }}" alt="Tanda Tanya">
+        <div class="flex flex-row justify-around text-white">
+            <form method="dialog">
+                <button type="submit" class="rounded-md px-3 py-2 bg-blue-500">Batal</button>
+            </form>
+            <button type="button" class="rounded-md px-3 py-2 bg-red-500">Hapus</button>
+        </div>
+    </div>
+</dialog>
+
 @endsection
 
 @section('scripts')
-    @parent
+@parent
+<script>
+
+</script>
+
 <script>
 const token = document.querySelector('input[name="_token"]').value;
 const finalTotal = document.querySelector('#total');
@@ -76,6 +99,7 @@ function updateTotal(op, cartId) {
     }
 
     const form = new FormData;
+    form.append('_token', token);
     form.append('qty', qty.value);
 
     fetch(`/cart/${cartId}`, {
@@ -90,6 +114,30 @@ function updateTotal(op, cartId) {
 //(async function fetchTotal () {
 
 //})();
+
+const deleteDialog = document.querySelector("#deleteDialog");
+const deleteButton = deleteDialog.querySelector('form[method="dialog"] + button[type="button"]');
+
+function deleteItem(cartItem) {
+    deleteDialog.showModal();
+    const itemId = cartItem.dataset.cartId;
+
+    const form = new FormData;
+    form.append('_token', token);
+
+    deleteButton.addEventListener("click", e => {
+        fetch(`/cart/${itemId}`, {
+            method: "DELETE",
+            headers: {
+                'X-CSRF-TOKEN': token,
+                'Accept': 'multipart/form-data',
+            },
+            body: form,
+        });
+        deleteDialog.close();
+        location.reload();
+    });
+}
 
 function rupiah (number) {
     return new Intl.NumberFormat('id-ID', {style: 'currency', currency: 'IDR'})
