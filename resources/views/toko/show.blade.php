@@ -61,8 +61,25 @@ function extractText(string $start, string $end, string $text) : string
             </div>
         </section>
         <section class="mt-4">
-            <h1 class="font-semibold text-2xl">Produk lainnya</h1>
-
+            <h1 class="font-semibold text-2xl mb-4">Produk lainnya</h1>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                @foreach ($others as $other)
+                <div class="rounded-md text-black col-span-1 bg-white p-4">
+                    <a href="/toko/product/{{ $product->slug }}">
+                        <img class="w-[250px] h-[160px] object-cover" src="/storage/{{ $other->thumbnail_url }}" alt="{{ $other->nama }}">
+                        <h1 class="text-lg font-bold">{{ $other->nama }}</h1>
+                        <p>{{ rupiah($other->harga) }}</p>
+                    </a>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-4">
+                        <a class="flex items-center bg-[#1B3C73] rounded-md w-full font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="/toko/product/{{ $other->slug }}">
+                            <i class="fa-solid fa-eye block text-md mr-4"></i>
+                            <span class="inline-block mr-2">Detail</span>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            {{$others->links()}}
         </section>
     </div>
 </div>

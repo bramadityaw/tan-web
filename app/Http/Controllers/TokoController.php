@@ -30,6 +30,9 @@ class TokoController extends Controller
     {
         return view('toko.show', [
             "product" => $product,
+            "others" => DB::table('products')
+                    ->where('nama', '!=', $product->nama)
+                    ->paginate(4)
         ]);
     }
 }
