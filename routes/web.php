@@ -46,6 +46,9 @@ Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
 
 Route::get('/cart', [CartController::class, 'index']);
 Route::post('/cart/{product}', [CartController::class, 'store']);
+Route::put('/cart/{cart}', [CartController::class, 'update']);
+
+Route::get('/cart/total', [CartController::class, 'total']);
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);
