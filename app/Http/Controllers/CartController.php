@@ -38,6 +38,12 @@ class CartController extends Controller
             ->where('user_id', '=', Auth::user()->id)
             ->get();
 
+        $total_purchase = $cart->map(function ($item) {
+            return Product::find($item->product_id)->harga * $item->quantity;
+        })->reduce(function ($acc, $curr) {
+            return $acc + $curr;
+        });
+
         $cart_contents = $cart->map(function ($item) {
             return (object) ["product" => Product::find($item->product_id),
                              "qty"     => $item->quantity];
@@ -45,6 +51,7 @@ class CartController extends Controller
 
         return view('toko.cart', [
             'contents' => $cart_contents,
+            'total' => $total_purchase,
         ]);
     }
 

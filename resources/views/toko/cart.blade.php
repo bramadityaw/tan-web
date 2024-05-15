@@ -35,6 +35,22 @@ function rupiah(int $amount) : string {
                     </div>
                 </div>
             @endforeach
+                <div class="md:flex mb-4">
+                    <div class="flex">
+                        <p class="w-3/5">Total Pembayaran*
+                            <span class="float-start text-xs">*tidak termasuk ongkos pengiriman</span>
+                        </p>
+                        <p class="mx-4">{{ rupiah($total) }}</p>
+                    </div>
+                    <form action="" method="post" class="w-1/3">
+                        @csrf
+                        <button class="flex items-center bg-[#1B3C73] rounded-md w-full font-semibold text-white text-center text-sm md:text-md px-2 py-1" type="submit">
+                            <i class="fa-solid fa-bag-shopping block text-md mr-4"></i>
+                            <span class="inline-block mr-2">Checkout</span>
+                        </button>
+                    </form>
+                </div>
             </div>
+        </div>
 </section>
 @endsection
