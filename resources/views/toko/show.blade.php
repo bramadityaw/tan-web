@@ -23,12 +23,20 @@ function extractText(string $start, string $end, string $text) : string
 @section('main')
 <div class="bg-[#1B3C73] text-white py-8">
     <div class="w-4/5 mx-auto">
-        <section class="lg:flex items-center">
-            <img src="/storage/{{ $product->thumbnail_url }}" alt="{{ $product->nama }}" class="rounded-r-md w-1/2 h-full object-cover">
-            <div class="rounded-r-md bg-white text-black w-1/2 p-4">
+        <div class="flex justify-between mb-4 ">
+            <a class="flex items-center w-fit text-center text-sm md:text-md bg-white hover:bg-gray-300 text-black rounded-full px-2 py-1" href="/toko">
+                <i class="fa-solid fa-arrow-left text-gray-500 hover:text-gray-800 rounded-full"></i>
+                <p class="ml-4">Kembali</p>
+            </a>
+        </div>
+        <section class="lg:flex bg-black rounded-md items-center">
+            <div class="w-full md:w-1/2">
+                <img class="rounded-t-md md:rounded-none w-full aspect-auto" src="/storage/{{ $product->thumbnail_url }}" alt="{{ $product->nama }}">
+            </div>
+            <div class="rounded-b-md md:rounded-none md:rounded-r-md bg-white text-black md:w-1/2 p-4">
                 <h1 class="font-semibold text-2xl">{{ $product->nama }}</h1>
                 <div class="flex justify-between items-end my-4 text-lg">
-                    <span class="inline-block">Stok Tersedia: {{ $product->stok }}</span>
+                    <span class="inline-block">Stok Tersedia: <span class="font-bold"> {{ $product->stok }} </span></span>
                     <span class="inline-block">{{ rupiah($product->harga) }} / ekor</span>
                 </div>
                 <div class="lg:flex">
@@ -39,7 +47,7 @@ function extractText(string $start, string $end, string $text) : string
                     <form action="/cart" method="post">
                         <div class="flex items-center">
                             <input type="hidden" name="id" value="{{ $product->id }}">
-                            <label for="qty">Jumlah Beli</label>
+                            <label class="w-4/5" for="qty">Jumlah Beli</label>
                             <div class="ml-4 flex">
                                 <button type="button" onclick="qty.value ++" class="border border-r-0 rounded-l px-3">
                                    <i class="fa-solid fa-plus"></i>
@@ -52,9 +60,9 @@ function extractText(string $start, string $end, string $text) : string
                                </button>
                             </div>
                         </div>
-                        <button class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md px-2 py-1" type="submit">
+                        <button class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-md md:text-lg px-3 py-2 mt-4" type="submit">
                             <i class="fa-solid fa-cart-plus"></i>
-                            <p>Masukkan Keranjang</p>
+                            <p class="ml-4">Masukkan Keranjang</p>
                         </button>
                     </form>
                 </div>
@@ -62,20 +70,18 @@ function extractText(string $start, string $end, string $text) : string
         </section>
         <section class="mt-4">
             <h1 class="font-semibold text-2xl mb-4">Produk lainnya</h1>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 @foreach ($others as $other)
-                <div class="rounded-md text-black col-span-1 bg-white p-4">
+                <div class="rounded-md text-black col-span-3 mx-auto md:mx-0 md:col-span-1 bg-white p-4">
                     <a href="/toko/product/{{ $product->slug }}">
                         <img class="w-[250px] h-[160px] object-cover" src="/storage/{{ $other->thumbnail_url }}" alt="{{ $other->nama }}">
                         <h1 class="text-lg font-bold">{{ $other->nama }}</h1>
                         <p>{{ rupiah($other->harga) }}</p>
                     </a>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-4">
-                        <a class="flex items-center bg-[#1B3C73] rounded-md w-full font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="/toko/product/{{ $other->slug }}">
-                            <i class="fa-solid fa-eye block text-md mr-4"></i>
-                            <span class="inline-block mr-2">Detail</span>
-                        </a>
-                    </div>
+                    <a class="flex items-center bg-[#1B3C73] rounded-md w-1/2 float-end font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="/toko/product/{{ $other->slug }}">
+                        <i class="fa-solid fa-eye block text-md mr-4"></i>
+                        <span class="inline-block">Detail</span>
+                    </a>
                 </div>
                 @endforeach
             </div>
@@ -83,6 +89,4 @@ function extractText(string $start, string $end, string $text) : string
         </section>
     </div>
 </div>
-
-@include('toko.cart')
 @endsection

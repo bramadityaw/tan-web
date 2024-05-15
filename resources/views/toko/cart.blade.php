@@ -3,7 +3,7 @@
 @else
 <a href="/login">
 @endauth
-    <div class="rounded-full px-2 py-1 text-lg text-gray-500 hover:text-gray-800 bg-white hover:bg-gray-300">
+    <div class="rounded-full px-2 py-1 mr-4 md:mr-0 text-lg text-gray-500 hover:text-gray-800 bg-white hover:bg-gray-300">
         <div class="pt-1 pr-1">
              <i class="fa-solid fa-cart-shopping"></i>
         </div>
