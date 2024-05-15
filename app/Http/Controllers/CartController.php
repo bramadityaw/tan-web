@@ -34,19 +34,22 @@ class CartController extends Controller
 
     public function index() : View
     {
-        $cart = DB::table('carts')
+        $cart_items = DB::table('carts')
             ->where('user_id', '=', Auth::user()->id)
             ->get();
 
-        $total_purchase = $cart->map(function ($item) {
+        $total_purchase = $cart_items->map(function ($item) {
             return Product::find($item->product_id)->harga * $item->quantity;
         })->reduce(function ($acc, $curr) {
             return $acc + $curr;
         });
 
-        $cart_contents = $cart->map(function ($item) {
-            return (object) ["product" => Product::find($item->product_id),
-                             "qty"     => $item->quantity];
+        $cart_contents = $cart_items->map(function ($item) {
+            return (object) [
+                "product" => Product::find($item->product_id),
+                "qty"     => $item->quantity,
+                "cart"    => $item->id,
+            ];
         });
 
         return view('toko.cart', [
@@ -60,7 +63,6 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
     }
 
     /**
