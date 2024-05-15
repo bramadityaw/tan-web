@@ -49,7 +49,7 @@ Route::post('/cart/{product}', [CartController::class, 'store']);
 Route::put('/cart/{cart}', [CartController::class, 'update']);
 Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 
-Route::get('/cart/total', [CartController::class, 'total']);
+Route::get('/cart/total', [CartController::class, 'getTotal']);
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);

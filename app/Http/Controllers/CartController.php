@@ -38,12 +38,6 @@ class CartController extends Controller
             ->where('user_id', '=', Auth::user()->id)
             ->get();
 
-        $total_purchase = $cart_items->map(function ($item) {
-            return Product::find($item->product_id)->harga * $item->quantity;
-        })->reduce(function ($acc, $curr) {
-            return $acc + $curr;
-        });
-
         $cart_contents = $cart_items->map(function ($item) {
             return (object) [
                 "product" => Product::find($item->product_id),
@@ -54,7 +48,29 @@ class CartController extends Controller
 
         return view('toko.cart', [
             'contents' => $cart_contents,
-            'total' => $total_purchase,
+            'total' => $this->total(),
+        ]);
+    }
+
+    private function total() : int
+    {
+        $cart_items = DB::table('carts')
+            ->where('user_id', '=', Auth::user()->id)
+            ->get();
+
+        $total_purchase = $cart_items->map(function ($item) {
+            return Product::find($item->product_id)->harga * $item->quantity;
+        })->reduce(function ($acc, $curr) {
+            return $acc + $curr;
+        });
+
+        return $total_purchase;
+    }
+
+    public function getTotal() : string
+    {
+        return json_encode([
+            'totalPrice' => $this->total()
         ]);
     }
 
