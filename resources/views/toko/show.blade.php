@@ -44,17 +44,17 @@ function extractText(string $start, string $end, string $text) : string
                     <p>{{ extractText('DESKRIPSI', 'BUDIDAYA', $product->deskripsi) }}</p>
                 </div>
                 <div>
-                    <form action="/cart" method="post">
+                    <form action="/cart/{{ $product->id }}" method="post">
+                        @csrf
                         <div class="flex items-center">
-                            <input type="hidden" name="id" value="{{ $product->id }}">
-                            <label class="w-4/5" for="qty">Jumlah Beli</label>
+                            <label class="block" for="qty">Jumlah Beli</label>
                             <div class="ml-4 flex">
                                 <button type="button" onclick="qty.value ++" class="border border-r-0 rounded-l px-3">
                                    <i class="fa-solid fa-plus"></i>
                                 </button>
                                 <input type="number" name="qty" id="qty" class=
-                                "h-10 border mt-1 px-4 w-1/4 bg-gray-50" value="0" min=
-                                "0">
+                                "h-10 border mt-1 px-4 w-1/4 bg-gray-50" value="1" min=
+                                "1">
                                 <button type="button" onclick="qty.value > 0 ? qty.value-- : 0" class="border border-l-0 rounded-r px-3">
                                   <i class="fa-solid fa-minus"></i>
                                </button>
