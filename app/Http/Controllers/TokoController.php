@@ -23,6 +23,7 @@ class TokoController extends Controller
             "products" => DB::table('products')
                        ->whereFullText('deskripsi', $query_string)
                        ->paginate(16),
+            "query"    => $query_string,
         ]);
     }
 
