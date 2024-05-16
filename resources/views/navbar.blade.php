@@ -5,7 +5,7 @@
         @include('partials.icons.logo')
         <div class="rounded-md bg-white text-black mx-6 w-1/2 sm:w-[60%] lg:w-[35%]">
             <form action="/toko/search" class="flex m-0">
-                <input class="text-base w-full border-0 rounded-l-md pl-2 py-1" name="query" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
+                <input class="text-base w-full border-0 rounded-l-md pl-2 py-1" value="{{ $query ?? '' }}" name="query" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
                 <button class="px-4" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
