@@ -36,4 +36,9 @@ class Cart extends Model
         return DB::table('carts')->where('user_id', '=', Auth::user()->id)
                                  ->get()->count();
     }
+
+    public static function clear() : void
+    {
+        DB::table('carts')->where('user_id', '=', Auth::user()->id)->delete();
+    }
 }
