@@ -45,20 +45,36 @@ function rupiah(int $amount) : string {
                     </div>
                 </div>
                 @endforeach
+            @else
+                <div class="mx-4 my-8">
+                    <h1 class="text-black text-lg text-center mt-4">Keranjangmu kosong!</h1>
+                    <div class="text-center my-8">
+                        <a class="block rounded-md bg-[#1b3c73] mb-4 lg:mb-0 mx-auto lg:w-2/5 p-2 text-white" href="/toko">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        Belanja</a>
+                    </div>
+                    <div class="rounded-md border-2 border-gray-300 bg-white text-[#909090] w-5/6 mx-auto">
+                        <form action="/toko/search" class="flex justify-between">
+                            <input class="rounded-l-md text-base w-full border-0 pl-4 py-3" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
+                            <button class="px-4" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             @endif
-                <div class="h-screen"></div>
                 <div class="md:flex md:items-center mb-4">
                     <div class="flex items-center">
                         <p class="w-3/5"> Total Pembayaran*
                             <span class="float-start text-xs">*tidak termasuk ongkos pengiriman</span>
                         </p>
-                        <p id="total" class="mx-4">{{ $total ? rupiah($total) : rupiah(0) }}</p>
+                        <p id="total" class="mx-4 {{ $contents->isEmpty() ? 'text-2xl' : '' }}">{{ $total ? rupiah($total) : '-' }}</p>
                     </div>
                     <div data-total="{{ $total }}" hidden></div>
                     <form action="" method="post" class="md:w-1/3">
                         @csrf
                         <input type="hidden">
-                        <button class="flex items-center bg-[#1B3C73] rounded-md w-full font-semibold text-white text-center text-sm md:text-md mt-4 md:mt-0 px-2 py-1" type="submit">
+                        <button class="flex items-center {{ $contents->isEmpty() ? 'bg-gray-400' : 'bg-[#1B3C73] ' }} rounded-md w-full font-semibold text-white text-center text-sm md:text-md mt-4 md:mt-0 px-2 py-1" type="submit" {{ $contents->isEmpty() ? 'disabled' : '' }} >
                             <i class="fa-solid fa-bag-shopping block text-md mr-4"></i>
                             <span class="inline-block mr-2">Checkout</span>
                         </button>
