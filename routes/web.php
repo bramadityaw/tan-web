@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RegisterController;
@@ -50,6 +51,8 @@ Route::put('/cart/{cart}', [CartController::class, 'update']);
 Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 
 Route::get('/cart/total', [CartController::class, 'getTotal']);
+
+Route::post('/order', [OrderController::class, 'store']);
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);
