@@ -104,8 +104,6 @@ function rupiah(int $amount) : string {
 @section('scripts')
 @parent
 <script>
-const token = document.querySelector('input[name="_token"]').value;
-
 async function updateTotal(op, cartId) {
     updateQty(op, cartId);
 

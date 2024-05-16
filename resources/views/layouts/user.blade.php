@@ -7,6 +7,7 @@
 @include('footer')
 @section('scripts')
     <script>
+        const token = document.querySelector('input[name="_token"]').value;
         const profilePic = document.querySelector('nav #profile');
         const profileOpts = document.querySelector('nav + div');
 
