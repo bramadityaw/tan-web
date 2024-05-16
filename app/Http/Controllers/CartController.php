@@ -20,7 +20,10 @@ class CartController extends Controller
             'qty' => ['integer', 'min:1'],
         ]);
 
-        if (!DB::table('carts')->where('product_id', $product->id)->exists())
+        $item_in_cart = DB::table('carts')->where('user_id'   , Auth::user()->id)
+                                          ->where('product_id',     $product->id)->exists();
+
+        if (!$item_in_cart)
         {
             Cart::create([
                 'user_id' => Auth::user()->id,
@@ -28,6 +31,7 @@ class CartController extends Controller
                 'quantity' => $validated['qty'],
             ]);
         }
+
 
         return redirect()->to('/cart');
     }
