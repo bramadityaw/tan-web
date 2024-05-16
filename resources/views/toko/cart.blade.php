@@ -80,9 +80,17 @@ function rupiah(int $amount) : string {
 @parent
 <script>
 const token = document.querySelector('input[name="_token"]').value;
-const finalTotal = document.querySelector('#total');
 
-function updateTotal(op, cartId) {
+async function updateTotal(op, cartId) {
+    updateQty(op, cartId);
+
+    const finalTotal = document.querySelector('#total');
+    const total = await fetchTotal();
+
+    finalTotal.innerText = rupiah(total.price);
+}
+
+function updateQty(op, cartId) {
     window.qty = document.querySelector(`[data-id=\"${cartId}\"] #qty`);
 
     switch (op) {
@@ -107,15 +115,15 @@ function updateTotal(op, cartId) {
         },
         body: form,
     })
-    .then(async res => {
-        result = await res.json();
-        console.log(result);
-    });
 }
 
-//(async function fetchTotal () {
+async function fetchTotal () {
+    const response = await fetch('/cart/total');
 
-//})();
+    return response.json();
+}
+
+fetchTotal();
 
 const deleteDialog = document.querySelector("#deleteDialog");
 const deleteButton = deleteDialog.querySelector('form[method="dialog"] + button[type="button"]');
