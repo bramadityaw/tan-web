@@ -30,13 +30,14 @@ function rupiah(int $amount) : string {
             </div>
         @endforeach
         </div>
+    {{ $products->links() }}
         @elseif(str_contains(url()->current(), 'search'))
         <div class="h-[50dvh]">
             <div class="mx-auto w-full lg:w-1/2">
                 <div class="bg-white rounded-md p-4 text-black text-center">
                     <h1 class="text-lg font-semibold">Kami tidak mampu menemukan '{{ $query }}' di toko website ini.</h1>
                     <p class="w-5/6 mx-auto my-8">Antara kami tidak menjual apa yang kamu cari, atau belum ada di website. <a class="text-blue-500 underline" href="https://maps.app.goo.gl/igL3pTLTUekftqhb9">Kunjungi langsung toko kami</a> atau <a href="https://wa.me/+6281379048620" class="text-blue-500 underline">hubungi pemilik Tan Aquatic.</a></p>
-                    <div class="rounded-md bg-white text-black mx-6 w-full sm:w-3/5 lg:w-[35%]">
+                    <div class="rounded-md bg-white text-black w-full sm:w-3/5 lg:w-[35%]">
                         <form action="/toko/search" class="flex m-0">
                             <input class="text-base w-full border-0 rounded-l-md pl-2 py-1" name="query" type="text" placeholder="Cari ikan hias, pakan, aksesoris akuarium...">
                             <button class="px-4" type="submit">
@@ -49,7 +50,6 @@ function rupiah(int $amount) : string {
         </div>
         @endif
     </div>
-    {{ $products->links() }}
 </div>
 
 @endsection
