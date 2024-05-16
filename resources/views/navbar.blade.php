@@ -17,7 +17,7 @@
             <a href="/blog">Blog</a>
         </div>
         @auth
-        <a target="_blank" href="/cart">
+        <a href="/cart">
         @else
         <a href="/login">
         @endauth
