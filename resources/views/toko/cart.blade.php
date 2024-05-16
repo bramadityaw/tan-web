@@ -11,7 +11,8 @@ function rupiah(int $amount) : string {
     <div class="w-5/6 md:w-full max-w-[600px] mx-auto">
        <div class="rounded-md bg-white">
             <div class="flex justify-between pt-4 px-6">
-                <a class="flex items-center w-fit text-center text-sm md:text-md" href="/toko">
+                <a class="flex items-center w-fit text-center text-sm md:text-md"
+                   href="/toko">
                     <i class="fa-solid fa-arrow-left border border-black rounded-full p-1 mr-4 "></i>
                     <p>Kembali</p>
                 </a>
@@ -20,16 +21,16 @@ function rupiah(int $amount) : string {
             @if($contents->isNotEmpty())
                 @foreach ($contents as $content)
                 <div class="flex items-center mb-4">
-                    <a class="block w-full max-w-[192px]" href="/toko/produk/{{ $content->product->id }}">
+                    <a class="block w-full max-w-[192px]" href="/toko/product/{{ $content->product->slug }}">
                         <img class="w-full aspect-auto" src="/storage/{{ $content->product->thumbnail_url }}" alt="{{ $content->product->nama }}">
                     </a>
-                    <div class="ml-4 md:m-0 md:flex md:w-full md:justify-between">
-                        <a class="mx-4 md:mr-8" href="/toko/produk/{{ $content->product->id }}">
+                    <div class="ml-4 md:m-0 md:flex md:w-full md:justify-between md:items-center">
+                        <button data-cart-id="{{ $content->cart }}" onclick="window.cartItem = this; deleteItem(window.cartItem)" class="border border-gray-600 h-10 text-gray-800 rounded-md px-2 py-1 md:ml-4 z-20">
+                            <i class="text-xs fa-solid fa-trash"></i>
+                        </button>
+                        <a class="mx-4 md:mr-8" href="/toko/product/{{ $content->product->slug }}">
                             <h1>{{ $content->product->nama }}</h1>
                             <p class="text-sm w-fit">{{ rupiah($content->product->harga) }} / ekor</p>
-                            <button data-cart-id="{{ $content->cart }}" onclick="window.cartItem = this; deleteItem(window.cartItem)" class="border border-gray-600 text-gray-800 rounded-md px-2 py-1 mt-4">
-                                <i class="text-xs fa-solid fa-trash"></i>
-                            </button>
                         </a>
                         <div data-id="{{ $content->cart }}" class="flex min-w-[135px] max-w-[155px] w-full text-sm items-center">
                             <button type="button" data-id="{{ $content->cart }}" onclick="updateTotal('+', this.dataset.id )" class="h-10 border border-r-0 rounded-l px-3">
@@ -145,8 +146,6 @@ async function fetchTotal () {
 
     return response.json();
 }
-
-fetchTotal();
 
 const deleteDialog = document.querySelector("#deleteDialog");
 const deleteButton = deleteDialog.querySelector('form[method="dialog"] + button[type="button"]');
