@@ -72,9 +72,11 @@ function rupiah(int $amount) : string {
                         <p id="total" class="mx-4 {{ $contents->isEmpty() ? 'text-2xl' : '' }}">{{ $total ? rupiah($total) : '-' }}</p>
                     </div>
                     <div data-total="{{ $total }}" hidden></div>
-                    <form action="" method="post" class="md:w-1/3">
+                    <form action="/order" method="post" class="md:w-1/3">
                         @csrf
-                        <input type="hidden">
+                        @foreach($contents as $content)
+                        <input type="hidden" name="cart_item_{{ $content->cart }}" value="{{ $content->cart }}">
+                        @endforeach
                         <button class="flex items-center {{ $contents->isEmpty() ? 'bg-gray-400' : 'bg-[#1B3C73] ' }} rounded-md w-full font-semibold text-white text-center text-sm md:text-md mt-4 md:mt-0 px-2 py-1" type="submit" {{ $contents->isEmpty() ? 'disabled' : '' }} >
                             <i class="fa-solid fa-bag-shopping block text-md mr-4"></i>
                             <span class="inline-block mr-2">Checkout</span>
