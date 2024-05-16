@@ -52,7 +52,7 @@ class CartController extends Controller
         ]);
     }
 
-    private function total() : int
+    private function total() : int | null
     {
         $cart_items = DB::table('carts')
             ->where('user_id', '=', Auth::user()->id)

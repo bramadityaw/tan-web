@@ -17,7 +17,8 @@ function rupiah(int $amount) : string {
                 </a>
             </div>
             <div class="px-6 pt-5 pb-1">
-            @foreach ($contents as $content)
+            @if($contents->isNotEmpty())
+                @foreach ($contents as $content)
                 <div class="flex items-center mb-4">
                     <a class="block w-full max-w-[192px]" href="/toko/produk/{{ $content->product->id }}">
                         <img class="w-full aspect-auto" src="/storage/{{ $content->product->thumbnail_url }}" alt="{{ $content->product->nama }}">
@@ -43,13 +44,15 @@ function rupiah(int $amount) : string {
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
+            @endif
+                <div class="h-screen"></div>
                 <div class="md:flex md:items-center mb-4">
                     <div class="flex items-center">
                         <p class="w-3/5"> Total Pembayaran*
                             <span class="float-start text-xs">*tidak termasuk ongkos pengiriman</span>
                         </p>
-                        <p id="total" class="mx-4">{{ rupiah($total) }}</p>
+                        <p id="total" class="mx-4">{{ $total ? rupiah($total) : rupiah(0) }}</p>
                     </div>
                     <div data-total="{{ $total }}" hidden></div>
                     <form action="" method="post" class="md:w-1/3">
