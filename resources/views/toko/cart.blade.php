@@ -12,7 +12,7 @@ function rupiah(int $amount) : string {
        <div class="rounded-md bg-white">
             <div class="flex justify-between pt-4 px-6">
                 <a class="flex items-center w-fit text-center text-sm md:text-md"
-                   href="/toko">
+                   href="/{{ url()->previous() }}">
                     <i class="fa-solid fa-arrow-left border border-black rounded-full p-1 mr-4 "></i>
                     <p>Kembali</p>
                 </a>
