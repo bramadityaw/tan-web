@@ -31,7 +31,7 @@ class Cart extends Model
         'updated_at' => 'datetime',
     ];
 
-    public static function count()
+    public static function count() : int
     {
         return DB::table('carts')->where('user_id', '=', Auth::user()->id)
                                  ->get()->count();
