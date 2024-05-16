@@ -58,8 +58,21 @@ function rupiah(int $amount) : string {
 @section('scripts')
     @parent
 <script>
-function addToCart(productId) {
-    console.log(productId);
+async function addToCart(productId) {
+    const form = new FormData();
+    form.append('_token', token);
+    form.append('qty', 1);
+
+    const response = await fetch(`/cart/${productId}`, {
+        method: "POST",
+        headers: {
+            'X-CSRF-TOKEN': token,
+            'Accept': 'multipart/form-data',
+        },
+        body: form,
+    })
+
+    window.location.replace(response.url);
 }
 </script>
 @endsection
