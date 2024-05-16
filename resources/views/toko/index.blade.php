@@ -23,8 +23,8 @@ function rupiah(int $amount) : string {
                         <span class="inline-block mr-2">Detail</span>
                     </a>
                     <button class="col-span-1 flex items-center bg-[#1B3C73] rounded-md font-semibold text-white text-center text-sm md:text-md px-2 py-1" data-product-id="{{ $product->id }}" onclick="addToCart(this.dataset.productId)">
-                        <i class="fa-solid fa-cart-shopping block text-md mr-4"></i>
-                        <span class="inline-block mr-2">Tambah</span>
+                        <i class="fa-solid fa-cart-shopping block text-md mr-2"></i>
+                        <span class="inline-block mr-2">Masukkan</span>
                     </button>
                 </div>
             </div>
