@@ -53,6 +53,8 @@ Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 Route::get('/cart/total', [CartController::class, 'getTotal']);
 
 Route::post('/order', [OrderController::class, 'store']);
+Route::get('/order/{order}/verify', [OrderController::class, 'showVerify']);
+Route::post('/order/{order}', [OrderController::class, 'verify']);
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);
