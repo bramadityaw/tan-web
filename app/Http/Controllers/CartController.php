@@ -70,7 +70,7 @@ class CartController extends Controller
     public function getTotal() : string
     {
         return json_encode([
-            'totalPrice' => $this->total()
+            'price' => $this->total()
         ]);
     }
 
