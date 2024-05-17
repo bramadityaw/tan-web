@@ -6,11 +6,11 @@
 
 @section('main')
 <section class="bg-[#1B3C73] py-4">
-    <div class="rounded-md w-3/5 md:w-1/2 mx-auto bg-white p-4">
+    <div class="rounded-md w-3/5 md:w-1/2 mx-auto bg-white p-4 my-8">
         <div class="text-center">
             <h1 class="text-xl">Mohon transfer ke rekening berikut</h1>
-            <p class="text-lg mt-4">No. Rekening 8120827902 (BCA) a.n. Muhammad Ferdiansyah Tandianus</p>
-            <p class="text-lg mb-4">Jumlah yang harus ditransfer: {{ rupiah($order->harga_total) }}</p>
+            <p class="text-lg mt-4">No. Rekening <b>8120827902 </b> (BCA) a.n. <b>Muhammad Ferdiansyah Tandianus</b></p>
+            <p class="text-lg mb-4">Jumlah yang harus ditransfer: <b>{{ rupiah($order->harga_total) }}.</b></p>
         </div>
         <div class="text-xl font-semibold text-center">
             <template id="verify">
@@ -36,7 +36,10 @@
         </div>
         <div class="text-center mt-4">
             <p>Setelah ini, Anda akan diarahkan ke WhatsApp Tan Aquatic. Harap screenshoot bukti keberhasilan transaksi dan kirimkan bersama pesan dari sistem.</p>
-            <a href="https://wa.me/6281379048620?text={{ $message ?? 'Hi' }}" class="text-lg"></a>
+            <a class="flex items-center bg-[#1B3C73] rounded-md font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="{{ $link_with_message }}" class="text-lg">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Verifikasi</span>
+            </a>
         </div>
     </div>
 </section>
