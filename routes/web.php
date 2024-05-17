@@ -55,6 +55,7 @@ Route::get('/cart/total', [CartController::class, 'getTotal']);
 Route::post('/order', [OrderController::class, 'store']);
 Route::get('/order/{order}/verify', [OrderController::class, 'showVerify']);
 Route::post('/order/{order}', [OrderController::class, 'verify']);
+Route::get('/order/fail', [OrderController::class, 'notifyFailure']);
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);

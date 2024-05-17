@@ -48,6 +48,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     const countdown = document.querySelector('count-down').shadowRoot;
     countdown.querySelectorAll('.item .unit').forEach(e => e.textContent = ':');
+
+    function redirectIfOver() {
+        let clockOver = Array.from(countdown.querySelectorAll('.number'))
+            .map(e => Number(e.textContent) <= 0)
+            .reduce((acc, curr) => acc && curr);
+
+        if (clockOver) window.location.replace('/order/fail');
+    }
+
+    setInterval(redirectIfOver, 1000);
 })
 </script>
 @endsection
