@@ -25,7 +25,9 @@ class Order extends Model
      *
      * @var array<int, string>
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'verify_token',
+    ];
 
     /**
      * The attributes that should be cast.
@@ -34,6 +36,7 @@ class Order extends Model
      */
     protected $casts = [
         'updated_at' => 'datetime',
+        'verify_token' => 'hashed',
     ];
 
     /**
