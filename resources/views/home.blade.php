@@ -1,3 +1,9 @@
+@use(Carbon\Carbon)
+
+@push('head_scripts')
+<script type="module" src="/scripts/countdown.js"></script>
+@endpush
+
 @extends('layouts.user')
     <style>
         .swiper {
@@ -102,8 +108,37 @@
 
     </div>
     </section>
+    @auth
+    @if($orders->isNotEmpty())
+        <dialog class="border border-[#1B3C73] rounded-md p-4 w-4/5 sm:w-2/5 lg:w-1/3">
+            <div class="text-center">
+                <h1 class="text-xl font-semibold">Kamu punya pesanan yang belum terverifikasi</h1>
+                @foreach($orders as $order)
+                    <div class="">
+                        <h1 class="mb-4">Pesanan dibuat {{Carbon::parse($order->created_at)->lessThan(Carbon::now()) ? 'kemarin' : 'hari ini'}} jam {{ Carbon::parse($order->created_at)->translatedFormat("H:i:s") }}</h1>
+                        <count-down ends="{{ $order->expired_date }}" breakpoint1="25em" breakpoint2="50em">
+                            <h3 slot="heading">Pesanan harus selesai dalam</h3>
+                            <time>{{ $order->expired_date }}</time>
+                        </count-down>
+                        <p class="mt-4"><span>{{ rupiah($order->harga_total) }}</span>
+                        <a href="/order/{{ $order->id }}/verify">Verifikasi</a></p>
+                    </div>
+                @endforeach
+            </div>
+            <form method="dialog" class="text-center text-white">
+                <button type="submit" class="rounded-md px-3 py-2 mt-4 border-0 bg-[#1B3C73]">Tutup</button>
+            </form>
+        </dialog>
+    @endif
+    @endauth
 @endsection
 @section('scripts')
     @parent
     @include('partials.scripts.swiperjs')
+
+    @auth
+    @if($orders->isNotEmpty())
+        <script> document.querySelector('dialog').showModal() </script>
+    @endif
+    @endauth
 @endsection
