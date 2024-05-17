@@ -56,7 +56,7 @@ Route::get('/cart/total', [CartController::class, 'getTotal']);
 Route::post('/order', [OrderController::class, 'store']);
 
 Route::get('/order/{order}/verify', [VerifyOrderController::class, 'show']);
-Route::post('/order/{order}', [VerifyOrderController::class, 'verify']);
+Route::get('/order/{order}', [VerifyOrderController::class, 'verify'])->name('order.verify')->middleware('auth', 'admin');
 Route::get('/order/fail', [VerifyOrderController::class, 'notifyFailure']);
 
 Route::get('/review', [ReviewController::class, 'create']);
