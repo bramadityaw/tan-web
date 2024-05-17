@@ -63,7 +63,7 @@ class OrderController extends Controller
             })->collapse();
 
             $order = Order::create([
-                "expired_date" => Carbon::parse(time() + 24 * 60 * 60)->toDateTimeString(),
+                "expired_date" => Carbon::now()->addDay()->toDateTimeString(),
                 "harga_total" => CartController::total(),
                 "user_id" => Auth::user()->id,
             ]);
