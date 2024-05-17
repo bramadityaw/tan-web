@@ -1,9 +1,4 @@
 @php
-function rupiah(int $amount) : string
-{
-    return 'Rp.' . number_format($amount,2, ',' , '.');
-}
-
 function extractText(string $start, string $end, string $text) : string
 {
     $startPos = strpos($text, $start) + strlen($start);

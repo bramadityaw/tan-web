@@ -1,9 +1,3 @@
-@php
-function rupiah(int $amount) : string {
-    return 'Rp.' . number_format($amount,2, ',' , '.');
-}
-@endphp
-
 @extends('layouts.user')
 
 @section('main')
@@ -179,3 +173,4 @@ function rupiah (number) {
 }
 </script>
 @endsection
+
