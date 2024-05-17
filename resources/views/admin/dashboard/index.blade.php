@@ -1,11 +1,5 @@
 @use('Carbon\Carbon')
 
-@php
-function rupiah(int $amount) : string {
-    return 'Rp.' . number_format($amount,2, ',' , '.');
-}
-@endphp
-
 @extends('layouts.admin')
 @section('main')
 <div class="flex flex-col md:flex-row mb-4">

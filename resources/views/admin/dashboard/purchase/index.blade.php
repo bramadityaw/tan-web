@@ -6,10 +6,6 @@ $purchase_sum = 0;
 foreach ($purchases as $purchase) {
     $purchase_sum += $purchase->harga_beli * $purchase->qty;
 }
-
-function rupiah(int $amount) : string {
-    return 'Rp.' . number_format($amount,2, ',' , '.');
-}
 @endphp
 
 @section('main')
