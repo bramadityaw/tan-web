@@ -20,7 +20,7 @@ function extractText(string $start, string $end, string $text) : string
     <div class="w-4/5 mx-auto">
         <div class="flex justify-between mb-4 ">
             <a class="flex items-center w-fit text-center text-sm md:text-md bg-white hover:bg-gray-300 text-black rounded-full px-2 py-1"
-                href="/{{url()->previous()}}">
+                href="{{url()->previous()}}">
                 <i class="fa-solid fa-arrow-left text-gray-500 hover:text-gray-800 rounded-full"></i>
                 <p class="ml-4">Kembali</p>
             </a>
