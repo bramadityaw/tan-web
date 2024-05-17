@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\TokoController;
+use App\Http\Controllers\VerifyOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -53,9 +54,10 @@ Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 Route::get('/cart/total', [CartController::class, 'getTotal']);
 
 Route::post('/order', [OrderController::class, 'store']);
-Route::get('/order/{order}/verify', [OrderController::class, 'showVerify']);
-Route::post('/order/{order}', [OrderController::class, 'verify']);
-Route::get('/order/fail', [OrderController::class, 'notifyFailure']);
+
+Route::get('/order/{order}/verify', [VerifyOrderController::class, 'show']);
+Route::post('/order/{order}', [VerifyOrderController::class, 'verify']);
+Route::get('/order/fail', [VerifyOrderController::class, 'notifyFailure']);
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);
