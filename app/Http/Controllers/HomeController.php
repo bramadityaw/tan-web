@@ -35,7 +35,7 @@ class HomeController extends Controller
 
         $unverified_orders = DB::table('orders')
             ->where('is_verified', false)
-            ->where('expired_date', '>', Carbon::parse(time())->toDateTimeString())
+            ->where('expired_date', '>', Carbon::now()->toDateTimeString())
             ->get();
 
         return view('home',
