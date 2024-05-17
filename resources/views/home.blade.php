@@ -138,7 +138,12 @@
 
     @auth
     @if($orders->isNotEmpty())
-        <script> document.querySelector('dialog').showModal() </script>
+        <script>
+        if(!sessionStorage.modalOpened){
+            document.querySelector('dialog').showModal();
+            sessionStorage.setItem("modalOpened", '1');
+        }
+        </script>
     @endif
     @endauth
 @endsection
