@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'auth']);
 
 Route::post('/logout', function (Request $request) {
@@ -46,7 +46,7 @@ Route::get('/toko/search', [TokoController::class, 'search']);
 Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
 
 Route::get('/cart', [CartController::class, 'index']);
-Route::post('/cart/{product}', [CartController::class, 'store']);
+Route::post('/cart/{product}', [CartController::class, 'store'])->middleware('auth');
 Route::put('/cart/{cart}', [CartController::class, 'update']);
 Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 
