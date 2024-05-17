@@ -46,18 +46,22 @@ Route::get('/toko', [TokoController::class, 'index']);
 Route::get('/toko/search', [TokoController::class, 'search']);
 Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
 
-Route::get('/cart', [CartController::class, 'index']);
-Route::post('/cart/{product}', [CartController::class, 'store'])->middleware('auth');
-Route::put('/cart/{cart}', [CartController::class, 'update']);
-Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
+Route::middleware('auth')->group(function() {
 
-Route::get('/cart/total', [CartController::class, 'getTotal']);
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/{product}', [CartController::class, 'store'])->middleware('auth');
+    Route::put('/cart/{cart}', [CartController::class, 'update']);
+    Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 
-Route::post('/order', [OrderController::class, 'store']);
+    Route::get('/cart/total', [CartController::class, 'getTotal']);
 
-Route::get('/order/{order}/verify', [VerifyOrderController::class, 'show']);
-Route::get('/order/{order}', [VerifyOrderController::class, 'verify'])->name('order.verify')->middleware('auth', 'admin');
-Route::get('/order/fail', [VerifyOrderController::class, 'notifyFailure']);
+    Route::post('/order', [OrderController::class, 'store']);
+
+    Route::get('/order/{order}/verify', [VerifyOrderController::class, 'show']);
+    Route::get('/order/{order}', [VerifyOrderController::class, 'verify'])->name('order.verify')->middleware('admin');
+    Route::get('/order/fail', [VerifyOrderController::class, 'notifyFailure']);
+
+});
 
 Route::get('/review', [ReviewController::class, 'create']);
 Route::post('/review', [ReviewController::class, 'store']);
