@@ -23,6 +23,11 @@ class OrderController extends Controller
         //
     }
 
+    public function notifyFailure() : View
+    {
+        return view('order.failure');
+    }
+
     public function showVerify(Order $order) : View
     {
         return view('order.verify', [
