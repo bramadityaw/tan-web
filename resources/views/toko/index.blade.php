@@ -50,7 +50,8 @@
 
 
 @section('scripts')
-    @parent
+@parent
+@auth
 <script>
 async function addToCart(productId) {
     const form = new FormData();
@@ -69,4 +70,11 @@ async function addToCart(productId) {
     window.location.replace(response.url);
 }
 </script>
+@else
+<script>
+function addToCart(productId) {
+    window.location.replace('/login');
+}
+</script>
+@endauth
 @endsection
