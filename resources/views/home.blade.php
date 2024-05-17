@@ -114,14 +114,49 @@
             <div class="text-center">
                 <h1 class="text-xl font-semibold">Kamu punya pesanan yang belum terverifikasi</h1>
                 @foreach($orders as $order)
-                    <div class="">
-                        <h1 class="mb-4">Pesanan dibuat {{Carbon::parse($order->created_at)->lessThan(Carbon::now()) ? 'kemarin' : 'hari ini'}} jam {{ Carbon::parse($order->created_at)->translatedFormat("H:i:s") }}</h1>
-                        <count-down ends="{{ $order->expired_date }}" breakpoint1="25em" breakpoint2="50em">
-                            <h3 slot="heading">Pesanan harus selesai dalam</h3>
+                    <div class="mt-4 rounded">
+                        <h1 class="mb-4">Pesanan dibuat {{Carbon::parse($order->created_at)->lessThan(Carbon::now()) ? 'hari ini' : 'kemarin'}} jam {{ Carbon::parse($order->created_at)->translatedFormat("H:i:s") }}</h1>
+                        <template id="verify">
+                            <style>
+                                count-down {
+                                    margin-top: 1rem;
+                                    margin-bottom: 1rem;
+                                }
+
+                                .item:has(.days) {
+                                    display: none;
+                                }
+
+                                .seconds + .unit {
+                                    display: none;
+                                }
+
+                                .unit {
+                                    margin-left: 0.5rem;
+                                    margin-right: 0.5rem;
+                                }
+
+                                .item .number {
+                                    border-radius: 0.375rem;
+                                    border-width: 1px;
+                                    background-color: #dfe5e7;
+                                    padding-left: 1rem;
+                                    padding-right: 1rem;
+                                    padding-top: 0.75rem;
+                                    padding-bottom: 0.75rem;
+                                }
+                            </style>
+                            <p>Pesanan harus dibayar sebelum timer habis.</p>
+                            <time></time>
+                        </template>
+                        <count-down ends="{{ $order->expired_date }}" breakpoint1="25em" breakpoint2="50em" template="verify">
+                            <h3>Pesanan harus selesai sebelum {{ tanggalIdn($order->expired_date, 'j F, H:i:s') }}</h3>
                             <time>{{ $order->expired_date }}</time>
                         </count-down>
-                        <p class="mt-4"><span>{{ rupiah($order->harga_total) }}</span>
-                        <a href="/order/{{ $order->id }}/verify">Verifikasi</a></p>
+                        <div class="mt-4 md:flex md:items-center md:w-1/2 md:justify-between md:mx-auto">
+                            <span>{{ rupiah($order->harga_total) }}</span>
+                            <a class="border-0 rounded-md px-2 py-1 text-white bg-orange-600" href="/order/{{ $order->id }}/verify">Verifikasi</a>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -138,12 +173,27 @@
 
     @auth
     @if($orders->isNotEmpty())
-        <script>
+    <script>
         if(!sessionStorage.modalOpened){
             document.querySelector('dialog').showModal();
             sessionStorage.setItem("modalOpened", '1');
         }
-        </script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const countdown = document.querySelector('count-down').shadowRoot;
+            countdown.querySelectorAll('.item .unit').forEach(e => e.textContent = ':');
+
+            function redirectIfOver() {
+                let clockOver = Array.from(countdown.querySelectorAll('.number'))
+                    .map(e => Number(e.textContent) <= 0)
+                    .reduce((acc, curr) => acc && curr);
+
+                if (clockOver) window.location.replace('/order/fail');
+            }
+
+            setInterval(redirectIfOver, 1000);
+        })
+    </script>
     @endif
     @endauth
 @endsection
