@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -31,9 +33,15 @@ class HomeController extends Controller
         ];
 
 
+        $unverified_orders = DB::table('orders')
+            ->where('is_verified', false)
+            ->where('expired_date', '>', Carbon::parse(time())->toDateTimeString())
+            ->get();
+
         return view('home',
             [
-                "products" => $products
+                "products" => $products,
+                "orders" => $unverified_orders,
             ]
         );
     }
