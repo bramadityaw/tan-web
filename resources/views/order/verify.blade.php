@@ -35,9 +35,9 @@
             </count-down>
         </div>
         <div class="text-center mt-4">
-            <p>Setelah ini, Anda akan diarahkan ke WhatsApp Tan Aquatic. Harap screenshoot bukti keberhasilan transaksi dan kirimkan bersama pesan dari sistem.</p>
-            <a class="flex items-center bg-[#1B3C73] rounded-md font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="{{ $link_with_message }}" class="text-lg">
-                <i class="fa-brands fa-whatsapp"></i>
+            <p class="mb-4">Setelah ini, Anda akan diarahkan ke WhatsApp Tan Aquatic. Harap screenshoot bukti keberhasilan transaksi dan kirimkan bersama pesan dari sistem.</p>
+            <a target="_blank" class="flex items-center bg-[#128c7e] w-1/4 mx-auto rounded-md font-semibold text-white text-center text-lg md:text-xl px-4 py-3" href="{{ $link_with_message }}" class="text-lg">
+                <i class="fa-brands fa-whatsapp mr-4"></i>
                 <span>Verifikasi</span>
             </a>
         </div>
