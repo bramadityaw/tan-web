@@ -50,11 +50,14 @@ class OrderController extends Controller
                 return DB::table('carts')->where('id', '=', $id)->get();
             })->collapse();
 
-            $order = Order::create([
+            $order = new Order([
                 "expired_date" => Carbon::now()->addDay()->toDateTimeString(),
                 "harga_total" => CartController::total(),
                 "user_id" => Auth::user()->id,
             ]);
+
+            $order->verify_token = VerifyOrderController::createVerifyToken();
+            $order->save();
 
             foreach ($cart_items as $item)
             {
