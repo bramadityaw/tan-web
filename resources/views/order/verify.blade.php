@@ -49,7 +49,7 @@
         </div>
         <div class="text-center mt-4">
             <p class="mb-4">Setelah ini, Anda akan diarahkan ke WhatsApp Tan Aquatic. Harap screenshoot bukti keberhasilan transaksi dan kirimkan bersama pesan dari sistem.</p>
-            <a target="_blank" class="flex items-center bg-[#128c7e] w-1/4 mx-auto rounded-md font-semibold text-white text-center text-lg md:text-xl px-4 py-3" href="{{ $link_with_message }}" class="text-lg">
+            <a target="_blank" class="flex items-center bg-[#25d366] w-1/4 mx-auto rounded-md font-semibold text-white text-center text-lg md:text-xl px-4 py-3" href="{{ $link_with_message }}" class="text-lg">
                 <i class="fa-brands fa-whatsapp mr-4"></i>
                 <span>Verifikasi</span>
             </a>
