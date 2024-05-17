@@ -30,11 +30,10 @@ class VerifyOrderController extends Controller
     private function verifyLink(Order $order) : string
     {
         $query = http_build_query([
-            "_verify" => $order->verify_token,
-            "ord" => $order->id,
+            "_gmd" => $order->verify_token,
         ]);
 
-        return route('order.verify', $order) . '?' . $query;
+        return route('order.verify', $order) . '/?' . $query;
     }
 
     public static function createVerifyToken() : string
@@ -96,6 +95,14 @@ class VerifyOrderController extends Controller
 
     public function verify(Request $request, Order $order) : RedirectResponse
     {
+        if ($request->input('_gmd') !== $order->verify_token)
+        {
+            return redirect('/');
+        } else {
+            $order->is_verified = true;
+            $order->save();
+        }
+
         return redirect()->intended('/admin/dashboard');
     }
 }
