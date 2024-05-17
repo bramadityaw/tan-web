@@ -35,4 +35,13 @@ class Order extends Model
     protected $casts = [
         'updated_at' => 'datetime',
     ];
+
+    /**
+     * Attributes with default values.
+     *
+     * @var array<string, mixed>
+     */
+    protected $attributes = [
+        'is_verified' => false,
+    ];
 }
