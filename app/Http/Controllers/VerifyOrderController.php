@@ -108,6 +108,21 @@ class VerifyOrderController extends Controller
         {
             return redirect('/');
         } else {
+            $bought_products = DB::table('order_items')
+                                ->where('order_id', $order->id)
+                                ->get()->map(function ($item) {
+                                    return (object) [
+                                        "product" => Product::find($item->product_id),
+                                        "quantity" => $item->quantity,
+                                    ];
+                                });
+
+            foreach ($bought_products as $b)
+            {
+                $b->product->stok = $b->product->stok - $b->quantity;
+                $b->product->save();
+            }
+
             $order->is_verified = true;
             $order->save();
         }
