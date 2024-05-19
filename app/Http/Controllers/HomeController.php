@@ -35,7 +35,7 @@ class HomeController extends Controller
 
 
         $unverified_orders = DB::table('orders')
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', Auth::user()->id ?? 0)
             ->where('is_verified', false)
             ->where('expired_date', '>', Carbon::now()->toDateTimeString())
             ->get();
