@@ -32,7 +32,11 @@ function extractText(string $start, string $end, string $text) : string
             <div class="rounded-b-md md:rounded-none md:rounded-r-md bg-white text-black md:w-1/2 p-4">
                 <h1 class="font-semibold text-2xl">{{ $product->nama }}</h1>
                 <div class="flex justify-between items-end my-4 text-lg">
-                    <span class="inline-block">Stok Tersedia: <span class="font-bold"> {{ $product->stok }} </span></span>
+                    @if ($product->stok > 0)
+                        <span class="inline-block">Stok Tersedia: <span class="font-bold"> {{ $product->stok }} </span></span>
+                    @else
+                        <span>Stok Habis! <a href="https://wa.me/+6281379048620">Silahkan hubungi pemilik toko </a>  untuk stok ulang</span>
+                    @endif
                     <span class="inline-block">{{ rupiah($product->harga) }} / ekor</span>
                 </div>
                 <div class="lg:flex">
@@ -45,13 +49,13 @@ function extractText(string $start, string $end, string $text) : string
                         <div class="flex items-center">
                             <label class="block" for="qty">Jumlah Beli</label>
                             <div class="ml-4 flex">
-                                <button type="button" onclick="qty.value ++" class="border border-r-0 rounded-l px-3">
+                                <button {{ $product->stok <= 0 ? 'disabled' : '' }} type="button" onclick="qty.value < {{ $product->stok }} ? qty.value ++ : qty.value" class="border border-r-0 rounded-l px-3">
                                    <i class="fa-solid fa-plus"></i>
                                 </button>
-                                <input type="number" name="qty" id="qty" class=
+                                <input {{ $product->stok <= 0 ? 'disabled' : '' }} type="number" name="qty" id="qty" class=
                                 "h-10 border mt-1 px-4 w-1/4 bg-gray-50" value="1" min=
-                                "1">
-                                <button type="button" onclick="qty.value > 0 ? qty.value-- : 0" class="border border-l-0 rounded-r px-3">
+                                "1" max="{{ $product->stok }}">
+                                <button {{ $product->stok <= 0 ? 'disabled' : '' }} type="button" onclick="qty.value > 0 ? qty.value-- : 0" class="border border-l-0 rounded-r px-3">
                                   <i class="fa-solid fa-minus"></i>
                                </button>
                             </div>
@@ -74,6 +78,11 @@ function extractText(string $start, string $end, string $text) : string
                         <h1 class="text-lg font-bold">{{ $other->nama }}</h1>
                         <p>{{ rupiah($other->harga) }}</p>
                     </a>
+                    @if ($product->stok > 0)
+                    <span class="float-start">Sisa stok: {{ $product->stok }}</span>
+                    @else
+                    <span class="float-start">Stok habis</span>
+                    @endif
                     <a class="flex items-center bg-[#1B3C73] rounded-md w-1/2 float-end font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="/toko/product/{{ $other->slug }}">
                         <i class="fa-solid fa-eye block text-md mr-4"></i>
                         <span class="inline-block">Detail</span>

@@ -9,7 +9,14 @@
                 <a href="/toko/product/{{ $product->slug }}">
                     <img class="w-[250px] h-[160px] object-cover" src="/storage/{{ $product->thumbnail_url }}" alt="">
                     <h1 class="text-lg font-bold">{{ $product->nama }}</h1>
-                    <p>{{ rupiah($product->harga) }}</p>
+                    <div class="flex justify-between">
+                        <p>{{ rupiah($product->harga) }}</p>
+                        @if ($product->stok > 0)
+                        <span>Sisa stok: {{ $product->stok }}</span>
+                        @else
+                        <span>Stok Habis!</span>
+                        @endif
+                    </div>
                 </a>
                 <div class="grid grid-cols-2 gap-2 mt-4">
                     <a class="col-span-1 flex items-center bg-[#1B3C73] rounded-md font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="/toko/product/{{ $product->slug }}">
