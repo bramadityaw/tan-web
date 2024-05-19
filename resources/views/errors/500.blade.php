@@ -11,6 +11,7 @@
     <div class="w-4/5 md:w-1/2 lg:w-1/3 mx-auto">
         <div class="m-4 p-4 bg-white rounded-md">
             <h1 class="text-black text-2xl text-center my-4">Orang ini bikin website ngawur!</h1>
+            <p class="text-center mb-4">ERROR: 500</p>
             <img class="aspect-auto rounded-full mx-auto my-2" src="/images/500_raspb.jpeg">
             <p class="my-4 text-center">Marahin dia lewat email <a class="text-blue-500 underline" href="mailto:@rbramadityaario@gmail.com">@rbramadityaario@gmail.com</a></p>
             @if (isAdmin())

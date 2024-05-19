@@ -12,6 +12,7 @@
         <div class="m-4">
             <img class="aspect-auto w-3/5 lg:w-1/2 mx-auto my-2" src="/images/404-goldfish.png">
             <h1 class="text-black text-2xl text-center my-4">Halaman tidak tersedia</h1>
+            <p class="text-center">ERROR: 404</p>
             @if (isAdmin())
             <div class="text-center lg:flex lg:justify-center">
                 <a class="block rounded-md bg-[#1b3c73] mb-4 lg:mb-0 lg:mr-4 lg:w-2/5 p-2 text-lg text-white" href="/admin/dashboard">Kembali ke dashboard</a>
