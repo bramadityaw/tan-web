@@ -47,8 +47,7 @@ class VerifyOrderController extends Controller
     private function whatsappLink(Order $order) : string
     {
         $whatsapp_api_link = 'https://api.whatsapp.com/send/';
-//        $phone_number = '6281379048620'; // Kak Ferdi's number
-        $phone_number = '6281289096039'; // test number (my mom)
+        $phone_number = '6281379048620'; // Kak Ferdi's number
         $message = $this::message($order);
 
         return $whatsapp_api_link . '?phone=' . $phone_number
