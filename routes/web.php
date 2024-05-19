@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/order/{order}/verify', [VerifyOrderController::class, 'show']);
     Route::get('/order/{order}', [VerifyOrderController::class, 'verify'])->name('order.verify')->middleware('admin');
     Route::get('/order/fail', [VerifyOrderController::class, 'notifyFailure']);
+    Route::get('/order/{order}/success', [VerifyOrderController::class, 'notifySuccess']);
 
 });
 

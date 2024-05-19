@@ -21,15 +21,20 @@ class VerifyOrderController extends Controller
 
     public function show(Order $order) : View | RedirectResponse
     {
-        if (!$order->is_verified)
+        if ($order->is_verified)
         {
-            return view('order.verify', [
-                "order" => $order,
-                "link_with_message" => $this->whatsappLink($order),
-            ]);
+            return redirect()->intended('/order/' . $order->id . '/success');
         }
 
-        return redirect('/toko');
+        return view('order.verify', [
+            "order" => $order,
+            "link_with_message" => $this->whatsappLink($order),
+        ]);
+    }
+
+    public function notifySuccess() : View
+    {
+        return view('order.success');
     }
 
     private function verifyLink(Order $order) : string
