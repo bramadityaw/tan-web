@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string("judul_artikel",150);
             $table->string('image');
             $table->text("kategori");
-            $table->date("tanggal_publish");
             $table->timestamps();
         });
     }

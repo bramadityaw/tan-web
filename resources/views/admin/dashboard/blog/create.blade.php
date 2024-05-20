@@ -37,10 +37,6 @@
             <label for="gambar">Gambar Produk</label>
             <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="gambar" id="gambar" value="{{ 'C:\\fakepath\\' . explode('/', $article->thumbnail_url)[1] }}">
           </div>
-        <div class="md:col-span-5">
-           <label for="publish_at">Publish At</label>
-              <input type="date" name="publish_at" id="publish_at" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="">
-        </div>
         <div class="md:col-span-5 mt-4">
             <button type="submit" class=
             "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-end">

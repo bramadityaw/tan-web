@@ -91,12 +91,14 @@ Route::middleware('admin')->group(function() {
     Route::get('/admin/dashboard/products', [ProductController::class, 'index']);
     Route::get('/admin/dashboard/products/create', [ProductController::class, 'create']);
 
-    Route::get('/admin/dashboard/blog',[ArticleController::class, 'index']);
-    Route::get('/admin/dashboard/blog/create',[ArticleController::class, 'store']);
-    Route::get('/admin/dashboard/blog/{id}',[ArticleController::class, 'show']);
-
-    Route::delete('/blog/{id}',[ArticleController::class,'destroy']);
-    Route::get('/blog/{id}/ubah',[ArticleController::class,'update']);
+    // Article routes
+    Route::get('/admin/dashboard/blog', [ArticleController::class, 'index']);
+    Route::get('/admin/dashboard/blog/create', [ArticleController::class, 'create']);
+    Route::post('/admin/dashboard/blog', [ArticleController::class, 'store']);
+    Route::get('/admin/dashboard/blog/{id}', [ArticleController::class, 'show']);
+    Route::get('/admin/dashboard/blog/{id}/edit', [ArticleController::class, 'edit']);
+    Route::put('/admin/dashboard/blog/{id}', [ArticleController::class, 'update']);
+    Route::delete('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy']);
 
     Route::post('/products', [ProductController::class, 'store']);
 
