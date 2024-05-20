@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -89,6 +90,13 @@ Route::middleware('admin')->group(function() {
 
     Route::get('/admin/dashboard/products', [ProductController::class, 'index']);
     Route::get('/admin/dashboard/products/create', [ProductController::class, 'create']);
+
+    Route::get('/admin/dashboard/blog',[ArticleController::class, 'index']);
+    Route::get('/admin/dashboard/blog/create',[ArticleController::class, 'store']);
+    Route::get('/admin/dashboard/blog/{id}',[ArticleController::class, 'show']);
+
+    Route::delete('/blog/{id}',[ArticleController::class,'destroy']);
+    Route::get('/blog/{id}/ubah',[ArticleController::class,'update']);
 
     Route::post('/products', [ProductController::class, 'store']);
 
