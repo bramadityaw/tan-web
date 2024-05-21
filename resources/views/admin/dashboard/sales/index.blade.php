@@ -18,24 +18,21 @@
             <th scope="col" class="py-3 px-6">Nama Pelanggan</th>
             <th scope="col" class="py-3 px-6">Isi Keranjang</th>
             <th scope="col" class="py-3 px-6">Total Belanja</th>
-            <th scope="col" class="py-3 px-6">Verifikasi</th>
         </tr>
         </thead>
         <tbody>
         @if($sales->isNotEmpty())
+        @foreach($sales as $sale)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6">2024-04-16</td>
-            <td class="py-4 px-6">Adam Hawa</td>
+            <td class="py-4 px-6">{{ $sale->created_at }}</td>
+            <td class="py-4 px-6">{{ \App\Models\User::find($sale->user_id)->name }}</td>
             <td class="py-4 px-6">
                 <a class="rounded-full border border-gray-400 px-3 py-1"
                    href="/user?{user_id}/transaction?{user_id}">Lihat</a>
             </td>
-            <td class="py-4 px-6">Rp. 200.000</td>
-            <td class="py-4 px-6">
-                <img class="aspect-square w-4 float-left" src="/images/green-check.png" alt="Verified">
-                Berhasil
-            </td>
+            <td class="py-4 px-6">{{ rupiah($sale->total_bayar) }}</td>
         </tr>
+        @endforeach
         @else
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="py-4" colspan="5">
