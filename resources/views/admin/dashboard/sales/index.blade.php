@@ -16,7 +16,7 @@
         <tr>
             <th scope="col" class="py-3 px-6">Tanggal Transaksi</th>
             <th scope="col" class="py-3 px-6">Nama Pelanggan</th>
-            <th scope="col" class="py-3 px-6">Isi Keranjang</th>
+            <th scope="col" class="py-3 px-6">Detail</th>
             <th scope="col" class="py-3 px-6">Total Belanja</th>
         </tr>
         </thead>
@@ -24,11 +24,11 @@
         @if($sales->isNotEmpty())
         @foreach($sales as $sale)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td class="py-4 px-6">{{ $sale->created_at }}</td>
+            <td class="py-4 px-6">{{ tanggalIdn($sale->created_at, 'l, j F o, G:i')}}</td>
             <td class="py-4 px-6">{{ \App\Models\User::find($sale->user_id)->name }}</td>
             <td class="py-4 px-6">
                 <a class="rounded-full border border-gray-400 px-3 py-1"
-                   href="/user?{user_id}/transaction?{user_id}">Lihat</a>
+                   href="/admin/dashboard/sales/{{ $sale->id }}/order/{{ $sale->order_id }}">Lihat</a>
             </td>
             <td class="py-4 px-6">{{ rupiah($sale->total_bayar) }}</td>
         </tr>

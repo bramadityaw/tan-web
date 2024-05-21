@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Sales;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -37,9 +41,17 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Sales $sales, Order $order) : View
     {
-        //
+        $order_items = OrderItem::where('order_id', $order->id)->get();
+        $user = User::find($order->user_id);
+
+        return view('admin.dashboard.sales.show', [
+            "order" => $order,
+            "order_items" => $order_items,
+            "user" => $user,
+            "sales" => $sales,
+        ]);
     }
 
     /**
