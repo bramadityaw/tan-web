@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Sales;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -125,6 +126,12 @@ class VerifyOrderController extends Controller
 
             $order->is_verified = true;
             $order->save();
+
+            Sales::create([
+                'user_id' => $order->user_id,
+                'order_id' => $order->id,
+                'total_bayar' => $order->harga_total,
+            ]);
         }
 
         return redirect()->intended('/admin/dashboard');
