@@ -50,7 +50,7 @@ Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
 Route::middleware('auth')->group(function() {
 
     Route::get('/cart', [CartController::class, 'index']);
-    Route::post('/cart/{product}', [CartController::class, 'store'])->middleware('auth');
+    Route::post('/cart/{product}', [CartController::class, 'store']);
     Route::put('/cart/{cart}', [CartController::class, 'update']);
     Route::delete('/cart/{cart}', [CartController::class, 'destroy']);
 
