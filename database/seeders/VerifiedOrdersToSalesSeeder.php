@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Sales;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class VerifiedOrdersToSalesSeeder extends Seeder
 {
@@ -18,9 +19,12 @@ class VerifiedOrdersToSalesSeeder extends Seeder
 
         foreach ($verified_orders as $order)
         {
-            Sales::create([
+            DB::table('sales')->insert([
+               'created_at' => $order->updated_at,
+               'updated_at' => $order->updated_at,
                'order_id' => $order->id,
                'user_id' => $order->user_id,
+               'total_bayar' => $order->harga_total,
             ]);
         }
     }
