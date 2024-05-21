@@ -50,13 +50,20 @@ class ProductController extends Controller
                         . '.' . $request->file('gambar')->getClientOriginalExtension();
         $imageFilePath = $request->file('gambar')->storeAs('images', $imageFileName, 'public');
 
-        Product::create([
+        $product = new Product([
             'nama' => $request['nama_produk'],
             'deskripsi' => $request['deskripsi'],
             'harga' => $request['harga'],
             'stok' => $request['stok'],
             'thumbnail_url' => $imageFilePath,
         ]);
+
+        if ($request['is_online'])
+        {
+            $product->is_online = true;
+        }
+
+        $product->save();
 
         return redirect()->intended('/admin/dashboard/products');
     }
@@ -117,6 +124,13 @@ class ProductController extends Controller
             $product->thumbnail_url = $imageFilePath;
         } else {
             $product->thumbnail_url = $product->thumbnail_url;
+        }
+
+        if ($request->is_online)
+        {
+            $product->is_online = true;
+        } else {
+            $product->is_online = false;
         }
 
         $product->save();

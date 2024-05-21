@@ -37,7 +37,7 @@
               <div class="ml-4 w-2/5">
                 <label for="stok">Stok Awal</label>
                 <div class="flex">
-                  <button type="button" onclick="stok.value ++" class="border border-l-0 rounded-r px-3">
+                  <button type="button" onclick="stok.value ++" class="border border-r-0 rounded-r px-3">
                      <i class="fa-solid fa-plus"></i>
                   </button>
                   <input type="number" name="stok" id="stok" class=
@@ -55,8 +55,16 @@
             <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="deskripsi" id="deskripsi" cols="30" rows="6"></textarea>
           </div>
           <div class="md:col-span-5">
-            <label for="gambar">Gambar Produk</label>
-            <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="gambar" id="gambar">
+            <div class="flex items-center">
+                <div class="w-full">
+                    <label for="gambar">Gambar Produk</label>
+                    <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="gambar" id="gambar">
+                </div>
+                <div class="ml-4 w-2/5">
+                    <label for="is_online">Tampilkan di toko?</label>
+                    <input class="ml-4" type="checkbox" name="is_online" id="is_online">
+                </div>
+            </div>
           </div>
           <div class="md:col-span-5 mt-4">
             <button type="submit" class=

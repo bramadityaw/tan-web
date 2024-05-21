@@ -55,11 +55,18 @@
             <label for="deskripsi">Deskripsi Produk</label>
             <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="deskripsi" id="deskripsi" cols="30" rows="6">{{ $product->deskripsi }}</textarea>
           </div>
-          <div class="md:col-span-5">
-            <label for="gambar">Gambar Produk</label>
-            <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="gambar" id="gambar" value="{{ 'C:\\fakepath\\' . explode('/', $product->thumbnail_url)[1] }}">
-          </div>
-          <div class="md:col-span-5 mt-4">
+           <div class="md:col-span-5">
+            <div class="flex items-center">
+                <div class="w-full">
+                    <label for="gambar">Gambar Produk</label>
+                    <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="gambar" id="gambar" value="{{ 'C:\\fakepath\\' . explode('/', $product->thumbnail_url)[1] }}">
+                </div>
+                <div class="ml-4 w-2/5">
+                    <label for="is_online">Tampilkan di toko?</label>
+                    <input {{ $product->is_online ? 'checked' : '' }} class="ml-4" type="checkbox" name="is_online" id="is_online">
+                </div>
+            </div>
+          </div>          <div class="md:col-span-5 mt-4">
             <button type="submit" class=
             "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-end">
             Ubah</button>
