@@ -51,4 +51,7 @@ class Product extends Model
         'updated_at' => 'datetime',
     ];
 
+    protected $attributes = [
+        'is_online' => false,
+    ];
 }
