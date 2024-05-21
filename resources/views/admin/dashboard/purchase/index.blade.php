@@ -31,7 +31,7 @@ foreach ($purchases as $purchase) {
         @if($purchases->isNotEmpty())
         @foreach($purchases as $purchase)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="py-4 px-6">{{ (explode(' ', $purchase->created_at)[0]) }}</td>
+                <td class="py-4 px-6">{{ tanggalIdn($purchase->created_at, 'l, j F o, G:i')}}</td>
                 <td class="py-4 px-6">{{ $purchase->nama_barang }}</td>
                 <td class="py-4 px-6">{{ rupiah($purchase->harga_beli) }}</td>
                 <td class="py-4 px-6">{{ $purchase->qty }}</td>
