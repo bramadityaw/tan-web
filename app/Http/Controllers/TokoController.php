@@ -12,7 +12,9 @@ class TokoController extends Controller
     public function index() : View
     {
         return view('toko.index', [
-            "products" => DB::table('products')->paginate(16)
+            "products" => DB::table('products')
+                ->where('is_online', true)
+                ->paginate(16)
         ]);
     }
 
