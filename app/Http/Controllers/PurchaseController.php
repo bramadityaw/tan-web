@@ -16,7 +16,9 @@ class PurchaseController extends Controller
     public function index() : View
     {
         return view('admin.dashboard.purchase.index', [
-            "purchases" => DB::table('purchases')->paginate(5)
+            "purchases" => DB::table('purchases')
+                ->orderBy('created_at', 'desc')
+                ->paginate(5)
         ]);
     }
 

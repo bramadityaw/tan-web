@@ -21,7 +21,9 @@ class SalesController extends Controller
     public function index() : View
     {
         return view('admin.dashboard.sales.index', [
-            "sales" => DB::table('sales')->paginate(5)
+            "sales" => DB::table('sales')
+                ->orderBy('created_at', 'desc')
+                ->paginate(5)
         ]);
     }
 

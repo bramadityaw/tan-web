@@ -18,7 +18,9 @@ class ProductController extends Controller
     public function index() : View
     {
         return view('admin.dashboard.products.index', [
-            "products" => DB::table('products')->paginate(5)
+            "products" => DB::table('products')
+                ->orderBy('created_at', 'desc')
+                ->paginate(5)
         ]);
     }
 
