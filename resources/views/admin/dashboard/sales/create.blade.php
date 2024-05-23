@@ -23,9 +23,13 @@
                     @endforeach
                 </select>
                 <div class="flex mx-4 w-1/2">
-                   <input type="number" name="qty" id="qty" class=
-                    "border mt-1 px-4 w-full bg-gray-50" value="1" min=
-                    "1">
+                    <button type="button" onclick="plus(this)" class="border border-r-0 rounded-r px-3">
+                         <i class="fa-solid fa-plus"></i>
+                    </button>
+                        <input type="number" name="qty" id="qty" class="border mt-1 px-4 w-full bg-gray-50" value="1" min="1">
+                    <button type="button" onclick="minus(this)" class="border border-r-0 rounded-r px-3">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
                 </div>
                 <button onclick="tambahPesanan()" class="flex items-center justify-center bg-[#1B3C73] rounded-md w-1/6 aspect-square font-semibold text-white text-center text-md px-2 py-1" type="button">
                     <i class="fa-solid fa-plus block"></i>
@@ -55,9 +59,15 @@
             <option value="{{ $p->id }}">{{ $p->nama }} ({{ rupiah($p->harga) }})</option>\
             @endforeach\
             </select><div class="flex mx-4 w-1/2">
+                    <button type="button" onclick="plus(this)" class="border border-r-0 rounded-r px-3">
+                         <i class="fa-solid fa-plus"></i>
+                    </button>
                     <input type="number" name="qty_${count}" id="qty" class=
                     "border mt-1 px-4 w-full bg-gray-50" value="1" min=
                     "1">
+                    <button type="button" onclick="minus(this)" class="border border-r-0 rounded-r px-3">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
                 </div>
                 <button onclick="kurangPesanan(this)" class="flex items-center justify-center bg-[#1B3C73] rounded-md w-1/6 aspect-square font-semibold text-white text-center text-md px-2 py-1" type="button">
                     <i class="fa-solid fa-trash block"></i>
@@ -67,6 +77,18 @@
 
     function kurangPesanan(button) {
         button.parentNode.remove();
+    }
+
+    function plus(button) {
+        let qty = button.parentNode.querySelector('#qty');
+        console.log(qty, qty.value);
+        qty.value = Number(qty.value) + 1;
+    }
+
+    function minus(button) {
+        let qty = button.parentNode.querySelector('#qty');
+        console.log(qty, qty.value);
+        qty.value = Number(qty.value) > 1 ? Number(qty.value) - 1 : 1;
     }
 </script>
 @endpush
