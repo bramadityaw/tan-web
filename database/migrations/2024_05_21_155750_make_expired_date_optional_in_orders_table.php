@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,9 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dateTime('expired_date')->nullable(true)->change();
-        });
+	  DB::statement('alter table "orders" alter column "expired_date" type timestamp(0) without time zone, alter column "expired_date" drop not null, alter column"expired_date" drop default');
+//        Schema::table('orders', function (Blueprint $table) {
+//            $table->dateTime('expired_date')->nullable(true)->change();
+//        });
     }
 
     /**
