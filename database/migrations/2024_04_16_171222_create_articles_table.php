@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string("judul",150);
+            $table->string("judul");
             $table->text("konten");
-            $table->text("thumbnail_url");
+            $table ->enum('type',['kategori_1', 'kategori_2','kategori_3']);
+            $table->string("thumbnail_url")->nullable();
             $table->timestamps();
         });
     }

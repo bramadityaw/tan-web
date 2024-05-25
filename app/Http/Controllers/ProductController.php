@@ -21,6 +21,7 @@ class ProductController extends Controller
             "products" => DB::table('products')->paginate(5)
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.

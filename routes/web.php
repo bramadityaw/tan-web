@@ -65,10 +65,10 @@ Route::middleware('auth')->group(function() {
 
 });
 
-Route::get('/review', [ReviewController::class, 'create']);
-Route::post('/review', [ReviewController::class, 'store']);
+// Route::get('/review', [ReviewController::class, 'create']);
+// Route::post('/review', [ReviewController::class, 'store']);
 
-Route::get('/admin/dashboard/review/{review:slug}', [ReviewController::class, 'show']);
+// Route::get('/admin/dashboard/review/{review:slug}', [ReviewController::class, 'show']);
 
 Route::middleware('admin')->group(function() {
 
@@ -90,16 +90,6 @@ Route::middleware('admin')->group(function() {
 
     Route::get('/admin/dashboard/products', [ProductController::class, 'index']);
     Route::get('/admin/dashboard/products/create', [ProductController::class, 'create']);
-
-    // Article routes
-    Route::get('/admin/dashboard/blog', [ArticleController::class, 'index']);
-    Route::get('/admin/dashboard/blog/create', [ArticleController::class, 'create']);
-    Route::post('/admin/dashboard/blog', [ArticleController::class, 'store']);
-    Route::get('/admin/dashboard/blog/{id}', [ArticleController::class, 'show']);
-    Route::get('/admin/dashboard/blog/{id}/edit', [ArticleController::class, 'edit']);
-    Route::put('/admin/dashboard/blog/{id}', [ArticleController::class, 'update']);
-    Route::delete('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy']);
-
     Route::post('/products', [ProductController::class, 'store']);
 
     Route::get('/product/{id}/ubah', [ProductController::class, 'edit']);
@@ -107,9 +97,16 @@ Route::middleware('admin')->group(function() {
 
     Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
-    Route::get('/admin/dashboard/blog', function () {
-        return view('admin.dashboard.blog');
-    });
+     // Article routes
+     Route::get('/admin/dashboard/blog', [ArticleController::class, 'index'])->name('blog.index');
+     Route::get('/admin/dashboard/blog/create', [ArticleController::class, 'create'])->name('blog.create');
+     Route::post('/admin/dashboard/blog', [ArticleController::class, 'store']);
+     Route::get('/admin/dashboard/blog/{id}', [ArticleController::class, 'show']);
+     Route::get('/admin/dashboard/blog/{id}/edit', [ArticleController::class, 'edit'])->name('blog.edit');
+     Route::put('/admin/dashboard/blog/{id}', [ArticleController::class, 'update']);
+    //  Route::delete('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy'])->name('blog.destroy');
+     Route::delete('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy'])->name('blog.destroy');
+
     Route::get('/admin/dashboard/users', function () {
         return view('admin.dashboard.users');
     });
