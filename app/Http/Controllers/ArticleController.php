@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -145,9 +146,10 @@ class ArticleController extends Controller
 
     public function destroy($id)
 {
+
     // Find the article by its ID
     $article = Article::findOrFail($id);
-
+    
     // Delete the thumbnail image if it exists
     if ($article->thumbnail_url) {
         $imagePath = public_path('images1') . '/' . $article->thumbnail_url;

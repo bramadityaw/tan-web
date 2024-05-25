@@ -72,7 +72,7 @@ Route::middleware('auth')->group(function() {
 
 Route::middleware('admin')->group(function() {
 
-    Route::permanentRedirect('/admin', '/admin/dashboard');
+    // Route::permanentRedirect('/admin', '/admin/dashboard');
 
     Route::get('/admin/dashboard', [DashboardController::class, 'view']);
 
@@ -105,7 +105,7 @@ Route::middleware('admin')->group(function() {
      Route::get('/admin/dashboard/blog/{id}/edit', [ArticleController::class, 'edit'])->name('blog.edit');
      Route::put('/admin/dashboard/blog/{id}', [ArticleController::class, 'update']);
     //  Route::delete('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy'])->name('blog.destroy');
-     Route::delete('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy'])->name('blog.destroy');
+     Route::get('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy'])->name('blog.destroy');
 
     Route::get('/admin/dashboard/users', function () {
         return view('admin.dashboard.users');

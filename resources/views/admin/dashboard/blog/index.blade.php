@@ -70,11 +70,11 @@
             <form method="dialog">
                 <button type="submit" class="rounded-md px-3 py-2 bg-blue-500">Batal</button>
             </form>
-            <form id="deleteForm" method="POST">
+            {{-- <form id="deleteForm" method="POST">
                 @csrf
-                @method('DELETE')
-                <button id="confirmDeleteButton" type="submit" class="rounded-md px-3 py-2 bg-red-500">Hapus</button>
-            </form>
+                @method('DELETE') --}}
+                <button id="confirmDeleteButton" type="button" class="rounded-md px-3 py-2 bg-red-500">Hapus</button>
+            {{-- </form> --}}
         </div>
     </div>
 </dialog>
@@ -94,10 +94,11 @@ function deleteArticle(button) {
 
 confirmDeleteButton.addEventListener("click", function (e) {
     e.preventDefault();
+    console.log('article id:',articleIdToDelete);
     if (articleIdToDelete) {
         const uri = `/admin/dashboard/blog/${articleIdToDelete}`;
         fetch(uri, {
-            method: 'DELETE',
+            // method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': token,
                 'Content-Type': 'application/json',
