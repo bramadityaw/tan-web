@@ -11,9 +11,7 @@ class Article extends Model
     protected $fillable = [
         "judul",
         "konten",
-        "type",
+        "kategori",
         "thumbnail_url",
     ];
-    // protected $guarded = [];
-
 }
