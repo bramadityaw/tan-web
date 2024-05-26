@@ -9,10 +9,9 @@ class Article extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "judul_artikel",
-        "image",
+        "judul",
+        "konten",
         "kategori",
-        "tanggal_publish",
+        "thumbnail_url",
     ];
-
 }

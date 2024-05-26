@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -65,14 +66,14 @@ Route::middleware('auth')->group(function() {
 
 });
 
-Route::get('/review', [ReviewController::class, 'create']);
-Route::post('/review', [ReviewController::class, 'store']);
+// Route::get('/review', [ReviewController::class, 'create']);
+// Route::post('/review', [ReviewController::class, 'store']);
 
-Route::get('/admin/dashboard/review/{review:slug}', [ReviewController::class, 'show']);
+// Route::get('/admin/dashboard/review/{review:slug}', [ReviewController::class, 'show']);
 
 Route::middleware('admin')->group(function() {
 
-    Route::permanentRedirect('/admin', '/admin/dashboard');
+    // Route::permanentRedirect('/admin', '/admin/dashboard');
 
     Route::get('/admin/dashboard', [DashboardController::class, 'view']);
 
@@ -91,20 +92,27 @@ Route::middleware('admin')->group(function() {
 
     Route::get('/admin/dashboard/products', [ProductController::class, 'index']);
     Route::get('/admin/dashboard/products/create', [ProductController::class, 'create']);
-
-    // Article routes
-    Route::get('/admin/dashboard/blog', [ArticleController::class, 'index']);
-    Route::get('/admin/dashboard/blog/create', [ArticleController::class, 'create']);
-    Route::post('/admin/dashboard/blog', [ArticleController::class, 'store']);
-    Route::get('/admin/dashboard/blog/{id}', [ArticleController::class, 'show']);
-    Route::get('/admin/dashboard/blog/{id}/edit', [ArticleController::class, 'edit']);
-    Route::put('/admin/dashboard/blog/{id}', [ArticleController::class, 'update']);
-    Route::delete('/admin/dashboard/blog/{id}', [ArticleController::class, 'destroy']);
-
     Route::post('/products', [ProductController::class, 'store']);
 
     Route::get('/product/{id}/ubah', [ProductController::class, 'edit']);
     Route::put('/product/{id}', [ProductController::class, 'update']);
 
     Route::delete('/product/{id}', [ProductController::class, 'destroy']);
+<<<<<<< HEAD
+=======
+
+    Route::get('/admin/dashboard/blog', [ArticleController::class, 'index'])->name('blog.index');
+    Route::get('/admin/dashboard/blog/article/create', [ArticleController::class, 'create'])->name('article.create');
+    Route::post('/article', [ArticleController::class, 'store']);
+    Route::get('/admin/dashboard/blog/article/{article}', [ArticleController::class, 'show'])->name('article.show');
+    Route::get('/admin/dashboard/blog/article/{article}/edit', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('/article/{article}', [ArticleController::class, 'update']);
+    Route::delete('/article/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
+    Route::get('/admin/dashboard/blog/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::post('/kategori', [ArticleController::class, 'store']);
+    Route::get('/admin/dashboard/blog/kategori/{kategori}', [KategoriController::class, 'show'])->name('kategori.show');
+    Route::put('/kategori/{kategori}', [KategoriController::class, 'update']);
+    Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name('article.destroy');
+>>>>>>> blog-admin
 });

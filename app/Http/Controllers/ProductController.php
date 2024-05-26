@@ -23,6 +23,7 @@ class ProductController extends Controller
                 ->paginate(5)
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
