@@ -8,14 +8,17 @@
 </div>
 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-12 mx-auto w-fit min-h-[368px]">
     <h1 class="text-2xl font-semibold mb-4">Tambah Artikel</h1>
-    <form action="/admin/dashboard/blog" method="post" enctype="multipart/form-data">
+    @if($errors->any())
+    {{ $errors }}
+    @endif
+    <form action="/article" method="post" enctype="multipart/form-data">
     @csrf
     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-2">
       <div class="lg:col-span-2">
         <div class=
         "grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
           <div class="md:col-span-5">
-            <label for="judul">Judul Artikel</label>
+            <label for="judul">Judul</label>
             <input type="text" name="judul" id=
             "judul" class=
             "h-10 border mt-1 rounded px-4 w-full bg-gray-50"
@@ -23,18 +26,19 @@
           </div>
           <div class="md:col-span-5">
             <label for="kategori">Kategori</label>
-            <select name="type" id="kategori" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
-                <option value="kategori_1">Kategori_1</option>
-                <option value="kategori_2">Kategori_2</option>
-                <option value="kategori_3">Kategori_3</option>
+            <select name="kategori" id="kategori" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+            <option>Pilih kategori</option>
+            @foreach($kategori as $k)
+                <option value="{{ $k->id }}">{{ $k->value }}</option>
+            @endforeach
             </select>
           </div>
           <div class="md:col-span-5">
-            <label for="deskripsi">Deskripsi Artikel</label>
+            <label for="konten">Konten</label>
             <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="konten" id="konten" cols="30" rows="6"></textarea>
           </div>
           <div class="md:col-span-5">
-            <label for="gambar">Gambar Produk</label>
+            <label for="thumbnail_url">Gambar Produk</label>
             <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="thumbnail_url" id="thumbnail_url" value="">
           </div>
         <div class="md:col-span-5 mt-4">

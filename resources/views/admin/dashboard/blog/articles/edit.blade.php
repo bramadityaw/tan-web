@@ -9,7 +9,7 @@
 </div>
 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-12 mx-auto w-fit min-h-[368px]">
     <h1 class="text-2xl font-semibold mb-4">Ubah Artikel</h1>
-    <form action="/admin/dashboard/blog/{{ $article->id }}" method="post" enctype="multipart/form-data">
+    <form action="/article/{{ $article->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-2">
@@ -22,9 +22,9 @@
                     <div class="md:col-span-5">
                         <label for="kategori">Kategori</label>
                         <select name="type" id="kategori" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
-                            <option value="kategori_1" {{ $article->type == 'kategori_1' ? 'selected' : '' }}>Kategori 1</option>
-                            <option value="kategori_2" {{ $article->type == 'kategori_2' ? 'selected' : '' }}>Kategori 2</option>
-                            <option value="kategori_3" {{ $article->type == 'kategori_3' ? 'selected' : '' }}>Kategori 3</option>
+                        @foreach($kategori as $k)
+                            <option {{ $article->kategori == $k->id ? 'selected' : '' }} value="{{ $k->id }}">{{ $k->value }}</option>
+                        @endforeach
                         </select>
                     </div>
                     <div class="md:col-span-5">

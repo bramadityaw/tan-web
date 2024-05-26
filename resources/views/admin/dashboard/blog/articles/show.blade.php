@@ -1,0 +1,22 @@
+@extends('layouts.admin')
+@section('main')
+<div class="flex justify-between mb-4">
+    <a class="flex items-center w-fit text-center text-sm md:text-md px-2 py-1" href="/admin/dashboard/blog/">
+        <i class="fa-solid fa-arrow-left border border-black rounded-full p-1 mr-4 "></i>
+        <p>Kembali</p>
+    </a>
+</div>
+<div class="w-5/6 sm:w-3/5 md:w-1/2 mx-auto">
+    <div class="bg-white px-5 py-4 rounded-md mb-4">
+        <div class="flex mb-4 items-center">
+            <div class="flex flex-col justify-between w-full">
+                <img class="max-h-[128px]" src="/storage/images/{{ $article->thumbnail_url }}" alt="{{ $article->judul }}">
+                <h1 class="flex justify-between">Judul: <span class="font-bold text-lg">{{ $article->judul }}</span></h1>
+                <p class="flex justify-between">Kategori: <span >{{ \App\Models\Kategori::find($article->kategori_id)->value }}</span></p>
+                <span class="mt-1">Konten:</span>
+                <textarea class="rounded-md text-sm px-3 py-2" cols="30" rows="10" disabled>{{ trim($article->konten) }}</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

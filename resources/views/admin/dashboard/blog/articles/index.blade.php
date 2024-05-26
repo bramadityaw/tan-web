@@ -4,18 +4,23 @@
 <section>
     <div class="flex justify-between my-4">
         <h1 class="text-2xl font-semibold">Artikel</h1>
-        <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="{{ route('blog.create') }}">
-            <i class="fa-solid fa-plus block text-md mr-4"></i>
-            <span class="inline-block mr-2">Tambah</span>
-        </a>
+        <span class="flex gap-4">
+            <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="{{ route('kategori.index') }}">
+                <i class="fa-solid fa-cog block text-md mr-4"></i>
+                <span class="inline-block mr-2">Atur Kategori</span>
+            </a>
+            <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md px-2 py-1" href="{{ route('article.create') }}">
+                <i class="fa-solid fa-plus block text-md mr-4"></i>
+                <span class="inline-block mr-2">Tambah</span>
+            </a>
+        </span>
     </div>
     <table class="w-full text-sm text-left my-4">
         <thead class="text-xs uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="py-3 px-6">Judul Artikel</th>
-                <th scope="col" class="py-3 px-6 flex justify-center items-center h-full text-center">Gambar</th>
-                <th scope="col" class="py-3 px-6">Konten</th>
                 <th scope="col" class="py-3 px-6">Kategori</th>
+                <th scope="col" class="py-3 px-6">Detail</th>
                 <th scope="col" class="py-3 px-6">Tanggal Publish</th>
                 <th scope="col" class="py-3 px-7 flex justify-center items-center h-full text-center">Aksi</th>
             </tr>
@@ -23,19 +28,14 @@
         <tbody>
             @forelse($articles as $article)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="py-4 px-6 text-white">{{ $article->judul }}</td>
-                <td>
-                    @if($article->thumbnail_url)
-                    <img src="{{ asset('images1/'. $article->thumbnail_url) }}" alt="image" width="50px">
-                    @else
-                    No Image Available
-                    @endif
+                <td class="py-4 px-6">{{ $article->judul }}</td>
+                <td class="py-4 px-6">{{ \App\Models\Kategori::find($article->kategori_id)->value }}</td>
+                <td class="py-4 px-6">
+                    <a class="rounded-xl border border-gray-700 px-2 py-1" href="{{ route('article.show', $article) }}">Lihat</a>
                 </td>
-                <td class="py-4 px-6 text-white">{{ $article->konten }}</td>
-                <td class="py-4 px-6 text-white">{{ $article->type }}</td>
-                <td class="py-4 px-6 text-white">{{ $article->created_at }}</td>
+                <td class="py-4 px-6">{{ tanggalIdn($article->created_at, 'l, j F o') }}</td>
                 <td class="py-4 px-6 text-white text-center">
-                    <a href="{{ route('blog.edit', $article->id) }}" class="inline-block w-fit rounded-md px-3 py-2 bg-green-500">
+                    <a href="{{ route('article.edit', $article->id) }}" class="inline-block w-fit rounded-md px-3 py-2 bg-green-500">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>Ubah</span>
                     </a>
@@ -47,9 +47,9 @@
             </tr>
             @empty
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="py-4" colspan="5">
+                <td class="py-4" colspan="6">
                     <h1 class="text-xl text-center text-gray-400 font-semibold py-12">Belum ada apa-apa di sini...</h1>
-                    <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md mx-auto px-2 py-1" href="{{ route('blog.create') }}">
+                    <a class="flex items-center bg-[#1B3C73] rounded-md w-fit font-semibold text-white text-center text-sm md:text-md mx-auto px-2 py-1" href="{{ route('article.create') }}">
                         <i class="fa-solid fa-plus block text-md mr-4"></i>
                         <span class="inline-block mr-2">Tambah</span>
                     </a>
@@ -94,25 +94,21 @@ function deleteArticle(button) {
 
 confirmDeleteButton.addEventListener("click", function (e) {
     e.preventDefault();
-    console.log('article id:',articleIdToDelete);
+    const form = new FormData();
+    form.append('_token', token);
+
     if (articleIdToDelete) {
-        const uri = `/admin/dashboard/blog/${articleIdToDelete}`;
+        const uri = `/article/${articleIdToDelete}`;
         fetch(uri, {
-            // method: 'DELETE',
+            method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': token,
                 'Content-Type': 'application/json',
             },
+            body: form,
         })
-        .then(response => {
-            if (response.ok) {
-                deleteDialog.close();
-                location.reload();
-            } else {
-                console.error('Error deleting article');
-            }
-        })
-        .catch(e => console.error(e));
+        deleteDialog.close();
+        location.reload();
     }
 });
 </script>
