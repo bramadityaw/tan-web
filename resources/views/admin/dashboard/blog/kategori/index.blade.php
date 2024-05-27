@@ -17,14 +17,14 @@
         </section>
         <section id="kategori" class="min-h-[35dvh]">
             @forelse($kategori as $k)
-            <div class="flex gap-4 mb-4 justify-between">
+            <div data-kategori="{{ $k->id }}" class="flex gap-4 mb-4 justify-between">
                 <input class="w-full px-2 py-1 bg-gray-100 border border-gray-300" type="text" name="kategori" value="{{ $k->value ?? '' }}" disabled>
-                <div class="text-white max-w-[155px] flex gap-4">
-                    <button data-kategori="{{ $k->id }}" onclick="editKategori(this)" class="rounded-md flex text-sm items-center gap-2 px-2 py-1 bg-green-500 w-16">
+                <div class="text-white min-w-1/3 flex gap-4">
+                    <button type="button" data-kategori="{{ $k->id }}" onclick="editKategori(this)" class="rounded-md flex justify-between text-sm items-center gap-2 px-2 py-1 bg-green-500 w-16">
                         <i class="fa-solid fa-pen-to-square"></i>
-                        <span>Edit</span>
+                        <span class="w-full">Edit</span>
                     </button>
-                    <button data-kategori="{{ $k->id }}" onclick="deleteKategori(this)" class="rounded-md flex items-center gap-2 text-sm px-2 py-1 bg-red-500">
+                    <button data-kategori="{{ $k->id }}" onclick="deleteKategori(this)" class="rounded-md flex justify-between items-center gap-2 text-sm px-2 py-1 bg-red-500">
                         <i class="fa-solid fa-trash"></i>
                         <span>Hapus</span>
                     </button>
@@ -180,6 +180,74 @@ function cancel(button) {
         return
     }
     button.parentNode.parentNode.remove();
+}
+
+function editKategori(button) {
+    editing = true;
+    const kategoriRow = button.parentNode.parentNode;
+    const field = kategoriRow.querySelector('input');
+    field.disabled = false;
+    field.focus();
+    field.select();
+    editMode(kategoriRow);
+}
+
+function editMode(row) {
+    const originalRow = row.innerHTML;
+    row.classList.remove('w-16');
+    const submitButton = row.querySelector('button.bg-green-500');
+
+    const submitIcon = submitButton.querySelector('i');
+    submitIcon.classList.remove('fa-pen-to-square');
+    submitIcon.classList.add('fa-check');
+
+    const submitText = row.querySelector('span');
+    submitText.textContent = 'Ubah';
+
+    const cancelButton = row.querySelector('button.bg-red-500');
+    cancelButton.classList.remove('gap-2');
+    cancelButton.classList.add('gap-4');
+
+    const cancelIcon = cancelButton.querySelector('i');
+    cancelIcon.classList.remove('fa-trash');
+    cancelIcon.classList.add('fa-close');
+
+    const cancelText = cancelButton.querySelector('span');
+    cancelText.textContent = 'Batal';
+
+    cancelButton.onclick = null;
+    cancelButton.addEventListener('click', e => cancelEdit(e.target, originalRow));
+    submitButton.onclick = null;
+    submitButton.addEventListener('click', e => submitEdit(e.target,
+                                                row.querySelector('input').value))
+}
+
+function submitEdit(button, value) {
+    const kategoriId = button.dataset.kategori;
+    const url = `/kategori/${kategoriId}`;
+
+    console.log(kategoriId);
+    const form = new FormData;
+    form.append('_token', token);
+    form.append('_method', 'PUT');
+    form.append('kategori', value);
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            'X-CSRF-TOKEN': token,
+            'Accept': 'multipart/form-data',
+        },
+        body: form,
+    })
+
+}
+
+function cancelEdit(button, originalRow) {
+    const row = button.children.length === 0
+        ? button.parentNode.parentNode.parentNode
+        : button.parentNode.parentNode;
+    row.innerHTML = originalRow;
 }
 </script>
 @endpush
