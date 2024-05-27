@@ -81,13 +81,11 @@
 
     function plus(button) {
         let qty = button.parentNode.querySelector('#qty');
-        console.log(qty, qty.value);
         qty.value = Number(qty.value) + 1;
     }
 
     function minus(button) {
         let qty = button.parentNode.querySelector('#qty');
-        console.log(qty, qty.value);
         qty.value = Number(qty.value) > 1 ? Number(qty.value) - 1 : 1;
     }
 </script>
