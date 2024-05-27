@@ -36,6 +36,18 @@ function admin($url = '') {
 
         profilePic?.addEventListener("click", toggleProfileOpts);
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', e => {
+    const initialWindowHeight = window.innerHeight;
+    const main = document.querySelector('main');
+    const footer = document.querySelector('footer');
+    const header = document.querySelector('header');
+    main.style.minHeight = `${initialWindowHeight - (footer.offsetHeight + header.offsetHeight)}px`;
+    window.addEventListener('resize', e => {
+        main.style.minHeight = `${window.innerHeight - (footer.offsetHeight + header.offsetHeight)}px`;
+    });
+});
+</script>
 
 </body>
 </html>
