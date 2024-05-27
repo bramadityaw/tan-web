@@ -15,4 +15,8 @@ class Kategori extends Model
      * @var string
      */
     protected $table = 'kategori';
+
+    protected $fillable = [
+        'value',
+    ];
 }
