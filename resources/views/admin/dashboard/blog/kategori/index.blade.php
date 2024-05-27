@@ -36,9 +36,50 @@
         </section>
     </div>
 </div>
+<dialog id="deleteDialog" class="border border-[#1B3C73] rounded-md p-4 w-4/5 md:w-1/6">
+    <div class="text-center">
+        <button class="float-end" type="button" onclick="deleteDialog.close()">
+            <i class="fa-solid fa-times text-lg"></i>
+        </button>
+        <p>Hapus kategori?</p>
+        <img class="aspect-auto w-2/3 mx-auto my-4" src="{{ asset('/images/question.png') }}" alt="Tanda Tanya">
+        <div class="flex flex-row justify-around text-white">
+            <form method="dialog">
+                <button type="submit" class="rounded-md px-3 py-2 bg-blue-500">Batal</button>
+            </form>
+            <button type="button" class="rounded-md px-3 py-2 bg-red-500">Hapus</button>
+        </div>
+    </div>
+</dialog>
 @endsection
 
 @push('scripts')
+<script>
+const deleteDialog = document.querySelector("#deleteDialog");
+const deleteButton = deleteDialog.querySelector('form[method="dialog"] + button[type="button"]');
+
+function deleteKategori(kategori) {
+    deleteDialog.showModal();
+    const id = kategori.dataset.kategori;
+    const uri = `/kategori/${id}`;
+
+    const form = new FormData;
+    form.append('_token', token);
+
+    deleteButton.addEventListener("click", e => {
+        fetch(uri, {
+            method: "DELETE",
+            headers: {
+                'X-CSRF-TOKEN': token,
+                'Accept': 'multipart/form-data',
+            },
+            body: form,
+        });
+        deleteDialog.close();
+        location.reload();
+    });
+}
+</script>
 <script>
 const kategori = document.querySelector('#kategori');
 const token = document.querySelector('input[name="_token"]').value;
