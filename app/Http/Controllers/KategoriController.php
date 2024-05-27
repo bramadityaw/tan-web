@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class KategoriController extends Controller
 {
     public function index() : View
     {
-        $kategori = Kategori::all();
+        $kategori = DB::table('kategori')->orderBy('updated_at', 'desc')
+                                         ->get();
         return view('admin.dashboard.blog.kategori.index', ['kategori' => $kategori]);
     }
 
