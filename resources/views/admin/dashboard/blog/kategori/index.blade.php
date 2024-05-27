@@ -241,6 +241,7 @@ function submitEdit(button, value) {
         },
         body: form,
     })
+    location.reload();
 }
 
 function cancelEdit(button, originalRow) {
