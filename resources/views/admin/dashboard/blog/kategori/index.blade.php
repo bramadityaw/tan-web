@@ -133,8 +133,12 @@ function createPlaceholder() {
 }
 
 function cancel(button) {
-    button.parentNode.parentNode.remove();
     editing = false;
+    if (button.children.length === 0) {
+        button.parentNode.parentNode.parentNode.remove();
+        return
+    }
+    button.parentNode.parentNode.remove();
 }
 </script>
 @endpush
