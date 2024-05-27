@@ -223,10 +223,11 @@ function editMode(row) {
 }
 
 function submitEdit(button, value) {
-    const kategoriId = button.dataset.kategori;
+    const kategoriId = button.children.length === 0
+        ? button.parentNode.dataset.kategori
+        : button.dataset.kategori;
     const url = `/kategori/${kategoriId}`;
 
-    console.log(kategoriId);
     const form = new FormData;
     form.append('_token', token);
     form.append('_method', 'PUT');
@@ -240,7 +241,6 @@ function submitEdit(button, value) {
         },
         body: form,
     })
-
 }
 
 function cancelEdit(button, originalRow) {
