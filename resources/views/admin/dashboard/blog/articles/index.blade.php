@@ -15,6 +15,8 @@
             </a>
         </span>
     </div>
+    <div class="w-full relative flex flex-col flex-1">
+    <div class="relative overflow-y-auto">
     <table class="w-full text-sm text-left my-4">
         <thead class="text-xs uppercase bg-gray-50">
             <tr>
@@ -58,6 +60,8 @@
             @endforelse
         </tbody>
     </table>
+    </div>
+    </div>
 </section>
 <dialog id="deleteDialog" class="border border-[#1B3C73] rounded-md p-4 w-4/5 md:w-1/6">
     <div class="text-center">

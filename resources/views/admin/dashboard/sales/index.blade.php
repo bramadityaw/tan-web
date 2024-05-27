@@ -11,6 +11,8 @@
             <span class="inline-block mr-2">Catat</span>
         </a>
     </div>
+    <div class="w-full relative flex flex-col flex-1">
+    <div class="relative overflow-y-auto">
     <table class="w-full text-sm text-left my-4">
         <thead class="text-xs uppercase bg-gray-50">
         <tr>
@@ -46,6 +48,8 @@
         @endif
         </tbody>
     </table>
+    </div>
+    </div>
     {{ $sales->links() }}
 </section>
 @endsection
