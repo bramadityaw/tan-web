@@ -98,9 +98,6 @@ Route::middleware('admin')->group(function() {
     Route::put('/product/{id}', [ProductController::class, 'update']);
 
     Route::delete('/product/{id}', [ProductController::class, 'destroy']);
-<<<<<<< HEAD
-=======
-
     Route::get('/admin/dashboard/blog', [ArticleController::class, 'index'])->name('blog.index');
     Route::get('/admin/dashboard/blog/article/create', [ArticleController::class, 'create'])->name('article.create');
     Route::post('/article', [ArticleController::class, 'store']);
@@ -110,9 +107,8 @@ Route::middleware('admin')->group(function() {
     Route::delete('/article/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
 
     Route::get('/admin/dashboard/blog/kategori', [KategoriController::class, 'index'])->name('kategori.index');
-    Route::post('/kategori', [ArticleController::class, 'store']);
+    Route::post('/kategori', [KategoriController::class, 'store']);
     Route::get('/admin/dashboard/blog/kategori/{kategori}', [KategoriController::class, 'show'])->name('kategori.show');
     Route::put('/kategori/{kategori}', [KategoriController::class, 'update']);
     Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name('article.destroy');
->>>>>>> blog-admin
 });
