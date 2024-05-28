@@ -1,4 +1,3 @@
-</main>
 <footer>
     <div class="bg-[#504B47] px-12 py-6 text-white">
         <div class="sm:grid sm:grid-cols-4 sm:gap-x-4">

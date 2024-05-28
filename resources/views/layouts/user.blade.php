@@ -4,6 +4,7 @@
 
 @yield('main')
 
+</main>
 @include('footer')
 @section('scripts')
     <script>
