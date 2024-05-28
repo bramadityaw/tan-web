@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -47,6 +48,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/toko', [TokoController::class, 'index']);
 Route::get('/toko/search', [TokoController::class, 'search']);
 Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/topik', [BlogController::class, 'category'])->name('blog.category');
+Route::get('/blog/search', [BlogController::class, 'search']);
+Route::get('/blog/{article:slug}', [BlogController::class, 'show']);
 
 Route::middleware('auth')->group(function() {
 
