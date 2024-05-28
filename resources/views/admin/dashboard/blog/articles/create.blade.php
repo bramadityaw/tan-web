@@ -38,8 +38,9 @@
             <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="konten" id="konten" cols="30" rows="6"></textarea>
           </div>
           <div class="md:col-span-5">
-            <label for="thumbnail_url">Gambar Produk</label>
+            <label for="thumbnail_url">Thumbnail Artikel</label>
             <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="thumbnail_url" id="thumbnail_url" value="">
+            <p class="text-sm text-red-600 mt-4">* Dimensi thumbnail maksimal 450x300</p>
           </div>
         <div class="md:col-span-5 mt-4">
             <button type="submit" class=
