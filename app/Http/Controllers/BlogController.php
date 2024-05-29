@@ -28,6 +28,7 @@ class BlogController extends Controller
                 ->orderBy('updated_at', 'desc')
                 ->paginate(4),
             "count" => Article::all()->count(),
+            "highlights" => DB::table('articles')->limit(4)->get(),
         ]);
     }
 
@@ -56,6 +57,7 @@ class BlogController extends Controller
                     ];
                 }),
             "count" => Article::all()->count(),
+            "highlights" => DB::table('articles')->limit(4)->get(),
         ]);
     }
 
@@ -80,6 +82,7 @@ class BlogController extends Controller
                     ];
                 }),
             "count" => Article::all()->count(),
+            "highlights" => DB::table('articles')->limit(4)->get(),
         ]);
     }
 
@@ -102,6 +105,7 @@ class BlogController extends Controller
                     ];
                 }),
             "count" => Article::all()->count(),
+            "highlights" => Article::all(),
         ]);
     }
     //

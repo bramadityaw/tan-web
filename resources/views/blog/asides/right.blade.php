@@ -9,12 +9,12 @@
             </form>
         </div>
         <h1 class="font-semibold text-lg my-4">Artikel Sorotan</h1>
-        @foreach($articles as $article)
+        @foreach($highlights as $highlight)
         <div class="overflow-y-auto max-h-[60dvh]">
             <div class="rounded-md bg-white text-black mb-4 p-3">
                 <div class="flex gap-4">
-                    <h1 class="flex items-center">{{ ucwords($article->judul) }}</h1>
-                    <img class="max-w-[115px] aspect-auto" src="/storage/images/{{ $article->thumbnail_url }}" alt="">
+                    <h1 class="flex items-center">{{ ucwords($highlight->judul) }}</h1>
+                    <img class="max-w-[115px] aspect-auto" src="/storage/images/{{ $highlight->thumbnail_url }}" alt="">
                 </div>
             </div>
         </div>
