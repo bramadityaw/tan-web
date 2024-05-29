@@ -7,6 +7,7 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use League\CommonMark\CommonMarkConverter;
 
 class BlogController extends Controller
 {
@@ -85,11 +86,11 @@ class BlogController extends Controller
 
     public function show(Article $article) : View
     {
+        $converter = new CommonMarkConverter();
+        $konten = $converter->convert($article->konten);
+
         return view('blog.show', [
             "article" => $article,
-            "others" => DB::table('articles')
-                    ->where('judul', '!=', $article->judul)
-                    ->paginate(4),
             "categories" => DB::table('kategori')
                 ->get()
                 ->map(function ($category) {
@@ -98,11 +99,13 @@ class BlogController extends Controller
                         ->count();
                     return (object) [
                        "value" => $category->value,
-                       "count" => $count
+                       "count" => $count,
+                       "slug" => $category->slug,
                     ];
                 }),
             "count" => Article::all()->count(),
             "highlights" => DB::table('articles')->limit(4)->get(),
+            "konten" => $konten,
         ]);
     }
     //
