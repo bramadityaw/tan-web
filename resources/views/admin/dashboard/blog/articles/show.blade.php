@@ -11,7 +11,7 @@
         <div class="w-full">
             <div class="flex">
                 <div class="mr-4">
-                    <h1 class="flex justify-between">Judul: <span class="ml-5 font-bold text-lg">{{ $article->judul }}</span></h1>
+                    <h1 class="flex justify-between text-right">Judul: <span class="ml-5 font-bold text-lg">{{ $article->judul }}</span></h1>
                     <p class="flex justify-between">Kategori: <span >{{ \App\Models\Kategori::find($article->kategori_id)->value }}</span></p>
                 </div>
                 <img class="max-h-[128px] aspect-auto" src="/storage/images/{{ $article->thumbnail_url }}" alt="{{ $article->judul }}">
