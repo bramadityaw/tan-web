@@ -7,7 +7,7 @@
                 <div class="relative border border-white rounded-full p-1 w-3 h-3 bg-white"></div>
                 @endif
                 <a href="{{ route('blog') }}">Semua</a>
-                <span class="ml-2">({{ $articles->count() }})</span>
+                <span class="ml-2">({{ $count }})</span>
             </li>
             @foreach($categories as $category)
             <li class="flex items-center {{ (route('blog.category')

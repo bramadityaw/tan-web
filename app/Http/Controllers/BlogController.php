@@ -27,6 +27,7 @@ class BlogController extends Controller
             "articles" => DB::table('articles')
                 ->orderBy('updated_at', 'desc')
                 ->paginate(4),
+            "count" => Article::all()->count(),
         ]);
     }
 
@@ -54,6 +55,7 @@ class BlogController extends Controller
                        "count" => $count
                     ];
                 }),
+            "count" => Article::all()->count(),
         ]);
     }
 
@@ -77,6 +79,7 @@ class BlogController extends Controller
                        "count" => $count
                     ];
                 }),
+            "count" => Article::all()->count(),
         ]);
     }
 
@@ -98,6 +101,7 @@ class BlogController extends Controller
                        "count" => $count
                     ];
                 }),
+            "count" => Article::all()->count(),
         ]);
     }
     //
