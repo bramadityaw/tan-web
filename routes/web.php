@@ -116,5 +116,5 @@ Route::middleware('admin')->group(function() {
     Route::post('/kategori', [KategoriController::class, 'store']);
     Route::get('/admin/dashboard/blog/kategori/{kategori}', [KategoriController::class, 'show'])->name('kategori.show');
     Route::put('/kategori/{kategori}', [KategoriController::class, 'update']);
-    Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name('article.destroy');
+    Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy']);
 });
