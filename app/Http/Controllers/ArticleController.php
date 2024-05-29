@@ -70,13 +70,13 @@ class ArticleController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'konten' => 'required|string',
-            'type' => 'required|in:kategori_1,kategori_2,kategori_3',
+            'kategori' => 'required|exists:kategori,id',
             'thumbnail_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $article->judul = $request->judul;
         $article->konten = $request->konten;
-        $article->type = $request->type;
+        $article->kategori_id = $request->kategori;
 
         // Handle the file upload if there's a thumbnail
         if ($request->hasFile('thumbnail_url')) {
