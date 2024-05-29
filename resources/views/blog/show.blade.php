@@ -34,7 +34,7 @@
             <div class="flex gap-2 text-sm">
                 <a class="underline text-orange-600 hover:text-orange-400" href="{{ route('blog') }}">Blog</a>
                 <span>>></span>
-                <a class="underline text-orange-600 hover:text-orange-400" href="{{ route('blog.category', \App\Models\Kategori::find($article->kategori_id)->slug) }}">{{ \App\Models\Kategori::find($article->kategori_id)->value }}</a>
+                <a class="underline text-orange-600 hover:text-orange-400" href="{{ route('blog.category', \App\Models\Kategori::find($article->kategori_id)->slug) }}">{{ ucwords(\App\Models\Kategori::find($article->kategori_id)->value) }}</a>
                 <span>>></span>
                 <a class="underline text-orange-600 hover:text-orange-400" href="{{ route('blog.show', $article->slug) }}">{{ ucwords($article->judul) }}</a>
             </div>

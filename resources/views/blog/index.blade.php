@@ -14,7 +14,7 @@
                     <i class="fa-solid fa-clock"></i>
                     <span>{{ tanggalIdn($article->created_at, 'j F, o' ) }}</span>
                 </span>
-                <a href="/blog/topik{{ $kategori->slug }}">{{ $kategori->value }}</a>
+                <a href="/blog/topik/{{ $kategori->slug }}">{{ ucwords($kategori->value) }}</a>
                 @if(! \Carbon\Carbon::parse($article->created_at)
                     ->isSameAs('Y-m-d H:i:s', \Carbon\Carbon::parse($article->updated_at)))
                 <span class="ml-4">Diperbarui {{ tanggalIdn($article->updated_at, 'j F, o') }}</span>
