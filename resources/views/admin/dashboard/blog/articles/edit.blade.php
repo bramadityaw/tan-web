@@ -9,6 +9,9 @@
 </div>
 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-12 mx-auto w-fit min-h-[368px]">
     <h1 class="text-2xl font-semibold mb-4">Ubah Artikel</h1>
+    @if($errors->any())
+    {{ $errors }}
+    @endif
     <form action="/article/{{ $article->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -21,14 +24,15 @@
                     </div>
                     <div class="md:col-span-5">
                         <label for="kategori">Kategori</label>
-                        <select name="type" id="kategori" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                        <select name="kategori" id="kategori" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                            <option>Pilih Kategori</option>
                         @foreach($kategori as $k)
-                            <option {{ $article->kategori == $k->id ? 'selected' : '' }} value="{{ $k->id }}">{{ $k->value }}</option>
+                            <option {{ $article->kategori_id == $k->id ? 'selected' : '' }} value="{{ $k->id }}">{{ $k->value }}</option>
                         @endforeach
                         </select>
                     </div>
                     <div class="md:col-span-5">
-                        <label for="deskripsi">Deskripsi Artikel</label>
+                        <label for="konten">Konten</label>
                         <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="konten" id="deskripsi" cols="30" rows="6">{{ $article->konten }}</textarea>
                     </div>
                     <div class="md:col-span-5">
