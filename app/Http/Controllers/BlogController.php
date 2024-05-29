@@ -86,7 +86,18 @@ class BlogController extends Controller
             "article" => $article,
             "others" => DB::table('articles')
                     ->where('judul', '!=', $article->judul)
-                    ->paginate(4)
+                    ->paginate(4),
+            "categories" => DB::table('kategori')
+                ->get()
+                ->map(function ($category) {
+                    $count = Article::where('kategori_id', $category->id)
+                        ->get()
+                        ->count();
+                    return (object) [
+                       "value" => $category->value,
+                       "count" => $count
+                    ];
+                }),
         ]);
     }
     //
