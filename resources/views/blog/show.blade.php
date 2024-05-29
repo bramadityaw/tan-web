@@ -10,6 +10,15 @@
         padding-left: 1rem;
     }
 
+    article ul {
+        list-style-type: "-";
+        margin-left: 1rem;
+    }
+
+    article ul li {
+        padding-left: 1rem;
+    }
+
     article h2 {
         font-size: 1.25rem/* 18px */;
         font-weight: 500;
