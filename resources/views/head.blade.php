@@ -39,5 +39,6 @@
       -moz-appearance: textfield;
     }
     </style>
+    @stack('head-styles')
 
 </head>
