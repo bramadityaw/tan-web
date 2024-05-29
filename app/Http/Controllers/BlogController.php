@@ -66,6 +66,17 @@ class BlogController extends Controller
                        ->orderBy('updated_at', 'desc')
                        ->paginate(4),
             "query"    => $query_string,
+            "categories" => DB::table('kategori')
+                ->get()
+                ->map(function ($category) {
+                    $count = Article::where('kategori_id', $category->id)
+                        ->get()
+                        ->count();
+                    return (object) [
+                       "value" => $category->value,
+                       "count" => $count
+                    ];
+                }),
         ]);
     }
 
