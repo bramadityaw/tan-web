@@ -65,7 +65,7 @@ class BlogController extends Controller
                        ->whereFullText('konten', $query_string)
                        ->orderBy('updated_at', 'desc')
                        ->paginate(4),
-            "query"    => $query_string,
+            "query_blog"    => $query_string,
             "categories" => DB::table('kategori')
                 ->get()
                 ->map(function ($category) {
