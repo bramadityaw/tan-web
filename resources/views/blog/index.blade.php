@@ -5,7 +5,7 @@
     @foreach($articles as $article)
     <div class="rounded-md bg-white text-black mb-4">
         <article class="px-6 py-5">
-            <h1 class="text-xl font-semibold">{{ $article->judul }}</h1>
+            <h1 class="text-xl font-semibold">{{ ucwords($article->judul) }}</h1>
             <div class="flex gap-4 my-2">
                 <span class="flex gap-2 items-center">
                     <i class="fa-solid fa-clock"></i>
