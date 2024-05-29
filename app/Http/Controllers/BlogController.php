@@ -25,6 +25,7 @@ class BlogController extends Controller
                     ];
                 }),
             "articles" => DB::table('articles')
+                ->orderBy('updated_at', 'desc')
                 ->paginate(4),
         ]);
     }
@@ -40,6 +41,7 @@ class BlogController extends Controller
         return view('blog.index', [
             "articles" => DB::table('articles')
                 ->where('kategori_id', $kategori->id)
+                ->orderBy('updated_at', 'desc')
                 ->paginate(4),
             "categories" => DB::table('kategori')
                 ->get()
@@ -61,6 +63,7 @@ class BlogController extends Controller
         return view('blog.index', [
             "articles" => DB::table('articles')
                        ->whereFullText('konten', $query_string)
+                       ->orderBy('updated_at', 'desc')
                        ->paginate(4),
             "query"    => $query_string,
         ]);
