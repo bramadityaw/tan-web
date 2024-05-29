@@ -50,7 +50,7 @@ Route::get('/toko/search', [TokoController::class, 'search']);
 Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-Route::get('/blog/topik', [BlogController::class, 'category'])->name('blog.category');
+Route::get('/blog/topik/{kategori:slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/search', [BlogController::class, 'search']);
 Route::get('/blog/{article:slug}', [BlogController::class, 'show']);
 

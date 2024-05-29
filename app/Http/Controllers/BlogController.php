@@ -21,7 +21,8 @@ class BlogController extends Controller
                         ->count();
                     return (object) [
                        "value" => $category->value,
-                       "count" => $count
+                       "count" => $count,
+                       "slug" => $category->slug,
                     ];
                 }),
             "articles" => DB::table('articles')
@@ -32,14 +33,8 @@ class BlogController extends Controller
         ]);
     }
 
-    public function category(Request $request) : View
+    public function category(Kategori $kategori) : View
     {
-        $request->validate([
-            'kategori' => 'required|exists:kategori,value',
-        ]);
-
-        [$kategori] = Kategori::where('value', $request->query->get('kategori'))->get();
-
         return view('blog.index', [
             "articles" => DB::table('articles')
                 ->where('kategori_id', $kategori->id)
@@ -53,7 +48,8 @@ class BlogController extends Controller
                         ->count();
                     return (object) [
                        "value" => $category->value,
-                       "count" => $count
+                       "count" => $count,
+                       "slug" => $category->slug,
                     ];
                 }),
             "count" => Article::all()->count(),
@@ -78,7 +74,8 @@ class BlogController extends Controller
                         ->count();
                     return (object) [
                        "value" => $category->value,
-                       "count" => $count
+                       "count" => $count,
+                       "slug" => $category->slug,
                     ];
                 }),
             "count" => Article::all()->count(),
@@ -105,7 +102,7 @@ class BlogController extends Controller
                     ];
                 }),
             "count" => Article::all()->count(),
-            "highlights" => Article::all(),
+            "highlights" => DB::table('articles')->limit(4)->get(),
         ]);
     }
     //
