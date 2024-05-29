@@ -59,7 +59,10 @@ class ArticleController extends Controller
 
     public function edit(Article $article) : View
     {
-        return view('admin.dashboard.blog.articles.edit', compact('article'));
+        return view('admin.dashboard.blog.articles.edit', [
+            'article' => $article,
+            'kategori' => Kategori::all()
+        ]);
     }
 
     public function update(Request $request, Article $article)
