@@ -157,7 +157,7 @@ function tambahKategori() {
 
 document.addEventListener("click", e => {
     let placeholder = kategori.querySelector('h1');
-    if (!placeholder && kategori.children.length < 2) {
+    if (!placeholder && !editing && kategori.children.length < 2) {
         let input = kategori.children[0].querySelector('input');
         if (document.activeElement !== input) {
             input.parentNode.remove();
