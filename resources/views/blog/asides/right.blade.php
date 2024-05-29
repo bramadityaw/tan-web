@@ -1,5 +1,5 @@
 <aside class="w-1/2">
-    <div class="top-[72px] sticky">
+    <div class="top-[calc(72px+2.5rem)] sticky">
         <div class="rounded-md bg-white text-black w-full">
             <form action="/blog/search" class="flex m-0">
                 <input class="text-base w-full border-0 rounded-l-md pl-2 py-1" value="{{ $query_blog ?? '' }}" name="query" type="text" placeholder="Cari artikel...">

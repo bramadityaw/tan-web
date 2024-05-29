@@ -1,5 +1,5 @@
 <aside class="w-1/4">
-    <div class="border-r border-gray-400 top-[72px] sticky">
+    <div class="border-r border-gray-400 top-[calc(72px+2.5rem)] sticky">
         <h1 class="text-xl font-semibold mb-4">Topik</h1>
         <ul class="max-w-[132px]">
             <li class="flex items-center {{ url()->current() === route('blog') ? 'font-semibold gap-2' : '' }}">
