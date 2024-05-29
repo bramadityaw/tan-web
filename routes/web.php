@@ -79,7 +79,7 @@ Route::middleware('auth')->group(function() {
 
 Route::middleware('admin')->group(function() {
 
-    // Route::permanentRedirect('/admin', '/admin/dashboard');
+    Route::permanentRedirect('/admin', '/admin/dashboard');
 
     Route::get('/admin/dashboard', [DashboardController::class, 'view']);
 
