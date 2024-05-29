@@ -30,7 +30,7 @@
         <tbody>
             @forelse($articles as $article)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="py-4 px-6">{{ $article->judul }}</td>
+                <td class="py-4 px-6">{{ \Illuminate\Support\Str::limit($article->judul, 48) }}</td>
                 <td class="py-4 px-6">{{ \App\Models\Kategori::find($article->kategori_id)->value }}</td>
                 <td class="py-4 px-6">
                     <a class="rounded-xl border border-gray-700 px-2 py-1" href="{{ route('article.show', $article) }}">Lihat</a>
