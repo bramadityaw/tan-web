@@ -52,7 +52,7 @@ Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/topik/{kategori:slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/search', [BlogController::class, 'search']);
-Route::get('/blog/{article:slug}', [BlogController::class, 'show']);
+Route::get('/blog/{article:slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::middleware('auth')->group(function() {
 
