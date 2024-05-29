@@ -81,7 +81,11 @@ class ArticleController extends Controller
         // Handle the file upload if there's a thumbnail
         if ($request->hasFile('thumbnail_url')) {
             $imageName = time() . '.' . $request->thumbnail_url->extension();
-            $request->thumbnail_url->move(public_path('images1'), $imageName);
+            $request->thumbnail_url->move(public_path('/storage/images'), $imageName);
+            $oldImagePath = public_path('/storage/images/') . $article->thumbnail_url;
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
             $article->thumbnail_url = $imageName;
         }
 
@@ -98,7 +102,7 @@ class ArticleController extends Controller
     {
         // Delete the thumbnail image if it exists
         if ($article->thumbnail_url) {
-            $imagePath = public_path('storage/images/') . $article->thumbnail_url;
+            $imagePath = public_path('/storage/images/') . $article->thumbnail_url;
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
