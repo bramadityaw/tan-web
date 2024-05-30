@@ -7,7 +7,7 @@
         <p>Kembali</p>
     </a>
 </div>
-<div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-12 mx-auto w-fit min-h-[368px]">
+<div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-12 mx-auto w-5/6 md:w-2/3 min-h-[368px]">
     <h1 class="text-2xl font-semibold mb-4">Ubah Artikel</h1>
     @if($errors->any())
     {{ $errors }}
@@ -32,12 +32,15 @@
                         </select>
                     </div>
                     <div class="md:col-span-5">
-                        <label for="konten">Konten</label>
-                        <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="konten" id="deskripsi" cols="30" rows="6">{{ $article->konten }}</textarea>
+                        <label for="gambar">
+Thumbnail Artikel
+                <span class="float-end text-sm text-red-600">* Dimensi thumbnail maksimal 450x300</span>
+</label>
+                        <input class="flex items-center rounded-l mt-1 border w-full bg-gray-50 border-gray-100" type="file" name="thumbnail_url" id="gambar" value="{{ $article->thumbnail_url }}">
                     </div>
                     <div class="md:col-span-5">
-                        <label for="gambar">Gambar artikel</label>
-                        <input class="flex items-center rounded-l border w-full bg-gray-50 border-gray-100" type="file" name="thumbnail_url" id="gambar" value="{{ $article->thumbnail_url }}">
+                        <label for="konten">Konten</label>
+                        <textarea class="rounded-l border px-3 py-2 bg-gray-50 w-full" name="konten" id="deskripsi" cols="30" rows="20">{{ $article->konten }}</textarea>
                     </div>
                     <div class="md:col-span-5 mt-4">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-end">Ubah</button>
