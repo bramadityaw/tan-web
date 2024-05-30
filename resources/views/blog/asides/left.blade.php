@@ -1,4 +1,4 @@
-<aside class="w-1/4">
+<aside class="hidden w-1/4 lg:block">
     <div class="border-r border-gray-400 top-[calc(72px+2.5rem)] sticky">
         <h1 class="text-xl font-semibold mb-4">Topik</h1>
         <ul class="max-w-[132px]">

@@ -38,14 +38,14 @@
 </style>
 @endpush
 @section('main')
-    <div class="rounded-md bg-white text-black mb-4">
+    <div class="rounded-md bg-white text-black mb-6">
         <div class="px-4 py-3">
             <div class="flex gap-2 text-sm">
                 <a class="underline text-orange-600 hover:text-orange-400" href="{{ route('blog') }}">Blog</a>
                 <span>>></span>
                 <a class="underline text-orange-600 hover:text-orange-400" href="{{ route('blog.category', \App\Models\Kategori::find($article->kategori_id)->slug) }}">{{ ucwords(\App\Models\Kategori::find($article->kategori_id)->value) }}</a>
                 <span>>></span>
-                <a class="underline text-orange-600 hover:text-orange-400" href="{{ route('blog.show', $article->slug) }}">{{ ucwords($article->judul) }}</a>
+                <a class="underline truncate text-orange-600 hover:text-orange-400" href="{{ route('blog.show', $article->slug) }}">{{ ucwords($article->judul) }}</a>
             </div>
             <article>
                 <h1 class="text-2xl font-semibold my-4">{{ $article->judul }}</h1>

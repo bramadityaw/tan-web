@@ -1,10 +1,10 @@
 @include('head')
 @include('navbar')
 
-<div class="px-12 py-10 bg-[#1B3C73] text-white flex">
+<div class="px-12 py-10 bg-[#1B3C73] text-white lg:flex">
 @include('blog.asides.left')
 
-<main class="w-full mx-4">
+<main class="w-full lg:mx-4">
 
 @yield('main')
 

@@ -1,4 +1,4 @@
-<aside class="w-1/2">
+<aside class="lg:w-1/2">
     <div class="top-[calc(72px+2.5rem)] sticky">
         <div class="rounded-md bg-white text-black w-full">
             <form action="/blog/search" class="flex m-0">
@@ -14,8 +14,8 @@
             <a href="{{ route('blog.show', $highlight->slug) }}">
                 <div class="rounded-md bg-white text-black mb-4 p-3">
                     <div class="flex gap-4">
+                        <img class="max-w-[115px] max-h-[6rem] aspect-auto" src="/storage/images/{{ $highlight->thumbnail_url }}" alt="">
                         <h1 class="flex items-center">{{ ucwords($highlight->judul) }}</h1>
-                        <img class="max-w-[115px] aspect-auto" src="/storage/images/{{ $highlight->thumbnail_url }}" alt="">
                     </div>
                 </div>
             </a>
