@@ -6,7 +6,7 @@
         <p>Kembali</p>
     </a>
 </div>
-<div class="w-1/2 mx-auto mb-12">
+<div class="w-5/6 md:w-1/2 mx-auto mb-12">
     <div class="bg-white rounded-md px-6 py-5">
         <section class="flex justify-between mb-4">
             <h1 class="text-lg font-semibold">Atur Kategori</h1>
