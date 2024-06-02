@@ -50,6 +50,7 @@ Route::get('/toko/search', [TokoController::class, 'search']);
 Route::get('/toko/product/{product:slug}', [TokoController::class, 'show']);
 
 Route::get('/kritik-saran', [ReviewController::class, 'create'])->name('review.make');
+Route::get('/kritik-saran/terimakasih', [ReviewController::class, 'thanks'])->name('review.thanks');
 Route::post('/review', [ReviewController::class, 'store']);
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
@@ -108,7 +109,8 @@ Route::middleware('admin')->group(function() {
 
     Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
-    Route::get('/admin/dashboard/review/{review:slug}', [ReviewController::class, 'show'])->name('review.show');
+    Route::get('/admin/dashboard/review/', [ReviewController::class, 'index'])->name('review.index');
+    Route::get('/admin/dashboard/review/{review}', [ReviewController::class, 'show'])->name('review.show');
 
     Route::get('/admin/dashboard/blog', [ArticleController::class, 'index'])->name('blog.index');
     Route::get('/admin/dashboard/blog/article/create', [ArticleController::class, 'create'])->name('article.create');
