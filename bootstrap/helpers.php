@@ -9,3 +9,15 @@ function rupiah(int $amount) : string {
 function tanggalIdn(string $date, string $format) : string {
     return Carbon::parse($date)->translatedFormat($format);
 }
+
+
+function allCapsToCapCase (string $sentence)
+{
+    $words = explode(' ', $sentence);
+    $res = '';
+    foreach ($words as $word)
+    {
+        $res .= $word[0] . strtolower(substr($word, 1)) . ' ';
+    }
+    return trim($res);
+}
