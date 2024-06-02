@@ -6,13 +6,21 @@ use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ReviewController extends Controller
 {
+    public function index() : View
+    {
+        return view('admin.dashboard.review.index', [
+            'reviews' => DB::table('reviews')->paginate(6),
+        ]);
+    }
+
     public function show(Review $review) : View
     {
-        return view('review.show', [
+        return view('admin.dashboard.review.show', [
             'review' => $review,
         ]);
     }
@@ -20,6 +28,11 @@ class ReviewController extends Controller
     public function create() : View
     {
         return view('review.make');
+    }
+
+    public function thanks() : View
+    {
+        return view('review.thanks');
     }
 
     public function store(Request $request) : RedirectResponse
