@@ -56,30 +56,32 @@
                 </div>
             </div>
         </div>
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-semibold my-4">Review Terbaru</h1>
+            <a class="text-sm max-h-8 rounded-full border border-gray-400 px-3 py-1"
+               href="{{ route('review.index') }}">Selengkapnya</a>
+        </div>
+        <table class="w-full text-sm text-left my-4">
+            <thead class="text-xs uppercase bg-[#C8C8C8]">
+            <tr>
+                <th scope="col" class="py-3 px-6">Nama Pelanggan</th>
+                <th scope="col" class="py-3 px-6">Review</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($reviews as $review)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="py-4 px-6">{{ $review->nama_pelanggan }}</td>
+                    <td class="py-4 px-6">
+                        <a class="rounded-full border border-gray-400 px-3 py-1"
+                           href="{{ route('review.show', $review->id) }}">Lihat</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </section>
 </div>
-<section>
-    <h1 class="text-2xl font-semibold mb-4">Review Pelanggan</h1>
-    <table class="w-full text-sm text-left my-4">
-        <thead class="text-xs uppercase bg-[#C8C8C8]">
-        <tr>
-            <th scope="col" class="py-3 px-6">Nama Pelanggan</th>
-            <th scope="col" class="py-3 px-6">Asal</th>
-            <th scope="col" class="py-3 px-6">Review</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($reviews as $review)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="py-4 px-6">Sasasa</td>
-                <td class="py-4 px-6">Sasasa</td>
-                <td class="py-4 px-6">Sasasa</td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-    {{-- {{ $reviews->links() }} --}}
-</section>
 @endsection
 
 @push('scripts')

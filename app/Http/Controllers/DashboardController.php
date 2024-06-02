@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -56,7 +57,10 @@ class DashboardController extends Controller
             "diff" => $sales_total - $purchase_total,
         ];
 
-        $reviews = [];
+        $reviews = DB::table('reviews')
+            ->orderBy('created_at', 'desc')
+            ->take(2)
+            ->get();
 
         return view('admin.dashboard.index',
             [
