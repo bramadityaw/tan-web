@@ -21,4 +21,4 @@ yarn-error.log
 /tmp
 app.js
 *.log
-BingSiteAuth.xml
+/public/BingSiteAuth.xml
